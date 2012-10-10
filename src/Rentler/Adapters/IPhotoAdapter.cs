@@ -4,7 +4,6 @@ using System.Linq;
 using Rentler.Data;
 using System.Web;
 using System.IO;
-using Rentler.Azure;
 using System.Drawing;
 using Rentler.Drawing;
 using System.Drawing.Imaging;
@@ -120,7 +119,6 @@ namespace Rentler.Adapters
                     // reset the image
                     upload.Position = 0;
 
-                    Rentler.Azure.BlobAdapter.UploadPhoto(photo, upload, width, height);
                 }
             }
         }
@@ -180,12 +178,6 @@ namespace Rentler.Adapters
 
                     context.SaveChanges();
 
-                    Rentler.Azure.BlobAdapter.RemovePhoto(photo, 800, 600);
-                    Rentler.Azure.BlobAdapter.RemovePhoto(photo, 600, 395);
-                    Rentler.Azure.BlobAdapter.RemovePhoto(photo, 280, 190);
-                    Rentler.Azure.BlobAdapter.RemovePhoto(photo, 200, 150);
-                    Rentler.Azure.BlobAdapter.RemovePhoto(photo, 115, 85);
-                    Rentler.Azure.BlobAdapter.RemovePhoto(photo, 50, 50);
 
                     InvalidateCache(building.BuildingId);
 

@@ -131,8 +131,6 @@
     <Compile Include="Auth\CustomAuthentication.cs" />
     <Compile Include="Auth\IAuthenticator.cs" />
     <Compile Include="Auth\Identity.cs" />
-    <Compile Include="Azure\BlobAdapter.cs" />
-    <Compile Include="Azure\RetryPolicies.cs" />
     <Compile Include="BankInfo.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="BuildingAmenity.cs" />

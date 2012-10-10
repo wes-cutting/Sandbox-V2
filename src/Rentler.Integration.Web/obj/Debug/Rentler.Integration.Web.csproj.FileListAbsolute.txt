@@ -1,0 +1,7 @@
+C:\GitRepos\Sandbox-V2\src\Rentler.Integration.Web\bin\Rentler.Integration.Web.dll
+C:\GitRepos\Sandbox-V2\src\Rentler.Integration.Web\bin\Rentler.Integration.Web.pdb
+C:\GitRepos\Sandbox-V2\src\Rentler.Integration.Web\bin\EntityFramework.dll
+C:\GitRepos\Sandbox-V2\src\Rentler.Integration.Web\bin\EntityFramework.xml
+C:\GitRepos\Sandbox-V2\src\Rentler.Integration.Web\obj\Debug\Rentler.Integration.Web.csprojResolveAssemblyReference.cache
+C:\GitRepos\Sandbox-V2\src\Rentler.Integration.Web\obj\Debug\Rentler.Integration.Web.dll
+C:\GitRepos\Sandbox-V2\src\Rentler.Integration.Web\obj\Debug\Rentler.Integration.Web.pdb

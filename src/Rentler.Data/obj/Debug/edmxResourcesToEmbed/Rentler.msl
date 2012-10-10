@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RentlerDataStoreContainer" CdmEntityContainer="RentlerEntityContext">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="Rentler.Data.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AffiliateUsers">
+      <EntityTypeMapping TypeName="Rentler.Data.AffiliateUser">
+        <MappingFragment StoreEntitySet="AffiliateUsers">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="AffiliateUserKey" ColumnName="AffiliateUserKey" />
+          <ScalarProperty Name="ApiKey" ColumnName="ApiKey" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApiKeys">
+      <EntityTypeMapping TypeName="Rentler.Data.ApiKey">
+        <MappingFragment StoreEntitySet="ApiKeys">
+          <ScalarProperty Name="ApiKeyId" ColumnName="ApiKeyId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BuildingAmenities">
+      <EntityTypeMapping TypeName="Rentler.Data.BuildingAmenity">
+        <MappingFragment StoreEntitySet="BuildingAmenities">
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="AmenityId" ColumnName="AmenityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buildings">
+      <EntityTypeMapping TypeName="Rentler.Data.Building">
+        <MappingFragment StoreEntitySet="Buildings">
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdateDateUtc" ColumnName="UpdateDateUtc" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="RibbonId" ColumnName="RibbonId" />
+          <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="PropertyTypeCode" ColumnName="PropertyTypeCode" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SquareFeet" ColumnName="SquareFeet" />
+          <ScalarProperty Name="Acres" ColumnName="Acres" />
+          <ScalarProperty Name="YearBuilt" ColumnName="YearBuilt" />
+          <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+          <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DateAvailableUtc" ColumnName="DateAvailableUtc" />
+          <ScalarProperty Name="DateActivatedUtc" ColumnName="DateActivatedUtc" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsCreditCheckRequired" ColumnName="IsCreditCheckRequired" />
+          <ScalarProperty Name="IsBackgroundCheckRequired" ColumnName="IsBackgroundCheckRequired" />
+          <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+          <ScalarProperty Name="RefundableDeposit" ColumnName="RefundableDeposit" />
+          <ScalarProperty Name="LeaseLengthCode" ColumnName="LeaseLengthCode" />
+          <ScalarProperty Name="IsSmokingAllowed" ColumnName="IsSmokingAllowed" />
+          <ScalarProperty Name="ArePetsAllowed" ColumnName="ArePetsAllowed" />
+          <ScalarProperty Name="IsRemovedByAdmin" ColumnName="IsRemovedByAdmin" />
+          <ScalarProperty Name="IsReported" ColumnName="IsReported" />
+          <ScalarProperty Name="ReportedText" ColumnName="ReportedText" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="HasPriority" ColumnName="HasPriority" />
+          <ScalarProperty Name="DatePrioritized" ColumnName="DatePrioritized" />
+          <ScalarProperty Name="PetFee" ColumnName="PetFee" />
+          <ScalarProperty Name="TemporaryOrderId" ColumnName="TemporaryOrderId" />
+          <ScalarProperty Name="PrimaryPhotoId" ColumnName="PrimaryPhotoId" />
+          <ScalarProperty Name="PrimaryPhotoExtension" ColumnName="PrimaryPhotoExtension" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactInfoes">
+      <EntityTypeMapping TypeName="Rentler.Data.ContactInfo">
+        <MappingFragment StoreEntitySet="ContactInfoes">
+          <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ContactInfoTypeCode" ColumnName="ContactInfoTypeCode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="ShowPhoneNumber" ColumnName="ShowPhoneNumber" />
+          <ScalarProperty Name="ShowEmailAddress" ColumnName="ShowEmailAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomAmenities">
+      <EntityTypeMapping TypeName="Rentler.Data.CustomAmenity">
+        <MappingFragment StoreEntitySet="CustomAmenities">
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeaturedListings">
+      <EntityTypeMapping TypeName="Rentler.Data.FeaturedListing">
+        <MappingFragment StoreEntitySet="FeaturedListings">
+          <ScalarProperty Name="FeaturedListingId" ColumnName="FeaturedListingId" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="ScheduledDate" ColumnName="ScheduledDate" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderItems">
+      <EntityTypeMapping TypeName="Rentler.Data.OrderItem">
+        <MappingFragment StoreEntitySet="OrderItems">
+          <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductOption" ColumnName="ProductOption" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="Rentler.Data.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserCreditCardId" ColumnName="UserCreditCardId" />
+          <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+          <ScalarProperty Name="PromoCode" ColumnName="PromoCode" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="OrderStatusCode" ColumnName="OrderStatusCode" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Photos">
+      <EntityTypeMapping TypeName="Rentler.Data.Photo">
+        <MappingFragment StoreEntitySet="Photos">
+          <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdateDateUtc" ColumnName="UpdateDateUtc" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SavedBuildings">
+      <EntityTypeMapping TypeName="Rentler.Data.SavedBuilding">
+        <MappingFragment StoreEntitySet="SavedBuildings">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserApplications">
+      <EntityTypeMapping TypeName="Rentler.Data.UserApplication">
+        <MappingFragment StoreEntitySet="UserApplications">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Ssn" ColumnName="Ssn" />
+          <ScalarProperty Name="PresentPhone" ColumnName="PresentPhone" />
+          <ScalarProperty Name="PresentAddressLine1" ColumnName="PresentAddressLine1" />
+          <ScalarProperty Name="PresentAddressLine2" ColumnName="PresentAddressLine2" />
+          <ScalarProperty Name="PresentCity" ColumnName="PresentCity" />
+          <ScalarProperty Name="PresentState" ColumnName="PresentState" />
+          <ScalarProperty Name="PresentZip" ColumnName="PresentZip" />
+          <ScalarProperty Name="PresentLandlord" ColumnName="PresentLandlord" />
+          <ScalarProperty Name="PresentLandlordPhone" ColumnName="PresentLandlordPhone" />
+          <ScalarProperty Name="PreviousAddressLine1" ColumnName="PreviousAddressLine1" />
+          <ScalarProperty Name="PreviousAddressLine2" ColumnName="PreviousAddressLine2" />
+          <ScalarProperty Name="PreviousCity" ColumnName="PreviousCity" />
+          <ScalarProperty Name="PreviousState" ColumnName="PreviousState" />
+          <ScalarProperty Name="PreviousZip" ColumnName="PreviousZip" />
+          <ScalarProperty Name="PreviousLandlord" ColumnName="PreviousLandlord" />
+          <ScalarProperty Name="PreviousLandlordPhone" ColumnName="PreviousLandlordPhone" />
+          <ScalarProperty Name="PresentEmployer" ColumnName="PresentEmployer" />
+          <ScalarProperty Name="PresentEmployerPhone" ColumnName="PresentEmployerPhone" />
+          <ScalarProperty Name="EmergencyContact" ColumnName="EmergencyContact" />
+          <ScalarProperty Name="PreviousEmployer" ColumnName="PreviousEmployer" />
+          <ScalarProperty Name="PreviousEmployerPhone" ColumnName="PreviousEmployerPhone" />
+          <ScalarProperty Name="EmergencyContactPhone" ColumnName="EmergencyContactPhone" />
+          <ScalarProperty Name="EmergencyContactAddressLine1" ColumnName="EmergencyContactAddressLine1" />
+          <ScalarProperty Name="EmergencyContactAddressLine2" ColumnName="EmergencyContactAddressLine2" />
+          <ScalarProperty Name="EmergencyContactCity" ColumnName="EmergencyContactCity" />
+          <ScalarProperty Name="EmergencyContactState" ColumnName="EmergencyContactState" />
+          <ScalarProperty Name="EmergencyContactZip" ColumnName="EmergencyContactZip" />
+          <ScalarProperty Name="VehicleYear" ColumnName="VehicleYear" />
+          <ScalarProperty Name="VehicleMake" ColumnName="VehicleMake" />
+          <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+          <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+          <ScalarProperty Name="VehicleLicenseNumber" ColumnName="VehicleLicenseNumber" />
+          <ScalarProperty Name="VehicleState" ColumnName="VehicleState" />
+          <ScalarProperty Name="HasBeenConvicted" ColumnName="HasBeenConvicted" />
+          <ScalarProperty Name="ConvictedExplaination" ColumnName="ConvictedExplaination" />
+          <ScalarProperty Name="HasEverBeenUnlawfulDetainer" ColumnName="HasEverBeenUnlawfulDetainer" />
+          <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdateDateUtc" ColumnName="UpdateDateUtc" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserBanks">
+      <EntityTypeMapping TypeName="Rentler.Data.UserBank">
+        <MappingFragment StoreEntitySet="UserBanks">
+          <ScalarProperty Name="UserBankId" ColumnName="UserBankId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PayerAlias" ColumnName="PayerAlias" />
+          <ScalarProperty Name="PayeeAlias" ColumnName="PayeeAlias" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="RoutingNumber" ColumnName="RoutingNumber" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserCreditCards">
+      <EntityTypeMapping TypeName="Rentler.Data.UserCreditCard">
+        <MappingFragment StoreEntitySet="UserCreditCards">
+          <ScalarProperty Name="UserCreditCardId" ColumnName="UserCreditCardId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="AccountReference" ColumnName="AccountReference" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="CardName" ColumnName="CardName" />
+          <ScalarProperty Name="ExpirationMonth" ColumnName="ExpirationMonth" />
+          <ScalarProperty Name="ExpirationYear" ColumnName="ExpirationYear" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInterests">
+      <EntityTypeMapping TypeName="Rentler.Data.UserInterest">
+        <MappingFragment StoreEntitySet="UserInterests">
+          <ScalarProperty Name="UserInterestId" ColumnName="UserInterestId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ResponseMessage" ColumnName="ResponseMessage" />
+          <ScalarProperty Name="ApplicationSubmitted" ColumnName="ApplicationSubmitted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Rentler.Data.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UpdateDateUtc" ColumnName="UpdateDateUtc" />
+          <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZipInfoes">
+      <EntityTypeMapping TypeName="Rentler.Data.ZipInfo">
+        <MappingFragment StoreEntitySet="ZipInfoes">
+          <ScalarProperty Name="ZipInfoId" ColumnName="ZipInfoId" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="CityAliasName" ColumnName="CityAliasName" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

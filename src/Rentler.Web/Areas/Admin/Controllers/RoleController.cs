@@ -8,7 +8,7 @@ using Rentler.Web.Areas.Admin.Models;
 
 namespace Rentler.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles="Admin")]
+  //  [Authorize(Roles="Admin")]
     public class RoleController : Controller
     {
         IRoleFacade roleFacade;

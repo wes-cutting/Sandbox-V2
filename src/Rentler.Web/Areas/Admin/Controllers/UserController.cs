@@ -8,7 +8,7 @@ using Rentler.Facades;
 
 namespace Rentler.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles="Admin")]
+   // [Authorize(Roles="Admin")]
     public class UserController : Controller
     {
         IUserFacade userFacade;
