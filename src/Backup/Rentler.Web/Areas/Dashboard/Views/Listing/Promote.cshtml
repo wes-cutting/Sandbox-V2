@@ -1,0 +1,346 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.ListingPromoteModel
+@section title {Dashboard - Manage Property}
+@section description { }
+@section css
+{
+<link href="/css/pages/dashboard.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+<link href="/css/pages/listing.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+}
+@section js
+{
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="/scripts/jcarousellite.js"></script>
+<script type="text/javascript" src="/scripts/amplify.min.js"></script>
+<script type="text/javascript" src="/js/api/rentler.api.listing.js?v=@Html.BuildNumber()"></script>
+<script type="text/javascript" src="/js/rentler.listing.js?v=@Html.BuildNumber()"></script>
+}
+
+<div class="container">
+    
+    @Html.Partial("TabsNavigation", "myproperties")
+    
+    <div class="leftNav">    
+        <ul>
+	        <li><a href="/dashboard/property/manage/@Model.Listing.BuildingId">Manage</a></li>
+            <li class="selected"><a href="/dashboard/listing/promote/@Model.Listing.BuildingId">Promote</a></li>
+        </ul>    
+    </div>
+
+    <div class="leftNavContent">
+
+        <div class="listing-scrim analyze">
+        <div class="listing-scrim-container">
+        <div class="listing">
+            <div class="listing-heading">
+                <div class="price-container">
+                    <div class="price">@string.Format("{0:C2}", Model.Listing.Price)</div>
+                    <div class="per-month">Per Month</div>
+                </div>
+                <h1>@(string.IsNullOrEmpty(Model.Listing.Title) ? "[No Title]" : Model.Listing.Title)</h1>
+                <div class="address" data-lat="@Model.Listing.Latitude" data-long="@Model.Listing.Longitude">
+                    @Model.Listing.Address1 - @Model.Listing.City, @Model.Listing.State
+                </div>
+            </div>
+    
+            <div class="photo-container">
+                <div class="photo">
+                    <img src="@Html.GetPhotoLink(Model.Listing.BuildingId, Model.Listing.PrimaryPhotoId, 600, 395, Model.Listing.PrimaryPhotoExtension)" alt="Primary Photo" />
+                </div>
+                <div class="hide" id="map"></div>
+                <div class="im-interested hide">
+                    <div class="interest-overview">
+                        <div class="intro-text">
+                            Dear @Model.Listing.ContactInfo.Name,
+                        </div>
+                        <div class="intro-text desc">
+                            I am interested in your property, and I would like to contact you for more information:
+                        </div>
+                        <div class="interest-listing-preview">
+                            <img class="photo" src="@Html.GetPhotoLink(Model.Listing.BuildingId, Model.Listing.PrimaryPhotoId, 50, 50, Model.Listing.PrimaryPhotoExtension)" alt="Small Image" />
+                            <div class="interest-details">
+                                <div class="address">@Model.Listing.Address1</div>
+                                <div class="city">@Model.Listing.City, @Model.Listing.State @Model.Listing.Zip</div>
+                                <div class="price">
+                                    <span class="amount">@string.Format("{0:C2}", Model.Listing.Price)</span> per Month
+                                </div>
+                                <div class="bed-bath">@Model.Listing.Bedrooms Bed / @Model.Listing.Bathrooms Bath</div>
+                            </div>
+                        </div>
+                        <div class="optional-note">
+                            <div>Send a note: (<span class="characters">1000</span> characters remaining)</div>
+                            <div>
+                                <textarea id="interestMessage" name="interestMessage"></textarea>
+                            </div>
+                        </div>
+                        <div class="interest-options">
+                            <a href="#" class="cancel" data-link="cancel-interest">Cancel</a>
+                            <button class="button blue">Send Interest</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="carousel">
+                <a href="#" class="map-selection">
+                    <img src="/images/listing/map-icon.png" alt="Map" />
+                </a>
+                <a href="#" class="carousel-previous">Prev</a>
+                <div class="image-carousel">
+                    <ul>
+                    @if (Model.Listing.Photos.Count < 1)
+                    {
+                        <li>
+                            <a href="@Html.GetPhotoLink(Model.Listing.BuildingId, Model.Listing.PrimaryPhotoId, 600, 395, Model.Listing.PrimaryPhotoExtension)">
+                                <img src="@Html.GetPhotoLink(Model.Listing.BuildingId, Model.Listing.PrimaryPhotoId, 50, 50, Model.Listing.PrimaryPhotoExtension)" alt="Small Image" />
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        foreach (var item in Model.Listing.Photos)
+                        {
+                        <li>
+                            <a href="@Html.GetPhotoLink(item.BuildingId, item.PhotoId, 600, 395, item.Extension)">
+                                <img src="@Html.GetPhotoLink(item.BuildingId, item.PhotoId, 50, 50, item.Extension)" alt="image" />
+                            </a>
+                        </li>
+                        }
+                    }
+                    </ul>
+                </div>
+                <a href="#" class="carousel-next">Next</a>
+            </div>
+    
+            <div class="basic-info">
+                @*<ul class="basic-stats listing-actions">
+                    <li>
+                    @if (@Model.UserHasSaved)
+                    {
+                        <button class="button unfavorite" 
+                            data-buildingId="@Model.Listing.BuildingId" data-auth-url="">Unfavorite</button>
+                        <div class="label favorite">Unfavorite</div>
+                    }
+                    else
+                    {
+                        <button class="button favorite" 
+                            data-buildingId="@Model.Listing.BuildingId" 
+                            data-auth-url="@(!User.Identity.IsAuthenticated ? "/account/login?ReturnUrl=/listing/" + Model.Listing.BuildingId : "")">Favorite</button>
+                        <div class="label favorite">Favorite</div>
+                    }
+                    </li>
+                    <li class="big-button">
+                        <button class="button green" data-link="interested">I'm Interested</button>
+                    </li>
+                </ul>*@
+                <ul class="basic-stats">
+                    <li>
+                        <div class="count">@Model.Listing.Bedrooms</div>
+                        <div class="label">Bed</div>
+                    </li>
+                    <li>
+                        <div class="count">@string.Format("{0:0.##}", Model.Listing.Bathrooms)</div>
+                        <div class="label">Bath</div>
+                    </li>
+                    <li>
+                        <div class="count">@Model.Listing.YearBuilt</div>
+                        <div class="label">Year</div>
+                    </li>
+                    <li>
+                        <div class="count">@Model.Listing.SquareFeet</div>
+                        <div class="label">SqFt</div>
+                    </li>
+                    <li>
+                        <div class="count">@string.Format("{0:0.##}", @Model.Listing.Acres)</div>
+                        <div class="label">Acres</div>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="description">
+                <div class="description-heading">@Model.Listing.PropertyType - 
+                    @(Model.Listing.DateAvailableUtc == null || Model.Listing.DateAvailableUtc.Value < DateTime.UtcNow ?
+                    "Available Now" : Model.Listing.DateAvailableUtc.Value.ToLocalTime().ToShortDateString())
+                </div>
+                <p>@Model.Listing.Description</p>
+            </div>
+    
+            <div class="contact-info">
+                <div class="name">
+                    <div class="personal">@Model.Listing.ContactInfo.Name</div>
+                    <div class="professional">@Model.Listing.ContactInfo.CompanyName</div>
+                </div>
+                <div class="phone-number">
+                    @(Model.Listing.ContactInfo.ShowPhoneNumber ? Model.Listing.ContactInfo.PhoneNumber : "Not Listed")
+                </div>
+                <div class="email">
+                    <a rel="nofollow" href="#" data-link="interested">E-mail Landlord</a>
+                </div>
+            </div>
+
+            <div class="listing-tabs">
+                <ul>
+                    <li class="active">
+                        <a href="#" rel="nofollow" data-tab="basic">Amenities</a>
+                    </li>
+                    <li>
+                        <a href="#" rel="nofollow" data-tab="community">Community Amenities</a>
+                    </li>
+                    <li>
+                        <a href="#" rel="nofollow" data-tab="custom">Additional Amenities</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="amenities-list active" id="basic">
+                <ul>
+                @foreach (var key in Rentler.Configuration.Amenities.Current.Property.Keys)
+                {
+                    bool isSelected = Model.Listing.BuildingAmenities.Any(a => a.AmenityId == key);               
+                    <li class="@(isSelected ? "active" : "inactive")">@Rentler.Configuration.Amenities.Current.Property[key]</li>
+                }
+                @foreach (var key in Rentler.Configuration.Amenities.Current.OptionsProperties.Keys)
+                {
+                    var options = Rentler.Configuration.Amenities.Current.OptionsProperties[key];
+                    var results = options.Keys.Intersect(Model.Listing.BuildingAmenities.Select(a => a.AmenityId));
+                    if (results.Count() > 0)
+                    {
+                        <li class="active">@string.Format("{0} : {1}", key, options[results.First()])</li>
+                    }
+                }
+                </ul>
+            </div>
+
+            <div class="amenities-list" id="community">
+                <ul>
+                @foreach (var key in Rentler.Configuration.Amenities.Current.Community.Keys)
+                {
+                    bool isSelected = Model.Listing.BuildingAmenities.Any(a => a.AmenityId == key);                 
+                    <li class="@(isSelected ? "active" : "inactive")">@Rentler.Configuration.Amenities.Current.Community[key]</li>
+                }           
+                @foreach (var key in Rentler.Configuration.Amenities.Current.OptionsCommunity.Keys)
+                {
+                    var options = Rentler.Configuration.Amenities.Current.OptionsCommunity[key];
+                    var results = options.Keys.Intersect(Model.Listing.BuildingAmenities.Select(a => a.AmenityId));
+                    if (results.Count() > 0)
+                    {
+                        <li class="active">@string.Format("{0} : {1}", key, options[results.First()])</li>
+                    }
+                }
+                </ul>
+            </div>
+
+            <div class="amenities-list" id="custom">
+                <ul>
+                @foreach (var item in Model.Listing.CustomAmenities)
+                {
+                    <li class="active">@item.Name</li>
+                }
+                </ul>
+            </div>
+
+            <div class="listing-details-container">
+                <div class="listing-header">Terms and Details</div>
+                <div class="listing-details terms">
+                    <div class="heading">Terms</div>
+                    <ul>
+                        <li>
+                            <div class="stat">Lease Terms:</div>
+                            <div class="value">@Model.Listing.LeaseLength</div>
+                        </li>
+                        <li>
+                            <div class="stat">Deposit:</div>
+                            <div class="value">@string.Format("{0:C2}", Model.Listing.Deposit)</div>
+                        </li>
+                        <li>
+                            <div class="stat">Refundable:</div>
+                            <div class="value">@string.Format("{0:C2}", Model.Listing.RefundableDeposit)</div>
+                        </li>
+                        <li>
+                            <div class="stat">Pet Friendly:</div>
+                            <div class="value">@(Model.Listing.ArePetsAllowed ? "Yes" : "No")</div>
+                        </li>
+                        <li>
+                            <div class="stat">Pet Fee:</div>
+                            <div class="value">@string.Format("{0:C2}", Model.Listing.PetFee)</div>
+                        </li>
+                        <li>
+                            <div class="stat">Smoking:</div>
+                            <div class="value">@(Model.Listing.IsSmokingAllowed ? "Yes" : "No")</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="listing-details details">
+                    <div class="heading">Listing Details</div>
+                    <ul>
+                        <li>
+                            <div class="stat">Ad Number:</div>
+                            <div class="value">@Model.Listing.BuildingId</div>
+                        </li>
+                        <li>
+                            <div class="stat">Post Date:</div>
+                            <div class="value">@(Model.Listing.DateActivatedUtc.HasValue ? Model.Listing.DateActivatedUtc.Value.ToLocalTime().ToShortDateString() : "?")</div>
+                        </li>
+                        <li>
+                            <div class="stat">Expiration Date:</div>
+                            <div class="value"></div>
+                        </li>
+                        <li>
+                            <div class="stat">Time Online:</div>
+                            <div class="value"></div>
+                        </li>
+                        <li>
+                            <div class="stat">Time Left:</div>
+                            <div class="value"></div>
+                        </li>
+                        <li>
+                            <div class="stat">Views:</div>
+                            <div class="value"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="report-share">
+                <div class="share">
+                    <!-- AddThis Button BEGIN -->
+                    <div class="addthis_toolbox addthis_default_style "
+                         addthis:url="https://@Rentler.Configuration.App.Hostname/listing/@Model.Listing.BuildingId"
+                         addthis:title="@Html.GetListingTitle(Model.Listing)"
+                         addthis:description="@Model.Listing.Title">
+                        <a class="addthis_button_tweet"></a>
+                        <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                        <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                        <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+                    </div>
+                    <script type="text/javascript">                var addthis_config = { "data_track_addressbar": false };</script>
+                    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e495ef7138737dd"></script>
+                    <!-- AddThis Button END -->
+                </div>
+                @*<div class="report">
+                    <a href="#" rel="nofollow">
+                        <img src="/images/listing/report-flag.png" alt="Report" />
+                    </a>
+                    <div class="report-text">If you feel that this ad is miscategorized, duplicate, inappropriate, or fraudulent, report it and tell us what the issue is by clicking the flag.</div>
+                </div>*@
+                <div style="height: 60px;">&nbsp;</div>
+            </div>
+
+            @*<div class="report-info">
+                <div>
+                    Thank you for helping us keep our listings legitimate. To help us better moderate please let us know why you reported this listing.
+                    (<span class="character-count">1000</span> characters remaining)
+                </div>
+                <div class="text">
+                    <textarea name="reportText"></textarea>
+                </div>
+                <button type="submit" class="button blue" data-buildingId="@Model.Listing.BuildingId">Submit</button>
+                <a href="#" class="cancel-report" rel="nofollow">Cancel</a>
+            </div>*@
+    
+        </div>
+        </div>
+        </div>
+
+    </div>
+    <div class="clr"></div>
+</div>

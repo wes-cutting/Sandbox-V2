@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Map";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>	
+}
+
+@*<div id="myMap" style="width:950px;height:600px;margin:auto;"></div>*@
+
+@section js{
+	<script type="text/javascript" src="/Scripts/jquery-1.7.2.js"></script>
+	<script type="text/javascript">
+		var box;
+		var resultMarkers = [];
+		var results;
+		$(function () {
+			$('#main').height($('#main').width() * (6 / 14));
+			var options = {
+				center: new google.maps.LatLng(40.68229, -111.877),
+				zoom: 15,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+			var map = new google.maps.Map(document.getElementById("main"), options);
+
+			//going from top left to bottom right, like reading a book
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(40.68229, -111.877),
+				map: map, 
+				title: 'Sup dude',
+				animation: google.maps.Animation.DROP
+			});
+
+			$.get('/mobile/search/searchlocation?lat=40.68229&lng=-111.877&miles=4000', function (result) {
+				results = result.Result.Results;
+				box = result.Result.Bounds;
+				console.log(box);
+
+				var latlngs = [new google.maps.LatLng(box.MaxLat, box.MaxLng),
+				new google.maps.LatLng(box.MaxLat, box.MinLng),
+				new google.maps.LatLng(box.MinLat, box.MinLng),
+				new google.maps.LatLng(box.MinLat, box.MaxLng)];
+
+				//polygon for the bounds
+				//				var boundsPoly = new google.maps.Polygon({
+				//					paths: latlngs,
+				//					strokeColor: "#FF0000",
+				//					strokeOpacity: 0.8,
+				//					strokeWeight: 2,
+				//					fillColor: "#FF0000",
+				//					fillOpacity: 0.35
+				//				});
+				//				boundsPoly.setMap(map);
+
+				//set center and zoom level proper
+				var bounds = new google.maps.LatLngBounds();
+//				for (var i = 0; i < latlngs.length; i++) {
+//					bounds.extend(latlngs[i]);
+//				}
+//				map.fitBounds(bounds);
+
+				//set result markers
+				var iterator = 0;
+				for (var i = 0; i < result.Result.Results.length; i++) {
+					setTimeout(function () {
+						var r = result.Result.Results[iterator];
+						resultMarkers.push(new google.maps.Marker({
+							position: new google.maps.LatLng(r.Latitude, r.Longitude),
+							map: map,
+							title: r.Title,
+							animation: google.maps.Animation.DROP
+						}));
+
+						//expand bounds as we drop more markers
+						bounds.extend(new google.maps.LatLng(r.Latitude, r.Longitude));
+						map.fitBounds(bounds);
+
+						iterator++;
+					}, i * 100);
+				}
+			});
+		});
+	</script>
+}

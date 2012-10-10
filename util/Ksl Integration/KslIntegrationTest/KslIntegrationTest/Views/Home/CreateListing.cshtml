@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<style>
+iframe[seamless]{
+    background-color: transparent;
+    border: 0px none transparent;
+    padding: 0px;
+    overflow: hidden;
+}
+iframe{
+	width:720px;
+	height: 900px;
+}
+</style>
+
+<link rel="stylesheet" href="@ViewBag.RentlerHost/css/embed/ksl-rentler-integration.css" />
+
+<div style="width:720px;height:5px;background-color:#ddd;">&nbsp;</div>
+<iframe id="rentler_frame" src="@ViewBag.RentlerHost/api/1/property/index?PropertyType=Single-Family Home" seamless
+	frameborder=0 border=0 scrolling="no"></iframe>
+<div style="width:720px;height:5px;background-color:#ddd;">&nbsp;</div>
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/scripts/createlisting.js"></script>

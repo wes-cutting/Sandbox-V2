@@ -1,0 +1,73 @@
+﻿@model Rentler.Web.Areas.Admin.Models.RoleSearchModel
+
+<div class="container">
+
+    <div class="row">
+        <div class="span3">
+        @Html.Partial("AdminSideNavPartial", "Roles")
+        </div>
+        <div class="span9">
+            <div class="page-header">
+                <h1>Roles</h1>
+            </div>
+
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                If you are looking to add users to roles go to the users section and do a search for that user.
+            </div>
+
+            <h3>Existing Roles</h3>
+            @if (Model.Roles.Length < 1)
+            {
+                <p>There are currently no roles.</p>
+            }
+            else
+            {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Roles)
+                    {
+                    <tr>
+                        <td>@item</td>
+                        <td style="text-align: right; width: 60px;">
+                            <a href="#">
+                                <i class="icon-remove"></i> 
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            }
+
+            <h3>Create New Role</h3>
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="inputEmail">Name</label>
+                    <div class="controls">
+                        <input type="text" id="inputEmail" placeholder="Name" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword">Description</label>
+                    <div class="controls">
+                        <textarea placeholder="Password" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn">Save</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

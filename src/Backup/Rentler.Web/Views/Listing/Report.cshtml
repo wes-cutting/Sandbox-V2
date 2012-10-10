@@ -1,0 +1,22 @@
+﻿@{ Layout = null;}
+@section title { Listing - Report }
+<div class="container">    
+	<div class="darkHeading">Report Listing</div>
+	<div class="">
+		<p class="">
+			Thank you for helping us keep our listings legitimate. To help us better moderate
+			please let us know why you reported this listing (<span class="characterCount">1000
+			characters</span>):</p>
+    @using (Html.BeginForm("report", "listing", FormMethod.Post))
+    {
+        <div class="">
+	        <input type="hidden" name="id" value="@ViewBag.Id" />
+	        <textarea name="reportedText" rows="10" cols="10"></textarea>
+        </div>
+        <div class="">
+	        @Html.ActionLink("Cancel", "Index", null, new { @class = "close" })
+	        <button type="submit" value="Report Listing">Report Listing</button>
+        </div>        
+    }
+	</div>
+</div>

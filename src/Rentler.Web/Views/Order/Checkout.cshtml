@@ -1,0 +1,110 @@
+﻿@using Rentler.Web.Axioms.Extensions;
+@model Rentler.Web.Models.OrderCheckoutModel
+@section title { Rentler - Create Listing }
+@section css { 
+    <link href="/css/pages/property.css" rel="Stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section js { 
+    <script type="text/javascript">
+        var hostname = "@Rentler.Web.Config.Hostname";
+    </script>        
+    <script type="text/javascript" src="/scripts/jquery.validate.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.validate.unobtrusive.js"></script>      
+    <script src="/scripts/knockout-2.1.0.js"></script>    
+    <script src="/js/rentler.knockoutBindings.js"></script>    
+    <script src="/js/rentler.checkout.js"></script>
+    <script type="text/javascript">
+        var viewModel = new rentler.checkout.CreateViewModel();               
+
+        @foreach (var card in Model.Order.User.UserCreditCards)
+        {
+            <text>
+                viewModel.paymentMethods.push(
+                    new rentler.checkout.paymentMethod(
+                        @card.UserCreditCardId,
+                        -1,
+                        "@card.AccountReference",
+                        "@card.CardName",
+                        "@card.CardNumber",
+                        @card.ExpirationMonth,
+                        @card.ExpirationYear,
+                        "@card.FirstName",
+                        "@card.LastName",
+                        "@card.Address1",
+                        "@card.Address2",
+                        "@card.City",
+                        "@card.State",
+                        "@card.Zip",
+                        "@card.CreateDate",
+                        "@card.CreatedBy")
+                );
+            </text>
+        }
+            
+        viewModel.months = @Html.Raw(Rentler.Web.Axioms.SelectLists.Months.MonthNumbers.ToJsonArray());
+        viewModel.years = @Html.Raw(Rentler.Web.Axioms.SelectLists.Years.ExpirationYears.ToJsonArray());
+        viewModel.states = @Html.Raw(Rentler.Web.Axioms.SelectLists.States.AllStates.ToJsonArray());       
+
+        @if(Model.Input.SelectedPaymentMethod.UserCreditCardId > 0)
+        {
+            // find payment method
+            <text>
+                var pm = viewModel.findPaymentMethodById(@Model.Input.SelectedPaymentMethod.UserCreditCardId);
+                if(pm) {
+                    viewModel.selectedPaymentMethod(pm);
+                    
+                    var newCard = new rentler.checkout.paymentMethod(
+                        0, -1, "", "", "", 0, 0, "", "", "", "", "", "", "", new Date().toDateString(), "web");
+
+                    viewModel.paymentMethods.push(newCard);
+                    viewModel.isSaved(true)
+                }
+            </text>
+        }
+        else 
+        {
+            <text>
+                // set values on new card
+                var newCard = new rentler.checkout.paymentMethod(
+                    0, -1, 
+                    "@Model.Input.SelectedPaymentMethod.AccountReference", 
+                    "@Model.Input.SelectedPaymentMethod.CardName", 
+                    "@Model.Input.SelectedPaymentMethod.CardNumber", 
+                    @Model.Input.SelectedPaymentMethod.ExpirationMonth, 
+                    @Model.Input.SelectedPaymentMethod.ExpirationYear,
+                    "@Model.Input.SelectedPaymentMethod.FirstName", 
+                    "@Model.Input.SelectedPaymentMethod.LastName", 
+                    "@Model.Input.SelectedPaymentMethod.Address1", 
+                    "@Model.Input.SelectedPaymentMethod.Address2", 
+                    "@Model.Input.SelectedPaymentMethod.City", 
+                    "@Model.Input.SelectedPaymentMethod.State", 
+                    "@Model.Input.SelectedPaymentMethod.Zip",
+                    "@Model.Input.SelectedPaymentMethod.CreateDate", 
+                    "@Model.Input.SelectedPaymentMethod.CreatedBy");
+                
+                viewModel.selectedPaymentMethod(newCard);
+                viewModel.paymentMethods.push(newCard);
+                viewModel.isSaved(false);
+            </text>
+        }
+                                                                     
+        ko.applyBindings(viewModel);
+    </script>
+}
+
+<div class="container">
+    <div id="accordion" class="ui-accordion">
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/listing/list/@Model.Order.BuildingId">List Property - Details</a></div>
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/listing/terms/@Model.Order.BuildingId">List Property - Terms</a></div>
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/listing/promote/@Model.Order.BuildingId">Promote Listing</a></div>
+        <div class="ui-accordion-header selected">
+            <span class="stepEdit">Checkout</span></div>
+        <div class="ui-accordion-content charges">
+            @Html.Partial(@"~\views\shared\checkoutform.cshtml", Model)
+        </div> 
+    </div>
+</div>

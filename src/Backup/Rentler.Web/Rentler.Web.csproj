@@ -1,0 +1,774 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A29267F7-CABA-4986-BD32-22F8312B788F}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rentler.Web</RootNamespace>
+    <AssemblyName>Rentler.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Rentler.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Rentler.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Rentler.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|x64'">
+    <OutputPath>bin\x64\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Rentler.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MVC Foolproof Validation">
+      <HintPath>..\packages\foolproof.0.9.4517\lib\MVC Foolproof Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcMailer.1.1\lib\40\Mvc.Mailer.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcExtensions">
+      <HintPath>..\packages\MvcExtensions.2.0.4.534\lib\net40\MvcExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcExtensions.Foolproof">
+      <HintPath>..\packages\MvcExtensions.Foolproof.2.0.4.534\lib\net40\MvcExtensions.Foolproof.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcPaging">
+      <HintPath>..\packages\MvcPaging.2.0.2\lib\net40\MvcPaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.0.15\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net40-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RentlerSystemModule.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Api\ApiAreaRegistration.cs" />
+    <Compile Include="Areas\Api\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Api\Controllers\ListingController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\PhotoController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\ListingController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\PropertyController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\UnitController.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\Dashboard\Models\AccountModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\ListingModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\OrderModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\PropertyModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\UnitModels.cs" />
+    <Compile Include="Areas\Email\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Email\Controllers\ListingController.cs" />
+    <Compile Include="Areas\Email\Controllers\OrderController.cs" />
+    <Compile Include="Areas\Email\EmailAreaRegistration.cs" />
+    <Compile Include="Areas\Ksl\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Ksl\Controllers\ListingController.cs" />
+    <Compile Include="Areas\Ksl\Controllers\PropertyController.cs" />
+    <Compile Include="Areas\Ksl\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Ksl\KslAreaRegistration.cs" />
+    <Compile Include="Areas\Mobile\Controllers\ListingController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\SearchController.cs" />
+    <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
+    <Compile Include="Axioms\AllowCrossSiteJsonAttribute.cs" />
+    <Compile Include="Axioms\Config.cs" />
+    <Compile Include="Axioms\Extensions\ControllerExtensions.cs" />
+    <Compile Include="Axioms\Extensions\HtmlExtensions.cs" />
+    <Compile Include="Axioms\JsonNetResult.cs" />
+    <Compile Include="Axioms\SelectLists\Acres.cs" />
+    <Compile Include="Axioms\SelectLists\Bathrooms.cs" />
+    <Compile Include="Axioms\SelectLists\Bedrooms.cs" />
+    <Compile Include="Axioms\SelectLists\BuildYear.cs" />
+    <Compile Include="Axioms\SelectLists\ContactInfoTypes.cs" />
+    <Compile Include="Axioms\SelectLists\LeaseOptions.cs" />
+    <Compile Include="Axioms\SelectLists\Months.cs" />
+    <Compile Include="Axioms\SelectLists\PropertyTypes.cs" />
+    <Compile Include="Axioms\SelectLists\SquareFeet.cs" />
+    <Compile Include="Axioms\SelectLists\States.cs" />
+    <Compile Include="Axioms\SelectLists\Years.cs" />
+    <Compile Include="Axioms\Storage.cs" />
+    <Compile Include="Axioms\UnAuthenticatedCacheAttribute.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListingController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\EmailModels.cs" />
+    <Compile Include="Models\HomeModels.cs" />
+    <Compile Include="Models\ListingModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Css\datepicker.css" />
+    <Content Include="Css\fileuploader.css" />
+    <Content Include="Css\Ksl\property.css" />
+    <Content Include="Css\Ksl\ksl.css" />
+    <Content Include="Css\Ksl\listing.css" />
+    <Content Include="Css\Ksl\search.css" />
+    <Content Include="Css\normalize.css" />
+    <Content Include="Css\Pages\dashboard.css" />
+    <Content Include="Css\Pages\forgotpassword.css" />
+    <Content Include="Css\Pages\home.css" />
+    <Content Include="Css\Pages\landlord.css" />
+    <Content Include="Css\Pages\listing.css" />
+    <Content Include="Css\Pages\login.css" />
+    <Content Include="Css\Pages\property.css" />
+    <Content Include="Css\Pages\register.css" />
+    <Content Include="Css\Pages\search.css" />
+    <Content Include="Css\rentler.css" />
+    <Content Include="Css\scrim.css" />
+    <Content Include="Error\404.htm" />
+    <Content Include="Error\500.htm" />
+    <Content Include="Error\403.htm" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\checked.png" />
+    <Content Include="Images\Create\room-separator.png" />
+    <Content Include="Images\dash-hor.png" />
+    <Content Include="Images\dash-vert.png" />
+    <Content Include="Images\dash.png" />
+    <Content Include="Images\divide-dotted-x.gif" />
+    <Content Include="Images\divide-dotted-y.gif" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\fileuploader\loading.gif" />
+    <Content Include="Images\flag-grey.png" />
+    <Content Include="Images\header-background.png" />
+    <Content Include="Images\heading-gradient-dark.jpg" />
+    <Content Include="Images\heading-gradient-light.jpg" />
+    <Content Include="Images\home-background.png" />
+    <Content Include="Images\home-hero.png" />
+    <Content Include="Images\home-indicator.png" />
+    <Content Include="Images\home-landlord-spotlight.png" />
+    <Content Include="Images\ksl\amenityActive.png" />
+    <Content Include="Images\ksl\amenityInactive.png" />
+    <Content Include="Images\ksl\backTo.png" />
+    <Content Include="Images\ksl\close-image.png" />
+    <Content Include="Images\ksl\divide-dotted-x.gif" />
+    <Content Include="Images\ksl\divide-dotted-y.gif" />
+    <Content Include="Images\ksl\featured-text-bg.jpg" />
+    <Content Include="Images\ksl\feedback-button.png" />
+    <Content Include="Images\ksl\heading-gradient-dark.jpg" />
+    <Content Include="Images\ksl\ksl-rentler-email.png" />
+    <Content Include="Images\ksl\ksl-rentler-head.png" />
+    <Content Include="Images\ksl\ksl-search-options old.png" />
+    <Content Include="Images\ksl\ksl-search-options.png" />
+    <Content Include="Images\ksl\kslsearch-advanced-back.jpg" />
+    <Content Include="Images\ksl\kslsearch-basic-back.jpg" />
+    <Content Include="Images\ksl\kslsearch-searchbar-back.jpg" />
+    <Content Include="Images\ksl\kslui.png" />
+    <Content Include="Images\ksl\lightHeadingBackgound.png" />
+    <Content Include="Images\ksl\medButtonBackground.png" />
+    <Content Include="Images\ksl\nav-arrows.png" />
+    <Content Include="Images\ksl\pointedDot.png" />
+    <Content Include="Images\ksl\promo-video.png" />
+    <Content Include="Images\ksl\rentler-ksl-logo.png" />
+    <Content Include="Images\ksl\rentlerNoKsl.png" />
+    <Content Include="Images\ksl\rentlerPlusKsl.png" />
+    <Content Include="Images\ksl\searchBackground.png" />
+    <Content Include="Images\ksl\searchDivider.png" />
+    <Content Include="Images\ksl\smallButtonBack.png" />
+    <Content Include="Images\ksl\subSearchBackground.png" />
+    <Content Include="Images\Listing\amenity-active.png" />
+    <Content Include="Images\Listing\amenity-inactive.png" />
+    <Content Include="Images\Listing\envelope.png" />
+    <Content Include="Images\Listing\indicator-left.png" />
+    <Content Include="Images\Listing\indicator-right.png" />
+    <Content Include="Images\Listing\listing-heading.png" />
+    <Content Include="Images\Listing\listing-tab.png" />
+    <Content Include="Images\Listing\mail-icon.png" />
+    <Content Include="Images\Listing\map-icon.png" />
+    <Content Include="Images\Listing\phone-icon.png" />
+    <Content Include="Images\Listing\report-flag.png" />
+    <Content Include="Images\loader.gif" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\Mobile\apple-touch-icon-ipad.png" />
+    <Content Include="Images\Mobile\apple-touch-icon-iphone.png" />
+    <Content Include="Images\Mobile\apple-touch-icon-iphone4.png" />
+    <Content Include="Images\noimage-200x150.jpg" />
+    <Content Include="Images\noimage-280x190.jpg" />
+    <Content Include="Images\noimage-50x50.jpg" />
+    <Content Include="Images\noimage-600x395.jpg" />
+    <Content Include="Images\propertyremoved-198x149.png" />
+    <Content Include="Images\propertyremoved.png" />
+    <Content Include="Images\Property\asterisk.png" />
+    <Content Include="Images\Property\calendarNextButton.png" />
+    <Content Include="Images\Property\calendarPreviousButton.png" />
+    <Content Include="Images\Property\correct-promo.jpg" />
+    <Content Include="Images\Property\incorrect-promo.jpg" />
+    <Content Include="Images\Property\listing-map-icon.jpg" />
+    <Content Include="Images\Property\photoHandle.png" />
+    <Content Include="Images\Property\plus-icon.png" />
+    <Content Include="Images\Property\ribbonInSearchExample.png" />
+    <Content Include="Images\Property\right-shadow-bg.png" />
+    <Content Include="Images\Property\selected-step-bg.png" />
+    <Content Include="Images\Property\steps-bg.png" />
+    <Content Include="Images\Property\tip.png" />
+    <Content Include="Images\Ribbons\3cargarage-161x54.png" />
+    <Content Include="Images\Ribbons\3cargarage-180x59.png" />
+    <Content Include="Images\Ribbons\airconditioning-161x54.png" />
+    <Content Include="Images\Ribbons\airconditioning-180x59.png" />
+    <Content Include="Images\Ribbons\bigyard-161x54.png" />
+    <Content Include="Images\Ribbons\bigyard-180x59.png" />
+    <Content Include="Images\Ribbons\brandnew-161x54.png" />
+    <Content Include="Images\Ribbons\brandnew-180x59.png" />
+    <Content Include="Images\Ribbons\clubhouse-161x54.png" />
+    <Content Include="Images\Ribbons\clubhouse-180x59.png" />
+    <Content Include="Images\Ribbons\fencedyard-161x54.png" />
+    <Content Include="Images\Ribbons\fencedyard-180x59.png" />
+    <Content Include="Images\Ribbons\firstmonthfree-161x54.png" />
+    <Content Include="Images\Ribbons\firstmonthfree-180x59.png" />
+    <Content Include="Images\Ribbons\fitnesscenter-161x54.png" />
+    <Content Include="Images\Ribbons\fitnesscenter-180x59.png" />
+    <Content Include="Images\Ribbons\granitecountertops-161x54.png" />
+    <Content Include="Images\Ribbons\granitecountertops-180x59.png" />
+    <Content Include="Images\Ribbons\greatschools-161x54.png" />
+    <Content Include="Images\Ribbons\greatschools-180x59.png" />
+    <Content Include="Images\Ribbons\hardwoodfloors-161x54.png" />
+    <Content Include="Images\Ribbons\hardwoodfloors-180x59.png" />
+    <Content Include="Images\Ribbons\hottub-161x54.png" />
+    <Content Include="Images\Ribbons\hottub-180x59.png" />
+    <Content Include="Images\Ribbons\monthtomonth-161x54.png" />
+    <Content Include="Images\Ribbons\monthtomonth-180x59.png" />
+    <Content Include="Images\Ribbons\nearapark-161x54.png" />
+    <Content Include="Images\Ribbons\nearapark-180x59.png" />
+    <Content Include="Images\Ribbons\newcarpet-161x54.png" />
+    <Content Include="Images\Ribbons\newcarpet-180x59.png" />
+    <Content Include="Images\Ribbons\newlyremodeled-161x54.png" />
+    <Content Include="Images\Ribbons\newlyremodeled-180x59.png" />
+    <Content Include="Images\Ribbons\newpaint-161x54.png" />
+    <Content Include="Images\Ribbons\newpaint-180x59.png" />
+    <Content Include="Images\Ribbons\noyardwork-161x54.png" />
+    <Content Include="Images\Ribbons\noyardwork-180x59.png" />
+    <Content Include="Images\Ribbons\onsitemaintenance-161x54.png" />
+    <Content Include="Images\Ribbons\onsitemaintenance-180x59.png" />
+    <Content Include="Images\Ribbons\onsitemanager-161x54.png" />
+    <Content Include="Images\Ribbons\onsitemanager-180x59.png" />
+    <Content Include="Images\Ribbons\petfriendly-161x54.png" />
+    <Content Include="Images\Ribbons\petfriendly-180x59.png" />
+    <Content Include="Images\Ribbons\playground-161x54.png" />
+    <Content Include="Images\Ribbons\playground-180x59.png" />
+    <Content Include="Images\Ribbons\pool-161x54.png" />
+    <Content Include="Images\Ribbons\pool-180x59.png" />
+    <Content Include="Images\Ribbons\smokerfriendly-161x54.png" />
+    <Content Include="Images\Ribbons\smokerfriendly-180x59.png" />
+    <Content Include="Images\Ribbons\snowremoval-161x54.png" />
+    <Content Include="Images\Ribbons\snowremoval-180x59.png" />
+    <Content Include="Images\Ribbons\stainlessappliances-161x54.png" />
+    <Content Include="Images\Ribbons\stainlessappliances-180x59.png" />
+    <Content Include="Images\Ribbons\utilitiesincluded-161x54.png" />
+    <Content Include="Images\Ribbons\utilitiesincluded-180x59.png" />
+    <Content Include="Images\Ribbons\washerdryer-161x54.png" />
+    <Content Include="Images\Ribbons\washerdryer-180x59.png" />
+    <Content Include="Images\search-background.png" />
+    <Content Include="Images\TimImage\account-navigation-selected.gif" />
+    <Content Include="Images\TimImage\account-navigation-star.gif" />
+    <Content Include="Images\TimImage\add-another-tenant-background.png" />
+    <Content Include="Images\TimImage\amenityActive.png" />
+    <Content Include="Images\TimImage\amenityInactive.png" />
+    <Content Include="Images\TimImage\background.jpg" />
+    <Content Include="Images\TimImage\backTo.png" />
+    <Content Include="Images\TimImage\checked.png" />
+    <Content Include="Images\TimImage\close-image.png" />
+    <Content Include="Images\TimImage\divide-dotted-x.gif" />
+    <Content Include="Images\TimImage\divide-dotted-y.gif" />
+    <Content Include="Images\TimImage\header.jpg" />
+    <Content Include="Images\TimImage\header.png" />
+    <Content Include="Images\TimImage\heading-gradient-dark.jpg" />
+    <Content Include="Images\TimImage\heading-gradient-light.jpg" />
+    <Content Include="Images\TimImage\home-aditemcount.png" />
+    <Content Include="Images\TimImage\home-background.png" />
+    <Content Include="Images\TimImage\home-banner.jpg" />
+    <Content Include="Images\TimImage\home-banner.png" />
+    <Content Include="Images\TimImage\home-bottomMarker.png" />
+    <Content Include="Images\TimImage\home-search-background.png" />
+    <Content Include="Images\TimImage\hover-background.png" />
+    <Content Include="Images\TimImage\hover-dots.png" />
+    <Content Include="Images\TimImage\hover-fill.png" />
+    <Content Include="Images\TimImage\landlord-spotlight-pointer.png" />
+    <Content Include="Images\TimImage\landlord-spotlight.png" />
+    <Content Include="Images\TimImage\lease-background.png" />
+    <Content Include="Images\TimImage\logo.png" />
+    <Content Include="Images\TimImage\nav-arrows.png" />
+    <Content Include="Images\TimImage\search-background.png" />
+    <Content Include="Images\TimImage\search-result-background.png" />
+    <Content Include="Images\TimImage\steps-background.png" />
+    <Content Include="Images\TimImage\tab-background.png" />
+    <Content Include="Images\TimImage\ui.png" />
+    <Content Include="Images\TimImage\unchecked.png" />
+    <Content Include="Images\ui.png" />
+    <Content Include="Images\unchecked.png" />
+    <Content Include="Js\Api\rentler.api.auth.js" />
+    <Content Include="Js\Api\rentler.api.listing.js" />
+    <Content Include="Js\rentler.demo.js" />
+    <Content Include="Js\rentler.featuredCalendar.js" />
+    <Content Include="Js\rentler.home.js" />
+    <Content Include="Js\rentler.js" />
+    <Content Include="Js\rentler.knockoutBindings.js" />
+    <Content Include="Js\rentler.listing.favorites.js" />
+    <Content Include="Js\rentler.listing.js" />
+    <Content Include="Js\rentler.checkout.js" />
+    <Content Include="Js\rentler.property.create.js" />
+    <Content Include="Js\rentler.property.manage.js" />
+    <Content Include="Js\rentler.property.promote.js" />
+    <Content Include="Js\rentler.property.search.js" />
+    <Content Include="Js\rentler.property.terms.js" />
+    <Content Include="Js\rentler.scrim.js" />
+    <Content Include="Js\rentler.search.js" />
+    <Content Include="Js\rentler.uploader.js" />
+    <Content Include="robots.txt" />
+    <Content Include="Scripts\amplify-vsdoc.js" />
+    <Content Include="Scripts\amplify.js" />
+    <Content Include="Scripts\amplify.min.js" />
+    <Content Include="Scripts\fileuploader.js" />
+    <Content Include="Scripts\GPL-LICENSE.txt" />
+    <Content Include="Scripts\jcarousellite.js" />
+    <Content Include="Scripts\jquery-1.7.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.7.2.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.datepick.js" />
+    <Content Include="Scripts\jquery.infinitescroll.js" />
+    <Content Include="Scripts\jquery.infinitescroll.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\MIT-LICENSE.txt" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\mvcfoolproof.unobtrusive.min.js" />
+    <Content Include="Scripts\MvcFoolproofJQueryValidation.min.js" />
+    <Content Include="Scripts\MvcFoolproofValidation.min.js" />
+    <Content Include="Scripts\placeholder.min.js" />
+    <Content Include="Scripts\README.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Api\Models\" />
+    <Folder Include="Areas\Api\Views\Shared\" />
+    <Folder Include="Areas\Dashboard\Views\Home\" />
+    <Folder Include="Areas\Email\Models\" />
+    <Folder Include="Areas\Email\Views\Shared\" />
+    <Folder Include="Areas\Ksl\Models\" />
+    <Folder Include="Areas\Mobile\Models\" />
+    <Folder Include="Areas\Mobile\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rentler\Rentler.csproj">
+      <Project>{0539A612-E10E-404D-8E39-C144714638FE}</Project>
+      <Name>Rentler</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Profile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Listing\IndexBackup.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Api\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Privacy.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\About.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Terms.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Property\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Listing\Favorites.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Listing\ReportError.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Listing\Report.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Account\Profile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Account\ChangePassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Ksl\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Ksl\Views\Search\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Ksl\Views\Listing\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\SearchResults.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Property\Terms.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Property\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Shared\TabsNavigation.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Property\SearchResults.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Property\Promote.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Shared\EditorTemplates\DateTime.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Listing\SearchResults.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Account\Application.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Ksl\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Ksl\Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Unit\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Property\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Listing\Interested.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Staging.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Live.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Order\Checkout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Ksl\Views\Property\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Listing\ListingDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Listing\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Mobile\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Property\Manage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Email\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ServerAccountMailer\ChangePassword.cshtml" />
+    <Content Include="Views\ServerAccountMailer\Register.cshtml" />
+    <Content Include="Views\ServerListingMailer\Interested.cshtml" />
+    <Content Include="Views\ServerOrderMailer\Receipt.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_EmailLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Dashboard\Views\Listing\Promote.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>48325</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48325/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

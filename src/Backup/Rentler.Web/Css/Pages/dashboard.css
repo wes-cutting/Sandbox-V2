@@ -1,0 +1,277 @@
+﻿/* 
+    @group Tabs
+*/
+.tabs {
+    margin: 20px 0px;
+    margin-top: 25px;
+}
+    .tabs ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background: url('/images/timImage/heading-gradient-dark.jpg') repeat-x top left;
+        height: 40px;
+        -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+                border-radius: 4px;
+    }
+    .tabs li {
+        text-align: center;
+        float: left;
+        margin: 5px 0px 0px 5px;
+        height: 35px;
+    }
+    .tabs li a {
+        float: left;
+        height: 35px;
+        text-indent: 0;
+        padding: 0 18px;
+        width: auto;
+        background: url('/images/timImage/tab-background.png') repeat-x top left;
+        -webkit-border-radius: 4px 4px 0px 0px;
+           -moz-border-radius: 4px 4px 0px 0px;
+                border-radius: 4px 4px 0px 0px;
+        line-height: 35px;
+        color: white;
+        font-size: 1em;
+    }
+    .tabs li a:hover,
+    .tabs li.active a {
+        background: white;
+        color: #3F4E58;
+        text-decoration: none;
+    }
+    .tabs li.right {
+        float: right;
+        margin-right: 5px;
+    }
+
+.sub-tab {
+    background: url('/images/timImage/search-background.png') repeat-x bottom left;
+    margin-top: -20px;
+    line-height: 40px;
+    padding: 0px 15px;
+}
+.sub-tab.search {
+    height: 70px;
+    padding-top: 15px;
+    background: url('/images/search-background.png') repeat-x;
+    border-bottom: solid 1px #D8D8D8;
+}
+    .sub-tab.search .search-section {
+        height: 54px;
+        padding-top: 4px;
+        padding-left: 20px;
+        background: url('/images/dash-vert.png') repeat-y top right;
+        float: left;
+    }
+    .search-section label {
+        display: block;
+        line-height: 1em;
+        font-weight: bold;
+        color: #444d52;
+    }
+    .search-section.keywords {
+        width: 310px;
+    }
+    .search-section.keywords input[type=text] {
+        width: 280px;
+    }
+    .sub-tab.search .search-section.order-by {
+        width: 150px;
+    }
+    .sub-tab.search .search-section.order-by select {
+        width: 120px;
+    }
+    .sub-tab.search .search-section.actions {
+        padding-top: 8px;
+    }
+    .sub-tab.search .search-section:last-child {
+        background: none;
+    }
+.sub-tab a {
+    margin-right: 10px;
+}
+.sub-tab a.active {
+    text-decoration: none;
+    color: #333;
+}
+.sub-tab large {
+    
+}
+/* @end Tabs */
+
+/*
+    @group Lists
+*/
+.dashboard-left {
+    width: 635px;
+    padding: 0px 10px 10px 5px;
+}
+.dashboard-right {
+    width: 285px;
+    float: right;
+    padding: 0px 5px 10px 10px;
+}
+/* @end Layouts */
+
+/*
+    @group Lists
+*/
+.item-list {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+    .item-list li {
+        background: url('/images/timImage/divide-dotted-x.gif') repeat-x left bottom;
+        padding: 8px 0px;
+    }
+    .item-list li.heading {
+        border-bottom: solid 2px #CFCFCF;
+        background: none;
+        font-weight: bold;
+        padding-left: 0px;
+        margin-top: -8px;
+    }
+    .item-list .accent {
+        font-weight: normal;
+        color: #EC1C24;
+    }
+/* @end Lists */
+
+/*
+    @group Properties
+*/
+.props .saved-hero .result {
+    margin-left: 10px;
+}
+.my-properties {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: -2px;
+}
+.my-properties-create {
+    float: right;
+    margin-right: 20px;
+    padding-top: 35px;
+}
+.my-properties li, 
+.my-properties .image-block, 
+.my-properties .image-block img,
+.my-properties .image-overlay {
+    width: 170px;
+}
+.my-properties li {
+    float: left;
+    margin: 15px 0px 0px 15px;
+    padding: 4px 0px 0px 3px;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+}
+.my-properties .image-block {}
+.my-properties .image-block img,
+.my-properties .image-overlay {
+    height: 127px;
+}
+.my-properties .property-info {
+
+}
+.my-properties .status {
+    width: 23px;
+    height: 23px;
+    background: url('/images/ui.png') no-repeat -214px -316px;
+    float: right;
+    margin-right: 4px;
+    margin-top: 5px;
+}
+.my-properties .status.active {
+    background-position: -191px -316px;
+}
+.my-properties .address {
+    font-size: .9em;
+    font-weight: bold;
+    margin-top: 6px;
+}
+.my-properties .address.active {
+    color: green;
+}
+.my-properties .city {
+    font-size: .9em;
+    color: gray;
+}
+.my-properties .image-overlay {
+    position: absolute;
+    background-image: url('/images/propertyremoved.png');
+    text-align: center;
+}
+.my-properties .overlay-text {
+    color: #fff;
+    padding-top: 20px;
+}
+/* @end Properties */
+
+/*
+    @group SavedProperties
+*/
+.saved-properties .search-results {
+    margin-left: -4px;
+}
+.saved-hero {
+    width: 620px;
+    margin: 40px auto;
+}
+.saved-hero-info {
+    margin-left: 220px;
+    padding-top: 2px;
+}
+.hero-image {
+    float: left;
+}
+.saved-hero-info h1 {
+    color: #444D52;
+    margin: 0;
+    font-family: 'Georgia', 'Times News Roman', 'Serif';
+    font-size: 3.0em;
+    line-height: 1em;
+}
+.saved-hero-info p.compare-sub {
+    color: #7398A8;
+    font-size: 1.7em;
+    font-family: 'Georgia','Times News Roman','Serif';
+    margin: 10px 0px;
+}
+.hero-button {
+    float: right;
+}
+/* @end SavedProperties*/
+
+/*
+    @group Profile
+*/
+#register { margin-top: 20px; }
+.change-password .form-horizontal .control-group .control-label {
+    width: 130px;
+}
+.change-password .form-horizontal .control-group .controls {
+    margin-left: 130px;
+}
+.change-message {
+    margin-top: 20px;
+    padding: 0px 10px;
+}
+/* @end Profile */
+
+.navigation {
+    text-align: center;
+}
+.navigation a {
+    padding: 5px;
+}
+.loading {
+    clear: left;
+    margin: 0px auto;
+    width: 75px;
+    padding-top: 10px;
+}
+.clr { clear: left; }

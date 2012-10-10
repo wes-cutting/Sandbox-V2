@@ -1,0 +1,25 @@
+﻿@model KslIntegrationV2.Models.RentlerModel
+@{
+	ViewBag.Title = "Search";
+}
+
+<style>
+iframe[seamless]{
+	background-color: transparent;
+	border: 0px none transparent;
+	padding: 0px;
+	overflow: hidden;
+}
+#rentler_frame{
+	width: 950px;
+	height: 3000px;
+	margin:0px;
+	padding: 0px;
+}
+
+body{
+}
+</style>
+
+<iframe id="rentler_frame" src="@Model.RentlerHost/ksl/property/create/@ViewBag.ID?token=@Model.Token" seamless="seamless"
+	frameborder="0" border="0" scrolling="no"></iframe>

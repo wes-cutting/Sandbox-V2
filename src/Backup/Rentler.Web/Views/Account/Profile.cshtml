@@ -1,0 +1,28 @@
+﻿@model Rentler.Web.Models.AccountProfileModel
+@section title {Update Profile}
+@section description {}
+@section js {
+    <script type="text/javascript" src="/scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="container">
+    <h2>Update Profile</h2>
+    @using(Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+
+        <div>@Model.Message</div>
+        
+        @Html.LabelFor(m => m.Input.FirstName)
+        @Html.TextBoxFor(m => m.Input.FirstName)
+
+        @Html.LabelFor(m => m.Input.LastName)
+        @Html.TextBoxFor(m => m.Input.LastName)
+        
+        @Html.LabelFor(m => m.Input.Email)
+        @Html.TextBoxFor(m => m.Input.Email)
+
+        <button type="submit">Update Profile</button>
+    }
+</div>

@@ -1,0 +1,93 @@
+﻿/* @group listing */
+.listing
+{
+    font-family: "Verdana, Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333;
+}
+    /* @group general */
+    .listing .button.green,
+    .listing .button.blue
+    {
+        font-family: "Verdana, Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+        background: url('/images/ksl/medButtonBackground.png') repeat-x;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+        border-radius: 0px;
+        font-weight: bold;
+        text-decoration: none;        
+    }
+    .listing .button.green:hover,
+    .listing .button.blue:hover
+    {        
+        text-decoration: underline;        
+    }
+    /* @end general */
+    
+    /* @group listing-heading */    
+    
+    .listing .price 
+    {
+        font-family: "Verdana, Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+        color: #2354AC;
+    }
+    
+    .listing .address 
+    {
+        color: #313131;
+    }
+    
+    /* @end listing-heading */ 
+    
+    /* @group basic-info */
+    
+    .listing .button.favorite,
+    .listing .button.unfavorite:hover 
+    {
+        background: url('/images/ksl/kslui.png') no-repeat -16px -16px;
+    }
+    .listing .button.unfavorite,
+    .listing .button.favorite:hover 
+    {
+        background: url('/images/ksl/kslui.png') no-repeat -16px 0px;        
+    }
+    .listing .count 
+    {
+        font-family: "Verdana, Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+    
+    /* @end basic-info */
+    
+    /* @group description */
+    
+    .listing .description-heading 
+    {
+        font-family: "Verdana, Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        color: #313131;
+    }
+    
+    /* @end description */  
+        
+    /* @group amenities-list */
+    
+    .listing .amenities-list ul li.active
+    {        
+        background: url('/images/ksl/amenityActive.png') no-repeat left center;
+        color: #2354AC;
+    }
+    
+    /* @end amenities-list */
+    
+    /* @group listing-details-container */
+    
+    .listing .listing-details-container .listing-header
+    {        
+        background: #e1e1e1; 
+        color: #313131;       
+    }
+    
+    /* @end listing-details-container */ 
+    
+/* @end listing */

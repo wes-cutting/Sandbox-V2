@@ -1,0 +1,69 @@
+﻿@model Rentler.Common.PropertySearch
+@section title {My Properties}
+@section description {Find the properties that you have created.}
+@section css {
+    <link rel="Stylesheet" href="/css/pages/dashboard.css?v=@Html.BuildNumber()" />
+    <link href="/css/pages/landlord.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+}
+@section js {
+    <script type="text/javascript" src="/scripts/jquery.infinitescroll.js"></script>
+    <script type="text/javascript" src="/js/rentler.property.search.js?v=@Html.BuildNumber()"></script>
+}
+
+@Html.Partial("TabsNavigation", "myproperties")
+
+<div class="container props">      
+
+@if (Model.Results.TotalCount > 0)
+{
+    <div class="property-search">
+        @using (Html.BeginForm("search", "property", FormMethod.Get))
+        {
+            <div class="my-properties-create">
+                <a href="/property/create" class="button blue big">Add Property</a>
+            </div>
+            <div class="search">
+                <div class="search-section keywords">
+                    <label>Search your properties</label>
+                    @Html.TextBoxFor(m => m.Keywords, new { placeholder = "Enter a part of the address or city" })
+                </div>                            
+                <div class="search-section order-by">
+                    <label>Order By</label>
+                    <select name="OrderBy">
+                        <option value="createdate"@(Model.OrderBy.ToLower() == "createdate" ? " selected=selected" : "")>Create Date</option>
+                        <option value="islisted"@(Model.OrderBy.ToLower() == "islisted" ? " selected=selected" : "")>Is Listed</option>
+                    </select>
+                </div>     
+            </div>
+        }
+    </div>
+}
+
+@if (Model.Results.TotalCount < 1)
+{
+    <div class="saved-hero">
+        <div class="hero-image">
+            <a href="/property/create">
+                <img src="http://localhost:48325/images/noimage-200x150.jpg" alt="Building Image">
+            </a>
+        </div>
+        
+        <div class="saved-hero-info">
+            <h1>Manage Your Properties</h1>
+            <p>Manage property and tenant information right on the site. Our listing tools allow you to easily list your property on both Rentler and KSL. You can then use that property to accept applications as well as gain access to our property management tools and landlord services. Getting started is as easy as adding your first property. The best part? Listing is FREE.</p>
+            <p class=""><a href="/property/create" class="button green">Add a property</a></p>
+        </div>
+    </div>
+}
+
+    <div class="search-results-container">
+        @Html.Partial("SearchResults", Model)
+    </div>
+    
+    <div class="live-loader hide">
+        <img src="/images/loader.gif" />
+    </div>
+    
+    <div class="clearLeft"></div>    
+
+</div>

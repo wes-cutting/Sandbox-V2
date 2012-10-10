@@ -1,0 +1,19 @@
+﻿@model string
+
+<div class="tab-container">
+    <div class="container">
+        <div class="tabs">
+            <ul>
+                <li@(Model == "myproperties" ? " class=active" : "")>
+                    <a href="/property/search" class="button">My Properties</a>
+                </li>
+                <li@(Model == "favorites" ? " class=active" : "")>
+                    <a href="/listing/favorites" class="button">Favorites</a>
+                </li>
+                <li@(Model == "account" ? " class=active" : "")>
+                    <a href="/account/profile" class="button">Account</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

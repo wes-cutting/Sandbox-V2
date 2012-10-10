@@ -1,0 +1,32 @@
+﻿@{
+	Layout = null;
+}
+
+<!doctype html>
+<html>
+<head>
+	<title>Create Listing</title>
+</head>
+<body>
+	<div id="rentlerContent" class="kslInt"></div>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="http://localhost:15020/js/cmn/lib/yepnope.1.5.3-min.js"></script>
+	<script type="text/javascript" src="http://localhost:15020/js/newapi/rentler.js"></script>
+	<script type="text/javascript">
+		Rentler.init(function () {
+			var val = location.href.substring(location.href.lastIndexOf('/') + 1);
+			var buildingId = new Number(val);
+
+			var params;
+
+			if (isNaN(buildingId))
+				params = { id: 0 };
+			else {
+				params = { id: buildingId }
+			}
+
+			NewApi.api.request('createListingExternal', params);
+		});
+	</script>
+</body>
+</html>

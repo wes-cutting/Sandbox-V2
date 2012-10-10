@@ -1,0 +1,41 @@
+﻿.container.body 
+{
+    padding-top: 20px;
+}
+
+h2 
+{
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2em;
+}
+.darkHeading 
+{
+    background: url('/images/heading-gradient-dark.jpg') repeat-x;
+    height: 40px;
+    color: #fff;
+    line-height: 40px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 0px 10px;    
+    text-align: center;
+}
+#disclaimer 
+{
+    padding: 10px;
+    text-align: center;
+}
+    #disclaimer span 
+    {
+        display: block;
+        margin: 5px 0px;
+    }
+.control-separator 
+{
+    font-size: 1.2em;
+}
+.form-horizontal .control-group .control-label 
+{
+    width: 120px;
+}

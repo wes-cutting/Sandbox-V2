@@ -1,0 +1,8 @@
+﻿@model Rentler.BuildingPreview
+
+<div>
+    <p>Your listing is complete!<br />
+        <a href="@Html.GetKslListingUrl(Model.BuildingId)" target="_top">View your listing</a>, or 
+        <a href="/dashboard/property/manage/@Model.BuildingId">go back to make changes!</a></p>
+</div>
+

@@ -1,0 +1,32 @@
+﻿@{
+	var sack = ViewBag;
+    sack.Title = "Listing";
+}
+
+@section Css{
+	<!--global css -->
+	<link rel="stylesheet" href="@ViewBag.RentlerHost/css/embed/ksl-rentler-integration.css" />
+
+	<!--local css, and scripts needed at the top-->
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/lib/modernizr-1.5.min.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/loader.js"></script>
+}
+
+@section Scripts{
+	<!--global scripts-->
+	<script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e495ef7138737dd&domready=1"></script>
+	<script type="text/javascript" src="https://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/lib/plugins.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/api/rentler.templates.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/global.js"></script>
+
+	<!--local scripts needed for this page-->
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/lib/jcarousellite.js"></script>
+    <script type="text/javascript" src="@ViewBag.RentlerHost/js/Cmn/lib/jquery.expander.min.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/api/rentler.searchapi.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/embed/listing.js"></script>    
+}
+<div style="padding: 20px;">
+@Html.Raw(sack.ListingHtml)
+</div>

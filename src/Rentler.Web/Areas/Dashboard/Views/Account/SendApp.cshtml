@@ -1,0 +1,287 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.AccountSendAppModel
+@section Title {Tenant Application}
+@section Css
+{
+    <link rel="Stylesheet" href="/css/pages/dashboard.css?v=@Html.BuildNumber()" />
+    <link rel="Stylesheet" href="/css/pages/register.css?v=@Html.BuildNumber()" />
+    <link rel="Stylesheet" href="/css/pages/sendapp.css?v=@Html.BuildNumber()" />
+}
+@section js 
+{
+}   
+<div class="container body">
+    <h2 class="darkHeading">Rental Application</h2>
+	@*<div class="gradHeading multiline">
+		Hate filling out those pesky rental applications time after time? No worries.<br />
+		With Rentler, you only need to fill out the following application once!<br />
+		Then you can submit it to as many listings as you'd like. <br />
+	</div>*@
+	<div id="disclaimer" class="gradHeading multiline">
+		<span>You are submitting this application to: <strong>@Model.Lead.Building.User.FirstName @Model.Lead.Building.User.LastName</strong></span>                      
+		<span>@Model.Lead.Building.Address1 @Model.Lead.Building.Address2<br />
+		@Model.Lead.Building.City, @Model.Lead.Building.State @Model.Lead.Building.Zip</span>
+		<strong>Please be sure you have contacted this individual before you send them any personal information.</strong>
+	</div>
+
+    @using(Html.BeginForm("sendapp", "account", FormMethod.Post, new { @class="form-horizontal" }))
+    {
+        @Html.ValidationSummary("Please correct the errors and try again:")
+                 
+        <fieldset>                        
+            <div class="control-separator">Personal Information</div>
+
+            <div class="control-group">
+                <label for="FirstName" class="control-label">First Name</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.FirstName)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="FirstName" class="control-label">Last Name</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.LastName)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentPhone" class="control-label">Current Phone</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentPhone)
+                </div>
+            </div>
+
+            <div class="control-separator">Current Address</div>
+
+            <div class="control-group">
+                <label for="PresentAddressLine1" class="control-label">Address</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentAddressLine1)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentAddressLine2" class="control-label">Line 2</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentAddressLine2)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentCity" class="control-label">City</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentCity)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentState" class="control-label">State</label>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.Input.Application.PresentState, Rentler.Web.Axioms.SelectLists.States.AllStates)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentZip" class="control-label">Zip</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentZip)
+                </div>
+            </div>
+
+            <div class="control-separator">Current Landlord</div>
+
+            <div class="control-group">
+                <label for="PresentLandlord" class="control-label">Name</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentLandlord)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentLandlordPhone" class="control-label">Phone</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentLandlordPhone)
+                </div>
+            </div>
+
+            <div class="control-separator">Previous Address</div>
+
+            <div class="control-group">
+                <label for="PresentLandlordPhone" class="control-label">Address</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PreviousAddressLine1)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentLandlordPhone" class="control-label">Line 2</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PreviousAddressLine2)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentLandlordPhone" class="control-label">City</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PreviousCity)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentState" class="control-label">State</label>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.Input.Application.PreviousState, Rentler.Web.Axioms.SelectLists.States.AllStates)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentZip" class="control-label">Zip</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PreviousZip)
+                </div>
+            </div>
+
+            <div class="control-separator">Previous Landlord</div>
+
+            <div class="control-group">
+                <label for="PreviousLandlord" class="control-label">Name</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PreviousLandlord)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PreviousLandlordPhone" class="control-label">Phone</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PreviousLandlordPhone)
+                </div>
+            </div>
+
+            <div class="control-separator">Current Employment</div>
+
+            <div class="control-group">
+                <label for="PresentEmployer" class="control-label">Name</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentEmployer)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PresentEmployerPhone" class="control-label">Phone</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PresentEmployerPhone)
+                </div>
+            </div>
+
+            <div class="control-separator">Previous Employment</div>
+
+            <div class="control-group">
+                <label for="PreviousEmployer" class="control-label">Name</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PreviousEmployer)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="PreviousEmployerPhone" class="control-label">Phone</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.PreviousEmployerPhone)
+                </div>
+            </div>
+
+            <div class="control-separator">Emergency Contact</div>
+
+            <div class="control-group">
+                <label for="EmergencyContact" class="control-label">Name</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.EmergencyContact)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="EmergencyContactAddressLine1" class="control-label">Address</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.EmergencyContactAddressLine1)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="EmergencyContactAddressLine2" class="control-label">Line 2</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.EmergencyContactAddressLine2)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="EmergencyContactCity" class="control-label">City</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.EmergencyContactCity)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="EmergencyContactState" class="control-label">State</label>
+                <div class="controls">
+                    @Html.DropDownListFor(m => m.Input.Application.EmergencyContactState, Rentler.Web.Axioms.SelectLists.States.AllStates)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="EmergencyContactZip" class="control-label">Zip</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.EmergencyContactZip)
+                </div>
+            </div>
+
+            <div class="control-separator">Vehicle Information</div>
+
+            <div class="control-group">
+                <label for="VehicleYear" class="control-label">Year</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.VehicleYear)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="VehicleMake" class="control-label">Make</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.VehicleMake)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="VehicleModel" class="control-label">Model</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.VehicleModel)
+                </div>
+            </div>
+                <div class="control-group">
+                <label for="VehicleColor" class="control-label">Color</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.Input.Application.VehicleColor)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="VehicleLicenseNumber" class="control-label">License Plate</label>
+                <div class="controls">
+                    @Html.TextBoxFor(m => Model.Input.Application.VehicleLicenseNumber)
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="VehicleState" class="control-label">State</label>
+                <div class="controls">
+                    @Html.DropDownListFor(m => Model.Input.Application.VehicleState, Rentler.Web.Axioms.SelectLists.States.AllStates)
+                </div>
+            </div>
+
+            <div class="control-separator">Prior Convictions</div>
+
+            <div class="control-group">
+                <label for="VehicleLicenseNumber" class="control-label">&nbsp;</label>
+                <div class="controls">
+                    @Html.CheckBoxFor(m => Model.Input.Application.HasEverBeenUnlawfulDetainer)
+                    Had an unlawful detainer?
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="VehicleLicenseNumber" class="control-label">&nbsp;</label>
+                <div class="controls">
+                    @Html.CheckBoxFor(m => Model.Input.Application.HasBeenConvicted)
+                    Have been convicted of a felony?
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="VehicleLicenseNumber" class="control-label">Please Explain:</label>
+                <div class="controls">
+                    @Html.TextAreaFor(m => Model.Input.Application.ConvictedExplaination)
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="button blue">Send Application</button>
+            </div>
+        </fieldset>
+        <input type="hidden" name="Input.UserInterestId" value="@Model.Lead.UserInterestId" />
+    }
+</div>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RentlerBackup" Class="RentlerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=RentlerBackup;Integrated Security=True" SettingsObjectName="KslSoldPropertiesRemover.Properties.Settings" SettingsPropertyName="RentlerBackupConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Listings" Member="Listings">
+    <Type Name="Listing">
+      <Column Name="ListingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
+      <Column Name="DateListedUtc" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SearchCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ViewCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Flagged" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Building_Listing" Member="Building" ThisKey="BuildingId" OtherKey="BuildingId" Type="Building" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Buildings" Member="Buildings">
+    <Type Name="Building">
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PropertyInfoId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AddressLine1" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressLine2" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Neighborhood" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PrimaryPhotoId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ListingRemovedByAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryPhotoExtension" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="sid" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="Building_Listing" Member="Listings" ThisKey="BuildingId" OtherKey="BuildingId" Type="Listing" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,42 @@
+﻿@model MvcPaging.PaginationModel
+
+<div class="pagination">
+    <ul>
+@foreach (var link in Model.PaginationLinks)
+{
+	@BuildLink(link)
+}
+
+@helper BuildLink(PaginationLink link)
+{
+    var liBuilder = new TagBuilder("li");
+	var aBuilder = new TagBuilder("a");
+    aBuilder.MergeAttribute("href", link.Url);
+
+    if(link.IsCurrent)
+    {
+        liBuilder.AddCssClass("active");
+    }
+    
+	if (link.PageIndex == 1 && !link.IsCurrent && link.DisplayText != "«")
+	{
+		aBuilder.SetInnerText("First");
+	}
+	else if (link.DisplayText == "«")
+	{
+		aBuilder.SetInnerText("Prev");
+	}
+	else if (link.DisplayText == "»")
+	{
+		aBuilder.SetInnerText("Next");
+	}
+	else
+	{
+		aBuilder.SetInnerText(link.DisplayText);
+	}
+
+    liBuilder.InnerHtml = aBuilder.ToString();
+	@Html.Raw(liBuilder.ToString());
+}
+    </ul>
+</div>

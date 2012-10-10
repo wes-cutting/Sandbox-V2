@@ -1,0 +1,22 @@
+﻿@model Rentler.Common.Listing
+
+<div id="deletePropertyTemplate" class="hide">
+    <div class="modalPromptContainer">
+        <div class="darkHeading">Delete Property</div>
+        <div class="message multiline">
+            <p>Are you sure you want to delete your property? This cannot be undone.</p>
+            <p>You may want to hide your listing by clicking <label class="radio"><input type="radio" disabled="disabled" checked="checked" />Hidden</label> so you can use your listing the next time you need to rent your place.</p>
+            <p>If you still want to permanently delete your listing type delete into the textbox to confirm your decision.</p>
+        </div>
+        <div id="deleteError" class="error hide">
+            <p>An error occurred and we were unable to Delete this listing. Please contact Rentler Support if this problem persists</p>
+        </div>
+        <div class="submitStatus" style="margin-top: 20px; text-align: center;">
+            <form id="deletePropertyForm" method="post" action="/dashboard/property/delete">
+                <input type="text" name="confirm" />
+                <input type="hidden" name="id" value="@Model.BuildingId" />
+                <input type="submit" class="button blue" value="Delete This Property" />
+            </form>
+        </div>
+    </div>
+</div>

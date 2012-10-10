@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Rentler.Data.RentlerContext" Class="RentlerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=Rentler.Data.RentlerContext;Integrated Security=True" SettingsObjectName="RentlerMaintenance.Properties.Settings" SettingsPropertyName="Rentler_Data_RentlerContextConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Buildings" Member="Buildings">
+    <Type Name="Building">
+      <Column Name="BuildingId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDateUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UpdateDateUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RibbonId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateRibbonActivated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ContactInfoId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="Longitude" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyTypeCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="SquareFeet" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Acres" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="YearBuilt" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bedrooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bathrooms" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DateAvailableUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateActivatedUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsCreditCheckRequired" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsBackgroundCheckRequired" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Deposit" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RefundableDeposit" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="LeaseLengthCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsSmokingAllowed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ArePetsAllowed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsRemovedByAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsReported" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ReportedText" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="HasPriority" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DatePrioritized" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PetFee" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TemporaryOrderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimaryPhotoId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="PrimaryPhotoExtension" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

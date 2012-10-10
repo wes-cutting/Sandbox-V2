@@ -1,0 +1,120 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.UnitViewModel
+@section title { Landlord - Manage Property }
+@section description { }
+@section css 
+{
+    <link href="/css/pages/landlord.css" rel="Stylesheet" />
+    <link href="/css/pages/dashboard.css" rel="Stylesheet" />
+}
+
+<div class="container">
+    @Html.Partial("TabsNavigation", "myproperties")
+        
+    <div class="houseHeading">
+        @* Image Information (Left Side) *@
+        <div class="unitImageBlock">
+            @if (Model.Building.IsRemovedByAdmin)
+            {
+            <div class="unitImageOverlay">
+                <div class="overlayText">Your property has been removed by Rentler</div>
+            </div>
+            }
+            <div class="unitImageContainer">
+                <a href="#" class="imageLink">
+                    <img src="@Html.GetPhotoLink(Model.Building.BuildingId, Model.Building.PrimaryPhotoId, 200, 150, Model.Building.PrimaryPhotoExtension)" class="unitImage" alt="Unit Image" />
+                </a>
+            </div>
+            <div class="activate">
+                @if (Model.Building.IsActive)
+				{
+                    using(Html.BeginForm("deactivate", "property", new { area = "dashboard" }, FormMethod.Post)) 
+                    {
+                        <input type="hidden" name="id" value="@Model.Building.BuildingId" />
+                        <button type="submit">Deactivate Listing</button>
+                        <img src="/images/checked.png" alt="" />
+                    }
+					@*<a href="" id="deactivateListing" class="check" title="If you choose to deactivate your property, it will be removed from the listings. If immediately reactivated, your property will display in the same spot it was when you deactivated. After 14 days, you can reactivate your listing and it will actually appear at the top of the listings." data-hasribbon="@(string.IsNullOrWhiteSpace(Model.Building.RibbonId) ? false : true)">
+						Deactivate Listing</a>
+					<a href="" id="activateListing" title="Activating will add your property to Rentlers listings. If still active within 30 days, the listing will be deactivated automatically."
+						class="check hide">Activate Listing</a>	*@				                    
+				}
+				else
+				{
+                    using(Html.BeginForm("activate", "property", new { area = "dashboard" }, FormMethod.Post)) 
+                    {
+                        <input type="hidden" name="id" value="@Model.Building.BuildingId" />
+                        <button type="submit">Activate Listing</button>
+                        <img src="/images/unchecked.png" alt="" />
+                    }
+					@*<a href="" id="deactivateListing" title="If you choose to deactivate your property, it will be removed from the listings. If immediately reactivated, your property will display in the same spot it was when you deactivated. After 14 days, you can reactivate your listing and it will actually appear at the top of the listings."
+						class="check hide">Deactivate Listing</a>
+					<a href="" id="activateListing" class="check" title="Activating will add your property to Rentlers listings. If still active within 30 days, the listing will be deactivated automatically.">
+						Activate Listing</a>				*@	                    
+                }
+            </div>
+        </div>
+        @* End Image Information (Left Side) *@
+
+        @* General Listing Information (Right Side) *@
+        <div class="accountRight">
+
+            <div class="listingHeading">
+                <div class="listingHeadingLeft">
+                    <div class="portfoliolistingAddress">@Model.Building.Address1</div>
+                    <div class="listingCity">@Model.Building.City, @Model.Building.State @Model.Building.Zip</div>
+                </div>
+                <div class="listingHeadingRight">                    
+                    <div class="listingPrice">$@string.Format("{0:0.##}", Model.Building.Price)</div>
+                    <div class="listingPriceLabel">Per Month</div>					
+                </div>
+            </div>
+
+            @* Stats *@
+            <ul class="bedBathStats">
+                <li class="first">
+                    <div class="count">@(Model.Building.Bedrooms)</div>
+                    <div class="label">Bed</div>
+                </li>
+                <li>
+                    <div class="count">@string.Format("{0:0.##}", Model.Building.Bathrooms)</div>
+                    <div class="label">Bath</div>
+                </li>
+                <li>
+                    <div class="count">@Model.Building.YearBuilt</div>
+                    <div class="label">Year</div>
+                </li>
+                <li>
+                    <div class="count">@Model.Building.SquareFeet</div>
+                    <div class="label">SqFt</div>
+                </li>
+                <li class="final">
+                    <div class="count">@string.Format("{0:0.##}", Model.Building.Acres)</div>
+                    <div class="label">Acres</div>
+                </li>
+            </ul>
+
+            @* Search Stats *@            
+            <ul class="searchStats">
+                <li>@Model.ViewCount Viewed Your Listing</li>
+                <li class="last">@Model.SearchViewCount Overall Searches</li>
+            </ul>			
+
+            @* Actions *@
+            <ul class="listingActions">
+				<li>
+                @using (Html.BeginForm("delete", "property", new { area = "dashboard" }, FormMethod.Post))
+                {
+                    <input type="hidden" name="id" value="@Model.Building.BuildingId" />
+                    <button type="submit">Delete</button>
+                }
+                </li>                 
+                <li><a href="/listing/@Model.Building.BuildingId">View Listing</a></li>
+                <li class="last"><a href="/dashboard/property/edit/@Model.Building.BuildingId">Edit Listing</a></li>							
+            </ul>
+        </div>
+        @* General Listing Information (Right Side) *@
+
+    </div>   
+    
+     
+</div>

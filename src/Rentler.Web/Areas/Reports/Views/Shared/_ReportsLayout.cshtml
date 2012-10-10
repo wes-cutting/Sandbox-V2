@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <title>@RenderSection("title", false) - Rentler</title>
+    
+    @* Forces scaling on mobile *@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    @* Forces latest version of IE *@
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<meta name="description" content="@RenderSection("description", false)" />
+	<meta name="author" content="Rentler.com" />
+
+    @* Favicon and apple icons *@
+	<link rel="shortcut icon" href="/images/favicon.ico" />
+	<link rel="apple-touch-icon" href="/images/mobile/apple-touch-icon-iphone.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/mobile/apple-touch-icon-ipad.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/mobile/apple-touch-icon-iphone4.png" />
+
+    <link href="/css/admin/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/admin/admin.css" rel="stylesheet" />
+    @RenderSection("css", false)
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<script type="text/javascript" src="/scripts/modernizr-2.5.3.js"></script>
+</head>
+<!--[if lt IE 7 ]><body class="ie6"><![endif]-->
+<!--[if IE 7 ]><body class="ie7"><![endif]-->
+<!--[if IE 8 ]><body class="ie8"><![endif]-->
+<!--[if IE 9 ]><body class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<body>
+<!--<![endif]-->
+  
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/admin">Rentler</a>
+            <div class="nav-collapse collapse">
+            <ul class="nav">
+                <li>
+                <a href="/admin/home/index">Administration</a>
+                </li>
+                <li class="active">
+                <a href="/reports/home/index">Reports</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="main">
+        @RenderBody()
+    </div>
+
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+    @RenderSection("js", false)
+</body>
+</html>

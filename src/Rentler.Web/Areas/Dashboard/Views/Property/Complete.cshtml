@@ -1,0 +1,36 @@
+﻿@model Rentler.BuildingPreview
+@{
+	ViewBag.Title = "Complete";
+}
+@section Css{
+	<style>
+		.placeholder
+		{
+@*			background-image: url('/images/timImage/logo.png');
+			background-repeat: no-repeat;
+*@			background-position: top center;
+			height: 3000px;
+			background-color: #EC1C24;
+		}
+		.placeholder p
+		{
+			padding-top: 100px;
+			margin: 0px;
+			color: White;
+			font-family: 'Georgia' , 'Times News Roman' , 'Serif';
+			font-size: 2.0em;
+			text-align: center;
+		}
+		a, a:visited, a:hover
+		{
+			color: #222;
+		}
+	</style>
+}
+<div class="placeholder">
+	<p>
+		Your listing is complete!
+		<br />
+		<a href="/listing/@Model.BuildingId">View your listing</a>, or <a href="/dashboard/property/manage/@Model.BuildingId">
+			go back to make changes!</a></p>
+</div>

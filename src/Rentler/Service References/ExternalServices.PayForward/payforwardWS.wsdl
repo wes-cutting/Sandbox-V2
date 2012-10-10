@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://secure.modpay.com/netservices/payforward" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://secure.modpay.com/netservices/payforward" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://secure.modpay.com/netservices/payforward">
+      <s:element name="authUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="wsPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="authUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="authUserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePayforwardPayee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="wsPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="routingAba" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankAccountNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nameOnAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePayforwardPayeeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreatePayforwardPayeeResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePayforwardPayeeWithStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="wsPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="routingAba" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankAccountNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nameOnAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="activeInactiveStatus" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePayforwardPayeeWithStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreatePayforwardPayeeWithStatusResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePayforwardPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="wsPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="payeeId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="pmtDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="pmtAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="pmtType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePayforwardPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreatePayforwardPaymentResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePayforwardPaymentWithCustomData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="wsPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="payeeId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="pmtDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="pmtAmount" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="pmtType" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="custData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreatePayforwardPaymentWithCustomDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreatePayforwardPaymentWithCustomDataResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPayees">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="wsPassword" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="customerId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankAccountNum" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindPayeesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindPayeesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isValidRoutingABA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="routingAba" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isValidRoutingABAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isValidRoutingABAResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPayee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="wsPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="payeeId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="routingAba" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankAccountNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nameOnAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPayeeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyPayeeResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPayeeWithStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="wsPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customerAccount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="payeeId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="routingAba" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bankAccountNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nameOnAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="accountType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="activeInactiveStatus" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPayeeWithStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ModifyPayeeWithStatusResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="authUserSoapIn">
+    <wsdl:part name="parameters" element="tns:authUser" />
+  </wsdl:message>
+  <wsdl:message name="authUserSoapOut">
+    <wsdl:part name="parameters" element="tns:authUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePayforwardPayeeSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePayforwardPayee" />
+  </wsdl:message>
+  <wsdl:message name="CreatePayforwardPayeeSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePayforwardPayeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePayforwardPayeeWithStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePayforwardPayeeWithStatus" />
+  </wsdl:message>
+  <wsdl:message name="CreatePayforwardPayeeWithStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePayforwardPayeeWithStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePayforwardPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePayforwardPayment" />
+  </wsdl:message>
+  <wsdl:message name="CreatePayforwardPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePayforwardPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreatePayforwardPaymentWithCustomDataSoapIn">
+    <wsdl:part name="parameters" element="tns:CreatePayforwardPaymentWithCustomData" />
+  </wsdl:message>
+  <wsdl:message name="CreatePayforwardPaymentWithCustomDataSoapOut">
+    <wsdl:part name="parameters" element="tns:CreatePayforwardPaymentWithCustomDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindPayeesSoapIn">
+    <wsdl:part name="parameters" element="tns:FindPayees" />
+  </wsdl:message>
+  <wsdl:message name="FindPayeesSoapOut">
+    <wsdl:part name="parameters" element="tns:FindPayeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="isValidRoutingABASoapIn">
+    <wsdl:part name="parameters" element="tns:isValidRoutingABA" />
+  </wsdl:message>
+  <wsdl:message name="isValidRoutingABASoapOut">
+    <wsdl:part name="parameters" element="tns:isValidRoutingABAResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyPayeeSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyPayee" />
+  </wsdl:message>
+  <wsdl:message name="ModifyPayeeSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyPayeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyPayeeWithStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyPayeeWithStatus" />
+  </wsdl:message>
+  <wsdl:message name="ModifyPayeeWithStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyPayeeWithStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PayforwardSoap">
+    <wsdl:operation name="authUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authenticates web services user given login credentials</wsdl:documentation>
+      <wsdl:input message="tns:authUserSoapIn" />
+      <wsdl:output message="tns:authUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new payee. &lt;br&gt;Returns: -1: Invalid login credentials; -2: Invalid Routing ABA; -3:CustomerAccount is Null; -4: Duplicate customer account</wsdl:documentation>
+      <wsdl:input message="tns:CreatePayforwardPayeeSoapIn" />
+      <wsdl:output message="tns:CreatePayforwardPayeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new payee with status.&lt;br&gt;Returns: -1: Invalid login credentials; -2: Invalid Routing ABA; -3:CustomerAccount is Null; -4: Duplicate customer account</wsdl:documentation>
+      <wsdl:input name="CreatePayforwardPayeeWithStatus" message="tns:CreatePayforwardPayeeWithStatusSoapIn" />
+      <wsdl:output name="CreatePayforwardPayeeWithStatus" message="tns:CreatePayforwardPayeeWithStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a payforward transaction.&lt;br&gt;Returns: transID (integer refrence for ID created by transaction). It may also return the following if an error occurs: &lt;br&gt;-1: Invalid user credentials &lt;br&gt;-2: CustomerId not found -3: Ach payment specified, but customer record contains no acct info &lt;br&gt;-4: Credit card payment specified, but customer record has no ccNum &lt;br&gt;-5: Credit Card payment specified but Credit Card is not a known type &lt;br&gt;-6: pmtType is invalid &lt;br&gt;-7: Duplicate payment</wsdl:documentation>
+      <wsdl:input message="tns:CreatePayforwardPaymentSoapIn" />
+      <wsdl:output message="tns:CreatePayforwardPaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a payforward transaction.&lt;br&gt;Returns: transID (integer refrence for ID created by transaction). It may also return the following if an error occurs: &lt;br&gt;-1: Invalid user credentials &lt;br&gt;-2: CustomerId not found -3: Ach payment specified, but customer record contains no acct info &lt;br&gt;-4: Credit card payment specified, but customer record has no ccNum &lt;br&gt;-5: Credit Card payment specified but Credit Card is not a known type &lt;br&gt;-6: pmtType is invalid &lt;br&gt;-7: Duplicate payment</wsdl:documentation>
+      <wsdl:input name="CreatePayforwardPaymentWithCustomData" message="tns:CreatePayforwardPaymentWithCustomDataSoapIn" />
+      <wsdl:output name="CreatePayforwardPaymentWithCustomData" message="tns:CreatePayforwardPaymentWithCustomDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPayees">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Finds a payee given any of the following: first name, last name, business name, custromer account number, or bank account number. &lt;br&gt; Returns: Data set containing rows matching search criteria. If no search criteria was provided, the returned data set would include all payees for a given client.</wsdl:documentation>
+      <wsdl:input message="tns:FindPayeesSoapIn" />
+      <wsdl:output message="tns:FindPayeesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isValidRoutingABA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verifies the bank routing number&lt;br&gt;Returns true if the routing number exists and false of it does not.</wsdl:documentation>
+      <wsdl:input message="tns:isValidRoutingABASoapIn" />
+      <wsdl:output message="tns:isValidRoutingABASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Modifies payee information in the database&lt;br&gt;Returns: PayeeId if successful, -1: User credentials invalid; -2: CustomerId not found; -3:CustomerAccount is Null; -4: Duplicate customer account; -10: State or account type is invalid;-11:There are payments for the existing customer account that have not been queued for processing</wsdl:documentation>
+      <wsdl:input message="tns:ModifyPayeeSoapIn" />
+      <wsdl:output message="tns:ModifyPayeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Modifies payee information in the database&lt;br&gt;Returns: PayeeId if successful, -1: User credentials invalid; -2: CustomerId not found; -3:CustomerAccount is Null; -4: Duplicate customer account; -10: State or account type is invalid;-11:There are payments for the existing customer account that have not been queued for processing </wsdl:documentation>
+      <wsdl:input name="ModifyPayeeWithStatus" message="tns:ModifyPayeeWithStatusSoapIn" />
+      <wsdl:output name="ModifyPayeeWithStatus" message="tns:ModifyPayeeWithStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PayforwardSoap" type="tns:PayforwardSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authUser">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/authUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayee">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/CreatePayforwardPayee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayee">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/CreatePayforwardPayeeWithStatus" style="document" />
+      <wsdl:input name="CreatePayforwardPayeeWithStatus">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreatePayforwardPayeeWithStatus">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayment">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/CreatePayforwardPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayment">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/CreatePayforwardPaymentWithCustomData" style="document" />
+      <wsdl:input name="CreatePayforwardPaymentWithCustomData">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreatePayforwardPaymentWithCustomData">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPayees">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/FindPayees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isValidRoutingABA">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/isValidRoutingABA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayee">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/ModifyPayee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayee">
+      <soap:operation soapAction="https://secure.modpay.com/netservices/payforward/ModifyPayeeWithStatus" style="document" />
+      <wsdl:input name="ModifyPayeeWithStatus">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ModifyPayeeWithStatus">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PayforwardSoap12" type="tns:PayforwardSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="authUser">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/authUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayee">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/CreatePayforwardPayee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayee">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/CreatePayforwardPayeeWithStatus" style="document" />
+      <wsdl:input name="CreatePayforwardPayeeWithStatus">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreatePayforwardPayeeWithStatus">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayment">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/CreatePayforwardPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayforwardPayment">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/CreatePayforwardPaymentWithCustomData" style="document" />
+      <wsdl:input name="CreatePayforwardPaymentWithCustomData">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreatePayforwardPaymentWithCustomData">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPayees">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/FindPayees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isValidRoutingABA">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/isValidRoutingABA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayee">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/ModifyPayee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPayee">
+      <soap12:operation soapAction="https://secure.modpay.com/netservices/payforward/ModifyPayeeWithStatus" style="document" />
+      <wsdl:input name="ModifyPayeeWithStatus">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ModifyPayeeWithStatus">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Payforward">
+    <wsdl:port name="PayforwardSoap" binding="tns:PayforwardSoap">
+      <soap:address location="https://secure.modpay.com/netservices/payforward/payforwardWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PayforwardSoap12" binding="tns:PayforwardSoap12">
+      <soap12:address location="https://secure.modpay.com/netservices/payforward/payforwardWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

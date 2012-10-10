@@ -1,0 +1,25 @@
+﻿@model Rentler.Web.Email.EmailListingInterestedModel
+@{
+	ViewBag.Title = "Interested";
+	Layout = "~/Views/Shared/_EmailLayout.cshtml";
+}
+<div class="marginBottom" style="margin-bottom: 10px;">@Model.LandlordName,</div>
+<div class="marginBottom" style="margin-bottom: 10px;">@Model.LeadName has shown interest in your property at:</div>
+<div class="marginBottom grey" style="margin-bottom: 10px; color: #808080;">
+	@Model.Address1 @Model.Address2<br />
+	@Model.City, @Model.State<br />
+	@Model.Zip
+</div>
+<div class="section grey" style="margin-bottom: 10px; color: #808080; padding-top: 10px; padding-bottom: 10px; border-top: solid 1px #dadbdc; border-bottom: solid 1px #dadbdc;">
+	@Model.Text <br />-From @Model.LeadEmail
+</div>
+<div class="marginBottom" style="margin-bottom: 10px;">
+	One feature of Rentler is the ability for tenants to fill out an application and submit it directly to you!
+</div>
+<div class="marginBottom" style="margin-bottom: 10px;">
+	<a href="@Rentler.Web.Config.Hostname/property/requestapp/@Model.LeadId">Request an application from @Model.LeadEmail</a>
+</div>
+<div class="marginBottom grey" style="margin-bottom: 10px; color: #808080;">
+<br />
+Note: RENTLER.COM DOES NOT REGULATE OR VERIFY THE CONTENT OF THESE MESSAGES. RENTLER EXPRESSLY DISCLAIMS ALL LIABILITY FOR THE CONTENT OR USE OF ANY MATERIAL POSTED VIA THE USER.
+</div>

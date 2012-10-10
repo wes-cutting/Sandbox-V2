@@ -1,0 +1,202 @@
+﻿#login { width: 940px; }
+
+.validation-summary-errors ul 
+{
+    margin: 5px 0px 0px 0px;
+    padding-left: 0px;
+    list-style: none;
+}
+.validation-summary-errors li
+{
+    padding-left: 10px;
+    list-style-type: none;
+}
+
+.button 
+{
+    display: inline-block;
+    background-image: url('/images/ui.png');
+    background-repeat: no-repeat;
+    outline-width: 0px;
+    outline-color: initial;
+    outline-style: initial;
+    cursor: pointer;
+    cursor: hand;
+    text-decoration: none;
+}
+    .button.blue,
+    .button.green 
+    {
+        font-size: 1em;
+        width: auto;
+        text-align: center;
+        text-indent: 0px;
+        color: white;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;        
+    }     
+    .button.blue:hover,
+    .button.green:hover 
+    {
+        text-decoration: none;  
+    }    
+
+.centerHeading {
+    text-align: center;
+    height: 110px;
+}
+    .centerHeading h1 {
+        margin-bottom: 0;
+        color: #444D52;
+        font-family: 'Georgia', 'Times News Roman', 'Serif';
+        font-size: 3.1em;
+        line-height: 55px;
+    }
+    .centerHeading div {
+        color: gray;
+        font-size: 1.15em;
+        margin-top: -.2em;
+    }
+    
+.loginBox, .loginMarketingBox {
+	float: left;
+}
+.loginBox {
+	width: 400px;
+}
+    .loginBox .lightHeading 
+    {
+        background: url('/images/heading-gradient-light.jpg') repeat-x;
+        height: 40px;
+        color: #3F4E58;
+        line-height: 40px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        padding: 0px 10px;
+        font-size: 1.1em;
+    }
+.loginMarketingBox {
+	width: 458px;
+	margin-left: 20px;
+	border: solid 1px #e7e7e7;
+	padding: 20px 30px;
+}
+    .renterSection, .landlordSection {
+		width: 220px;
+		float: left;
+		color: #808080;
+	}
+	.loginMarketingBox .sectionHead {
+		font-weight: bold;
+		margin-bottom: 15px;
+		color: #222222;
+	}
+	.landlordSection {
+		margin-left: 10px;
+	}
+	.accountCreation {
+		text-align: center;
+		padding-top: 20px;
+		clear: left;
+	}
+	.loginMarketingBox .green 
+	{
+	    padding: 0px 20px;
+        line-height: 40px;
+        height: 40px;
+        background-position: -5px -70px;
+    }
+    .loginMarketingBox .green:hover 
+	{
+	    padding: 0px 20px;
+        line-height: 40px;
+        height: 40px;
+        background-position: -5px -110px;
+        text-decoration: none;
+    }
+	
+.form-horizontal {
+    display: block; 
+}
+    .form-horizontal fieldset 
+    {
+        padding: 20px 10px 0px 10px;
+        margin: 0px;
+        border: 0px;
+    }
+        .form-horizontal .control-group
+        {
+            margin-bottom: 20px;
+        }
+            .form-horizontal .control-group .control-label
+            {
+                float: left;
+                width: 90px;                
+                display: block;
+                line-height: 18px;
+                font-weight: bold; 
+                padding-top: 3px;
+                margin-bottom: 3px;
+                               
+            }
+            .form-horizontal .control-group .checkbox
+            {    
+                display: block;                
+                line-height: 13px; 
+                height: 13px;
+                min-height: 13px;
+                padding-top: 0px;                                  
+                font-size: 1em;                
+            }
+            @-moz-document url-prefix(http://localhost:48325/) 
+            {
+                .form-horizontal .control-group .checkbox 
+                {
+                    line-height: 16px; 
+                    height: 16px;
+                    min-height: 16px;
+                }
+            }
+            .form-horizontal .control-group .controls 
+            {
+                margin-left: 90px;
+            }
+                .form-horizontal .control-group input[type="checkbox"] 
+                {                                                                                
+                    float: left;
+                    margin: 0px 7px 0px 0px;
+                    display: block;
+                    width: 13px;
+                    height: 13px;
+                    vertical-align: middle;                    
+                    font-size: 1em;                    
+                }
+                .form-horizontal .control-group .controls input[type="text"],
+                .form-horizontal .control-group .controls input[type="password"]
+                {
+                    width: 270px;
+                    margin: 0px;
+                }
+    .form-horizontal .form-actions
+    {
+        margin-bottom: 0px;
+    }
+        .form-horizontal .form-actions .button.blue        
+        {
+            margin: 0px;
+        }
+        .form-horizontal .form-actions .button.blue        
+        {
+            padding: 0px 18px;
+            line-height: 30px;
+            height: 30px;
+            background-position: -5px 0px;
+            width: 75px;
+            margin-right: 10px;
+        }
+        .form-horizontal .form-actions .button.blue:hover
+        {           
+            background-position: -5px -30px;                    
+        } 

@@ -1,0 +1,102 @@
+﻿.container.body 
+{
+    padding-top: 20px;
+    width: 500px;
+}
+h2 
+{
+    margin: 0px;
+    padding: 0px;
+    font-size: 1.2em;
+}
+.darkHeading 
+{
+    background: url('/images/heading-gradient-dark.jpg') repeat-x;
+    height: 40px;
+    color: #fff;
+    line-height: 40px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 0px 10px;    
+    text-align: center;
+}
+.landlordContainer {
+	width: 466px;
+	margin: 20px auto;
+}
+.landlordContact {
+		border: solid 1px #d5d5d5;
+	}
+	.landlordContactInfo {
+		height: 41px;
+		border-bottom: solid 1px #d5d5d5;
+		line-height: 41px;
+		font-weight: bold;
+		padding: 0px 15px;
+	}
+	.landlordNumber {
+		line-height: 25px;
+		float: right;
+		height: 25px;
+		margin-top: 9px;
+		font-weight: normal;
+	}
+	.landlordTemplate, .emailSubmitLoader, .emailResultMessage {
+		background-color: #ffffff;
+		padding: 25px 40px 25px 40px;
+		color: #51606a;
+	}
+	.landlordTemplateSection {
+		padding-bottom: 25px;
+	}
+	.landlordTemplateListing {
+		background-color: #f3f3f3;
+		padding: 15px 10px;
+		margin: 0px 10px;
+	}
+	.landlordTemplateListing .resultImage {
+		width: 80px;
+		height: 60px;
+		float: left;
+	}
+	.landlordTemplateListing .resultImage img {
+		width: 80px;
+		height: 60px;
+	}
+	.landlordTemplateListing .resultInfo .address { color: #222; }
+	.landlordTemplateListing .resultInfo .cityState { color: gray; }
+	.landlordTemplateListing .resultInfo .priceInfo { color: gray; }
+	.landlordTemplateListing .resultInfo .price { color: #EC1C24; }
+	.landlordTemplateListing .resultInfo .bedBath { color: #222; }
+	.landlordTemplateListing .resultInfo {
+		font-size: .9em;
+		margin-left: 90px;
+		margin-top: -4px;
+	}
+	.landlordEmail {
+		padding: 0px 20px;
+	}
+	.landlordEmail .accent {
+		color: grey;
+	}
+	.landlordEmail .notes {
+		padding-top: 18px;
+		margin-bottom: 8px;
+	}
+	.landlordEmail textarea {
+		width: 415px;
+		height: 70px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	.landlordContainer .actions {
+		padding-top: 15px;
+		text-align: right;
+	}
+	.landlordContainer .actions .cancelButton {
+		color: #1d82b5;
+	}
+	.landlordContainer .actions .button.blue {
+		margin-left: 8px;
+	}

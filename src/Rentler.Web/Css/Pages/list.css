@@ -1,0 +1,274 @@
+﻿.ui-accordion .content ul .checkbox 
+{
+    padding: 0px;
+    margin: 0px;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 13px; 
+    display: block;
+}
+    .ui-accordion .content ul .checkbox input[type="checkbox"] 
+    {
+        float: left;
+        margin: 0px 7px 0px 0px;
+        display: block;                    
+        vertical-align: middle;                    
+        font-size: 1em;
+        line-height: 1em;
+    }
+li.acresli
+{
+    width: 160px;
+}
+    li.acresli select
+    {
+        width: 145px;
+    }
+
+li.squareli
+{
+    width: 100px;
+}
+    li.squareli input
+    {
+        width: 80px;
+    }
+
+li.yearli
+{
+    width: 160px;
+}
+    li.yearli input
+    {
+        width: 80px;
+    }
+
+li.bedsli
+{
+    width: 80px;
+}
+    li.bedsli input
+    {
+        width: 50px;
+    }
+
+li.bathsli
+{
+    width: 130px;
+}
+    li.bathsli input
+    {
+        width: 50px;
+    }
+    
+li.listingtypeli 
+{
+    width: 460px;
+}
+li.listingtypeli.fill 
+{
+    width: 630px;
+}
+    li.listingtypeli select
+    {
+        width: 110px;
+    }
+li.contactlistli 
+{
+    width: 170px;        
+}
+    li.contactlistli select
+    {
+        width: 150px;
+    }               
+   
+li.companynameli 
+{
+    width: 630px;
+}
+li.companynameli.hide 
+{
+    display: none;
+}
+    li.companynameli input 
+    {
+        width: 400px;
+    }
+		
+li.nameli 
+{
+    width: 420px;
+}
+    li.nameli input 
+    {
+        width: 400px;
+    }
+		
+li.displayphoneli 
+{
+    width: 210px;
+}
+    .ui-accordion .content li.displayphoneli .checkbox 
+    {
+        margin-top: 12px;        
+    }
+    .ui-accordion .content li.displayphoneli .checkbox input[type="checkbox"] 
+    {
+        
+    }
+    li.displayphoneli input 
+    {
+        margin: 12px 0px 0px 0px;
+        width: 20px;
+    }         
+	
+li.emailli 
+{
+    width: 420px;
+}
+    li.emailli input 
+    {
+        width: 400px;
+    }     
+    	
+li.phonenumberli 
+{
+    width: 210px;
+}
+    li.phonenumberli input 
+    {
+        width: 140px;
+    }
+
+/* Amenities */
+.ui-accordion .content .amenitiesContainer{
+	display: inline-block;	
+	margin: 0px 0px 0px 10px;
+}	   
+    .ui-accordion .amenitiesContainer .amenities {
+        margin: 0;
+        padding: 0;
+    }
+        .ui-accordion .amenitiesContainer .amenities li {
+            line-height: 13px;
+            margin-top: 7px;
+            float: left;
+            width: 200px;
+        }
+            .ui-accordion .amenitiesContainer .amenities li select {
+                margin-left: 24px;
+            }
+            .ui-accordion .amenitiesContainer .amenities .checkbox 
+            {
+                
+            }
+                .ui-accordion .amenitiesContainer .amenities .checkbox input[type="checkbox"] 
+                {
+                     
+                }
+                
+    .ui-accordion .amenitiesContainer .amenities.withoptions 
+    {
+        margin: 20px 0px 0px 0px;
+        width: 497px;
+    }
+            .ui-accordion .amenitiesContainer .amenities.withoptions li { 
+                width: 630px; 
+            }
+                .ui-accordion .amenitiesContainer .amenities.withoptions li label { 
+                    display: inline-block; 
+                    width: 120px; 
+                }
+                .ui-accordion .amenitiesContainer .amenities.withoptions li .select 
+                {
+                    line-height: 23px;
+                    margin: 0px;
+                }
+                .ui-accordion .amenitiesContainer .amenities.withoptions li select { 
+                    display:inline; 
+                    margin: 0px;                     
+                }
+
+/* Custom Amenities */
+.ui-accordion .content h2.custom 
+{
+    margin-bottom: 0px;
+    border-bottom: none;
+}
+.ui-accordion .addCustomAmenity {                
+    background-color: #F5F5F5;
+    border: 1px solid #E3E3E3;
+    margin: 0px 0px 16px 0px;
+    padding: 5px;
+}
+    .ui-accordion .addCustomAmenity input[type="text"] {
+        margin: 0px;        
+        width: 250px;
+        vertical-align: middle;
+    }        
+    .ui-accordion .addCustomAmenity a {            
+        background: #5399B9 url('/images/property/plus-icon.png') no-repeat center center;
+        /*background-position: -5px 0px;*/            
+        border: none;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        -moz-border-radius:4px;
+        padding: 0px;
+        margin: 0px 10px 0px 0px;
+        cursor: pointer;
+        cursor: hand;
+        display: inline-block;        
+        height: 22px;
+        width: 30px;
+        vertical-align:middle; 
+        line-height: 24px;    
+    }
+        
+    .ui-accordion .customAmenityErrors {        
+        padding:0px 0px;
+        text-align: left;
+        color: Red;
+        line-height: 1em;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .ui-accordion .customAmenityErrors.hidden {
+        display: none;
+    }
+        .ui-accordion .customAmenityErrors ul {
+            margin: 0px;
+            padding: 0px;            
+        }
+        .ui-accordion .customAmenityErrors li {
+            margin: 0px;
+            padding: 0px;            
+        }
+        
+.form-actions 
+{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica;
+    padding: 30px 10px 30px 10px;
+    border-top: 1px solid #cfcfcf;
+    margin-top:35px;
+}
+    .form-actions span 
+    {
+        margin:0px 10px; 
+        float:right; 
+        line-height:40px; 
+    }
+    .form-actions .submit 
+    {
+        float:right;
+        width: 166px;
+    }
+    .form-actions button.text,
+    .form-actions a
+    {
+        line-height:40px;
+    }
+    .form-actions .loader 
+    {
+        text-align:center;
+        padding: 5px 0px 4px 0px;        
+    }

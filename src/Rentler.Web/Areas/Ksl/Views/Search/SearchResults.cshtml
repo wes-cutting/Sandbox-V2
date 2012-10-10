@@ -1,0 +1,57 @@
+﻿@model Rentler.Search
+
+@foreach (var item in Model.Results)
+{
+	<div class="result @(((Model.Results.IndexOf(item) + 1) % 3 == 0) ? "third" : "")">
+		<a href="@Html.GetKslListingUrl(item.BuildingId)" target="_top">
+	@if (!string.IsNullOrEmpty(item.RibbonId))
+	{
+		<img class="ribbonOverlay" src="@Html.GetRibbonLink(item.RibbonId)" alt="" />
+	}
+		<div class="resultImage @(item.IsFeatured ? "featuredImg" : "")">
+				<img alt="listing image" width="200" height="150" src="@Html.GetPhotoLink(item.BuildingId, item.PrimaryPhotoId, 200, 150, item.PrimaryPhotoExtension)" />
+		</div>
+		</a>
+		<div class="@(item.IsFeatured ? "featuredResult" : "")">
+			<div class="resultAddress">
+            @if (!string.IsNullOrWhiteSpace(item.Title))
+            {
+	            <a href="@Html.GetKslListingUrl(item.BuildingId)" target="_top">@Html.Truncater(item.Title, 25)</a>
+            }
+            else
+            {
+	            <a href="@Html.GetKslListingUrl(item.BuildingId)" target="_top">@Html.Truncater(item.Address1, 25)</a>
+            }
+			</div>
+			<div class="resultCityState">
+				@item.City, @item.State
+			</div>
+			<div class="resultBedBath">
+				@item.Bedrooms @(item.Bedrooms == 1 ? "Bed" : "Beds") / @string.Format("{0:0.#}", item.Bathrooms) @(item.Bathrooms == 1 ? "Bath" : "Baths")
+			</div>
+			<div class="resultPrice">
+				<span class="price">@item.Price.ToString("C0")</span> per Month
+			</div>
+		</div>
+	@if (item.IsFeatured)
+ {
+		<div class="featuredTag">Featured</div>
+ }	        
+	</div>
+	<div class="hiddenInfo hide" data-id="@item.BuildingId">
+		<div class="resultImage">
+			<a href="@Html.GetKslListingUrl(item.BuildingId)" target="_top">
+				<img alt="listing image" src="@Html.GetPhotoLink(item.BuildingId, item.PrimaryPhotoId, 200, 150, item.PrimaryPhotoExtension)" /></a>
+		</div>
+		<div class="resultBedBath">
+			@item.Bedrooms @(item.Bedrooms == 1 ? "Bed" : "Beds") / @string.Format("{0:0.#}", item.Bathrooms) @(item.Bathrooms == 1 ? "Bath" : "Baths")
+		</div>
+		<div class="resultPrice">
+			<span class="price">$@item.Price</span> per Month
+		</div>
+	</div> 
+}
+<div class="loading"></div>
+<div class="navigation">
+	@*@Html.Pager(Model.Results.PageSize, Model.Results.PageNumber, Model.Results.TotalCount).Options(p => p.RouteValues(Html.GetRouteData()))*@
+</div>

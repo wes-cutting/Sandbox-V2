@@ -1,0 +1,72 @@
+﻿.ui-accordion .contentSection .tipIcon.top 
+{
+    top: 26px;
+}
+    .ui-accordion .tipSection .tip 
+    {
+        margin-top: 23px;
+    }
+li.propertytypeli {
+    width: 630px;
+}
+     li.propertytypeli select {
+        width: 175px;
+    }
+        
+li.addressli {
+    width: 420px;
+}
+     li.addressli input {
+        width: 400px;
+    }
+        
+ li.address2li {
+    width: 210px;
+}
+     li.address2li input {
+        width: 140px;
+    }
+        
+ li.cityli {
+    width: 260px;
+}
+     li.cityli input {
+        width: 240px;
+    }
+        
+  li.stateli {
+    width: 160px;
+}
+     li.stateli select {
+        width: 148px;            
+    }
+        
+ li.zipli {
+    width: 210px;
+}
+     li.zipli input {
+        width: 140px;
+    }
+
+.form-actions 
+{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica;
+    padding: 30px 10px 30px 10px;
+    border-top: 1px solid #cfcfcf;
+    margin-top:35px;
+}
+    .form-actions span 
+    {
+        margin:0px 10px; 
+        float:right; 
+        line-height:40px; 
+    }
+    .form-actions button.submit 
+    {
+        float:right;
+    }
+    .form-actions button.text,
+    .form-actions a
+    {
+        line-height:40px;
+    }

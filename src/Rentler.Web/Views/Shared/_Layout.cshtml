@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <title>@RenderSection("title", false) - Rentler</title>
+    
+    @* Forces scaling on mobile *@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    @* Forces latest version of IE *@
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<meta name="description" content="@RenderSection("description", false)" />
+	<meta name="author" content="Rentler.com" />
+
+    @* Favicon and apple icons *@
+	<link rel="shortcut icon" href="/images/favicon.ico" />
+	<link rel="apple-touch-icon" href="/images/mobile/apple-touch-icon-iphone.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/mobile/apple-touch-icon-ipad.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/mobile/apple-touch-icon-iphone4.png" />
+
+    <link href="/css/normalize.css?v=@Html.BuildNumber()" rel="stylesheet" />
+    <link href="/css/rentler.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    @RenderSection("css", false)
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<script type="text/javascript" src="/scripts/modernizr-2.5.3.js"></script>
+    <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', '@Rentler.Configuration.App.GoogleCode']);
+          _gaq.push(['_trackPageview']);
+
+          (function () {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+    </script>
+    @{
+        var dash = false;
+        if(User.Identity.IsAuthenticated)
+        {
+            char[] chars = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n' };
+            if (chars.Any(m => m == User.Identity.Name.ToLower()[0]))
+            {
+                dash = true;
+            }
+            else
+            {
+                dash = false;
+            }
+        }
+    }
+</head>
+<!--[if lt IE 7 ]><body class="ie6"><![endif]-->
+<!--[if IE 7 ]><body class="ie7"><![endif]-->
+<!--[if IE 8 ]><body class="ie8"><![endif]-->
+<!--[if IE 9 ]><body class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<body>
+<!--<![endif]-->
+    @RenderSection("preheader", false)
+    <div id="header">
+        <div class="container">
+            <ul class="headerNav">
+                <li><a href="/property/create" class="button blue">List your property</a></li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (dash)
+                {
+                <li><a href="/dashboard" onclick="rentler.api.stats.trackEvent('abDashvsName', 'click', 'dashboard'); return true;" rel="nofollow">Dashboard</a></li>
+                <li><a href="/account/profile" onclick="rentler.api.stats.trackEvent('abDashvsName', 'account', 'dashboard'); return true;" rel="nofollow">Account</a></li>
+                }
+                else
+                {
+                <li><a href="/dashboard" onclick="rentler.api.stats.trackEvent('abDashvsName', 'click', 'username'); return true;" rel="nofollow">@User.Identity.Name</a></li>
+                <li><a href="/account/profile" onclick="rentler.api.stats.trackEvent('abDashvsName', 'account', 'username'); return true;" rel="nofollow">Account</a></li> 
+                }
+                
+                <li><a href="/account/logout" rel="nofollow">Logout</a></li>
+            }
+            else
+            {
+                <li><a href="/account/login" rel="nofollow">Login</a></li>
+                <li><a href="/account/register" rel="nofollow">Register</a></li>
+            }
+            </ul>
+            <a href="/" class="logo">Logo</a>
+        </div>
+    </div>
+    
+    <div id="main">
+        @RenderBody()
+    </div>
+    
+    <div id="footer-container">
+        <div id="footer">
+            <div class="container">
+			    <div class="linkSection">
+				    <ul>
+					    <li>Landlords</li>
+					    <li><a href="/dashboard" rel="nofollow">Dashboard</a></li>				
+					    <li><a href="/property/create" rel="nofollow">Add a property</a></li>
+				    </ul>
+			    </div>
+			    <div class="linkSection">
+				    <ul>
+					    <li>General</li>
+					    <li><a href="/search">Find a Listing</a></li>
+					    <li><a href="/listing/favorites" rel="nofollow">Favorites</a></li>
+					    <li><a href="/account/application" rel="nofollow">Update Application</a></li>
+					    <li><a href="/account/profile" rel="nofollow">Account Settings</a></li>
+				    </ul>
+			    </div>
+			    <div class="linkSection">
+				    <ul>
+					    <li>Support</li>
+					    <li><a href="http://support.rentler.com/customer/portal/topics/269226-frequently-asked-questions/articles">FAQ</a></li>
+					    <li><a href="/home/privacy">Privacy Policy</a></li>
+					    <li><a href="/home/about">About</a></li>
+                        <li><a href="mailto:support@rentler.com">Email Feedback</a></li>
+				    </ul>
+			    </div>
+			    <div class="linkSection">
+				    <ul>
+					    <li>Community</li>
+					    <li><a href="http://www.facebook.com/pages/Rentler/211949428857246">Facebook</a></li>
+					    <li><a href="http://twitter.com/teamrentler">Twitter</a></li>
+					    <li><a href="http://rentler.tumblr.com">Development Blog</a></li>
+				    </ul>
+			    </div>
+                <div class="linkSection">
+                    <ul>
+                        <li>Follow Us</li>
+                        <li class="sharing">
+                            <div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+                                <a class="addthis_button_facebook_follow" addthis:userid="211949428857246"></a>
+                                <a class="addthis_button_twitter_follow" addthis:userid="teamrentler"></a>
+                                <a class="addthis_button_google_follow" addthis:userid="105930076898910161561"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+			    <p>© 2012 Rentler, LLC. All rights reserved.</p>
+		    </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/scripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/api/rentler.api.stats.js"></script>
+    @RenderSection("js", false)
+	<script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length; while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])} c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d); (function(){function l(j){j="head";return["<",j,"></",j,"><",z,' onl'+'oad="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"} D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});
+	/* custom configuration goes here (www.olark.com/documentation) */
+	olark.identify('1249-733-10-3468');/*]]>{/literal}*/</script>
+	<!-- end olark code -->
+    @if (User.Identity.IsAuthenticated)
+    {
+		<script type="text/javascript">olark('api.chat.updateVisitorNickname', { snippet: '@User.Identity.Name' });</script>
+        if (dash)
+        {
+            <script type="text/javascript">rentler.api.stats.trackEvent('abDashvsName', 'view', 'dashboard');</script>
+        }
+        else
+        {
+            <script type="text/javascript">rentler.api.stats.trackEvent('abDashvsName', 'view', 'username');</script>
+        }
+    }
+    <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e495ef7138737dd"></script>
+</body>
+</html>

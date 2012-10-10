@@ -1,0 +1,53 @@
+﻿@model MvcPaging.PaginationModel
+
+@foreach (var link in Model.PaginationLinks)
+{
+	@BuildLink(link) <text> </text>
+}
+
+@helper BuildLink(PaginationLink link)
+{
+	var aBuilder = new TagBuilder("a");
+
+	if (link.IsCurrent || link.Url == null)
+	{
+		aBuilder = new TagBuilder("span");
+	}
+	
+	if (link.Url != null)
+	{
+		var url = string.Format(
+            "{0}{1}",
+            Rentler.Web.Config.KslDomain,
+            Rentler.Web.Config.KslSearchPath			
+        );
+
+        var original = link.Url.Split('?');
+        if(original.Length > 1)
+        {
+		    url += original[1];
+        }
+		
+		aBuilder.MergeAttribute("href", url);
+		aBuilder.MergeAttribute("target", "_top");
+	}
+
+	if (link.PageIndex == 1 && !link.IsCurrent && link.DisplayText != "«")
+	{
+		aBuilder.SetInnerText("First");
+	}
+	else if (link.DisplayText == "«")
+	{
+		aBuilder.SetInnerText("< Previous | ");
+	}
+	else if (link.DisplayText == "»")
+	{
+		aBuilder.SetInnerText(" | Next >");
+	}
+	else
+	{
+		aBuilder.SetInnerText(link.DisplayText);
+	}
+	
+	@Html.Raw(aBuilder.ToString());
+}

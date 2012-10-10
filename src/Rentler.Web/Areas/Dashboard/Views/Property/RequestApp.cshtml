@@ -1,0 +1,62 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.PropertyRequestAppModel
+@section title {Dashboard - Manage Property}
+@section description { }
+@section css 
+{    
+    <link href="/css/pages/requestapp.css?v=@Html.BuildNumber()" rel="Stylesheet" />        
+}
+@section js 
+{
+    <script type="text/javascript" src="/js/rentler.property.requestapp.js?v=@Html.BuildNumber()"></script>
+}
+<div class="container body">
+    <h2 class="darkHeading">Request Application</h2>
+	<div class="gradHeading">
+		@Model.Lead.User.FirstName @Model.Lead.User.LastName is interested in your property.<br />
+		If you feel comfortable you can have them send you an application.
+	</div>
+	<div class="landlordContainer">
+		<div class="landlordContact">			
+			<div class="landlordTemplate">
+				<div class="landlordTemplateSection">
+					Dear @Model.Lead.User.FirstName (Tenant),
+				</div>
+				<div class="landlordTemplateSection">
+					Thanks for showing interest in my property. This is a request for you to submit your application:
+				</div>
+				<div class="landlordTemplateListing">
+					<div class="resultImage">
+					    <img src="@Html.GetPhotoLink(Model.Lead.BuildingId, Model.Lead.Building.PrimaryPhotoId, 200, 150, Model.Lead.Building.PrimaryPhotoExtension)" alt="" width="200" height="150" />
+					</div>
+					<div class="resultInfo">
+						<div class="address">
+							@Model.Lead.Building.Address1 @Model.Lead.Building.Address2
+						</div>
+						<div class="cityState">
+							@Model.Lead.Building.City, @Model.Lead.Building.State @Model.Lead.Building.Zip</div>
+						<div class="priceInfo">
+							<span class="price">@Model.Lead.Building.Price.ToString("C0")</span> per Month</div>
+						<div class="bedBath">
+							@Model.Lead.Building.Bedrooms Bed / @Model.Lead.Building.Bathrooms Bath / @Model.Lead.Building.SquareFeet SqFt</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	@using(Html.BeginForm())
+	{
+		<div class="landlordEmail">
+			@Html.ValidationSummary(false, "Please correct the following errors")
+			<div class="notes">
+				Include a note: <span class="accent">(<span class="accent characters">1000</span> characters left)</span></div>
+			<div>
+				<input type="hidden" name="Input.LeadId" value="@Model.Lead.UserInterestId" />
+				@Html.TextAreaFor(m => m.Input.Message)
+			</div>
+		</div>
+		<div class="actions">
+			<a href="/dashboard/property/manage/@Model.Lead.BuildingId" class="cancelEmailLink">Cancel</a>
+			<input type="submit" class="button blue" value="Request Application" />
+		</div>
+	}
+	</div>
+</div>

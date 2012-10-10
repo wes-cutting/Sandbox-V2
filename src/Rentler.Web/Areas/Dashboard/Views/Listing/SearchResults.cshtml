@@ -1,0 +1,25 @@
+﻿@using MvcPaging
+@model Rentler.PaginatedList<Rentler.BuildingPreview>
+
+<ul class="search-results">
+@foreach (var item in Model)
+{
+    <li class="result">
+        <div class="result-image">
+            <a href="/listing/@item.BuildingId">
+                <img src="@Html.GetPhotoLink(@item.BuildingId, @item.PrimaryPhotoId, 200, 150, @item.PrimaryPhotoExtension)" alt="Building Image" />
+            </a>
+        </div>
+        <div class="result-info">
+            <div class="title">@item.Title</div>
+			<div class="location">@item.City, @item.State</div>
+            <div class="bed-baths">@item.Bedrooms beds @item.Bathrooms.ToString("0.#") baths</div>
+            <div class="price-container"><span class="price">$@item.Price</span> per month</div>
+        </div>
+    </li>
+}
+</ul>
+<div class="loading"></div>
+<div class="navigation">
+	@Html.Pager(Model.PageSize, Model.PageNumber, Model.TotalCount).Options(p => p.RouteValues(Html.GetRouteData()))
+</div>

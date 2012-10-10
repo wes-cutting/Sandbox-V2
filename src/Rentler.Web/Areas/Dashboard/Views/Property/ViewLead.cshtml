@@ -1,0 +1,180 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.PropertyViewLeadModel
+@section title { View Application }
+@section css {
+    <link rel="Stylesheet" href="/css/pages/viewlead.css?v=@Html.BuildNumber()" />
+}
+<div class="container">                
+    <div class="application">
+        <div class="gradHeading">
+            @Model.Lead.User.FirstName @Model.Lead.User.LastName submitted this application to you.
+        </div>
+        <table border="collapse">
+            <thead>
+                <tr>
+                    <th class="darkHeading" colspan="2">
+                        Application Details
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label>Name:</label>
+                    </td>
+                    <td>@Model.Lead.User.UserApplication.FirstName @Model.Lead.User.UserApplication.LastName
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Phone:</label>
+                    </td>
+                    <td>@Html.FormatPhone(Model.Lead.User.UserApplication.PresentPhone)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Current Address:</label>
+                    </td>
+                    <td>
+                        <span>@Model.Lead.User.UserApplication.PresentAddressLine1 @Model.Lead.User.UserApplication.PresentAddressLine2</span>
+                        <span>@Model.Lead.User.UserApplication.PresentCity, @Model.Lead.User.UserApplication.PresentState @Model.Lead.User.UserApplication.PresentZip</span>                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Current Landlord:</label>
+                    </td>
+                    <td>
+                        @Model.Lead.User.UserApplication.PresentLandlord 
+                        @if (!string.IsNullOrWhiteSpace(Model.Lead.User.UserApplication.PresentLandlordPhone))
+                        {
+                            <text>(@Html.FormatPhone(Model.Lead.User.UserApplication.PresentLandlordPhone))</text>                                  
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Previous Address:</label>
+                    </td>
+                    <td>
+                        <span>@Model.Lead.User.UserApplication.PreviousAddressLine1 @Model.Lead.User.UserApplication.PreviousAddressLine2</span>
+                        <span>@Model.Lead.User.UserApplication.PreviousCity, @Model.Lead.User.UserApplication.PreviousState @Model.Lead.User.UserApplication.PreviousZip</span>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Previous Landlord:</label>
+                    </td>
+                    <td>
+                        @Model.Lead.User.UserApplication.PreviousLandlord 
+                        @if (!string.IsNullOrWhiteSpace(Model.Lead.User.UserApplication.PreviousLandlordPhone))
+                        {
+                            <text>(@Html.FormatPhone(Model.Lead.User.UserApplication.PreviousLandlordPhone))</text>                                  
+                        }                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Current Employment:</label>
+                    </td>
+                    <td>
+                        @Model.Lead.User.UserApplication.PresentEmployer 
+                        @if (!string.IsNullOrWhiteSpace(Model.Lead.User.UserApplication.PresentEmployerPhone))
+                        {
+                            <text>(@Html.FormatPhone(Model.Lead.User.UserApplication.PresentEmployerPhone))</text>                                  
+                        }                         
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Previous Employment:</label>
+                    </td>
+                    <td>
+                        @Model.Lead.User.UserApplication.PreviousEmployer 
+                        @if (!string.IsNullOrWhiteSpace(Model.Lead.User.UserApplication.PreviousEmployerPhone))
+                        {
+                            <text>(@Html.FormatPhone(Model.Lead.User.UserApplication.PreviousEmployerPhone))</text>                                  
+                        }                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Emergency Contact:</label>
+                    </td>
+                    <td>
+                        @Model.Lead.User.UserApplication.EmergencyContact
+                        @if (!string.IsNullOrWhiteSpace(Model.Lead.User.UserApplication.EmergencyContactPhone))
+                        {
+                            <text>(@Html.FormatPhone(Model.Lead.User.UserApplication.EmergencyContactPhone))</text>                                  
+                        }
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Emergency Contact Address:</label>
+                    </td>
+                    <td>
+                        <span>@Model.Lead.User.UserApplication.EmergencyContactAddressLine1 @Model.Lead.User.UserApplication.EmergencyContactAddressLine2</span>
+                        <span>@Model.Lead.User.UserApplication.EmergencyContactCity, @Model.Lead.User.UserApplication.EmergencyContactState @Model.Lead.User.UserApplication.EmergencyContactZip</span>                       
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Vehicle:</label>
+                    </td>
+                    <td>
+                        @Model.Lead.User.UserApplication.VehicleColor @Model.Lead.User.UserApplication.VehicleYear
+                        @Model.Lead.User.UserApplication.VehicleMake @Model.Lead.User.UserApplication.VehicleModel
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Vehicle Plate:</label>
+                    </td>
+                    <td>
+                        @Model.Lead.User.UserApplication.VehicleLicenseNumber - @Model.Lead.User.UserApplication.VehicleState
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Has had an unlawful detainer?</label>
+                    </td>
+                    <td>
+                        @if (Model.Lead.User.UserApplication.HasEverBeenUnlawfulDetainer == null)
+                        { <text>N/A</text> }
+                        else if (Model.Lead.User.UserApplication.HasEverBeenUnlawfulDetainer == false)
+                        { <text>No</text> }
+                        else
+                        { <text>Yes</text> }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Has been convicted of a felony?</label>
+                    </td>
+                    <td>
+                        @if (Model.Lead.User.UserApplication.HasBeenConvicted == null)
+                        { <text>N/A</text> }
+                        else if (Model.Lead.User.UserApplication.HasBeenConvicted == false)
+                        { <text>No</text> }
+                        else
+                        { <text>Yes</text> }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Explanation</label>
+                    </td>
+                    <td>
+                        @Model.Lead.User.UserApplication.ConvictedExplaination
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
+        <div style="text-align: center; padding: 15px 0px; background-color: #f4f4f4; border-top: 1px solid #999;">
+            <a class="button blue" href="/dashboard/property/manage/@Model.Lead.BuildingId">Back</a> 
+        </div>   
+     </div>
+     
+ </div>

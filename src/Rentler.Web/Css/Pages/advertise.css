@@ -1,0 +1,21 @@
+﻿.radio
+{
+    display: inline-block;            
+    line-height: 18px;
+    height: 18px;
+    min-height: 18px;
+    padding-top: 3px;
+    margin-bottom: 3px;
+    font-size: 1em;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica;
+}    
+    .radio input[type="radio"]
+    {                                                                                
+        float: left;
+        margin: 3px 7px 0px 7px;                
+        width: 13px;
+        height: 13px;
+        vertical-align: middle;                    
+        font-size: 1em;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    }

@@ -1,0 +1,12 @@
+﻿@model Rentler.Web.Email.EmailSendApplicationModel
+@{
+    ViewBag.Title = "Application Sent";
+    Layout = null;
+}
+@Model.LandlordFirstName,
+
+@Model.LeadName has submitted an application to your property.
+
+Click here: @Rentler.Web.Config.Hostname/property/manage/@Model.BuildingId to view this property
+
+Note: RENTLER.COM DOES NOT REGULATE OR VERIFY THE CONTENT OF THESE MESSAGES. RENTLER EXPRESSLY DISCLAIMS ALL LIABILITY FOR THE CONTENT OR USE OF ANY MATERIAL POSTED VIA THE USER.

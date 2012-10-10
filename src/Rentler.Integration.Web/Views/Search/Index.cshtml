@@ -1,0 +1,8 @@
+﻿@model Rentler.Integration.Web.Models.Search
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@{ var srcUrl = "http://localhost:48325/ksl/search" + Model.Query; }
+<iframe src="@srcUrl" width="681" height="3000" frameborder=0 scrolling=no />

@@ -1,0 +1,51 @@
+﻿@model Rentler.Web.Models.PropertyManageModel
+@section title {Dashboard - Manage Property}
+@section description { }
+@section css 
+{    
+    <link href="/css/pages/dashboard.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    <link href="/css/pages/dashboard-property-manage.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    <link href="/css/pages/listing.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    <link href="/css/scrim.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+}
+@section js
+{
+    <script src="/js/rentler.scrim.js?v=@Html.BuildNumber()"></script> 
+    <script src="/js/rentler.property.manage.js?v=@Html.BuildNumber()"></script>  
+}
+
+@Html.Partial("TabsNavigation", "myproperties")
+
+@* Secondary Top Banner *@
+<div class="address-information">
+    <div class="container slim">
+        <div class="tenant-status">No Tenant</div>
+        <div class="basic-address">@Model.Listing.Address1 @Model.Listing.Address2</div>
+        <div class="basic-city-state">
+            @Model.Listing.City, @Model.Listing.State @Model.Listing.Zip - 
+            <a href="/property/edit/@Model.Listing.BuildingId">Edit Address</a>
+        </div>
+    </div>
+</div>
+@* End Secondary Top Banner *@
+
+
+<div class="container super-slim">
+
+    <div class="app-accent">
+        <div class="app-description">
+            From this page you will be able to manage your property and who lives in it. <br />
+            It all starts with creating a listing. Once created, people interested in renting your property will submit an application for you to review and make a selection. <br /><br />
+            <a class="button blue big" href="/listing/list/@Model.Listing.BuildingId">Create a Listing for this Property</a>
+        </div>
+    </div>
+
+    <div class="delete-listing-container">
+        <div class="delete-permanent">
+            <a href="#" data-item="delete-property">Permanently Delete Property</a>
+        </div>
+        <div class="delete-create-date">You created this property on 7/13/2012</div>
+    </div>
+</div>
+
+@Html.Partial("DeletePartial", Model.Listing)

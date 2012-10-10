@@ -1,0 +1,57 @@
+.qq-upload-list { list-style: none; }
+    .qq-upload-list li { list-style-type: none; }
+    
+.qq-uploader { position:relative; width: 100%;}
+
+.qq-upload-button {
+    display: inline-block; text-indent: -9999px; 
+	background-image: url('/images/timImage/ui.png'); 
+	background-repeat: no-repeat; 
+	margin: 0; 
+	padding: 0;
+	border: 0; 
+	text-decoration: none; 
+	background-position: 0 0; 
+	cursor: pointer; /* hand-shaped cursor */ 
+	cursor: hand; /* for IE 5.x */ /**text-indent:0; 	*font-size:0;*/
+	padding: 0px 18px; 
+	line-height: 30px; 
+	background-position: -5px 0px; 
+	height: 30px;	
+	font-size: 1em; 
+	width: auto; 
+	text-align: center; 
+	text-indent: 0px; 
+	color: #fff; 
+	-moz-border-radius:4px; 
+	-webkit-border-radius:4px; 
+	border-radius: 4px;
+}
+.qq-upload-button-hover {background-position: -5px -30px;}
+.qq-upload-button-focus {background-position: -5px -30px;}
+
+.qq-upload-drop-area {
+    position:absolute; top:0; left:0; width:100%; height:100%; min-height: 70px; z-index:2;
+    background:#FF9797; text-align:center; 
+}
+.qq-upload-drop-area span {
+    display:block; position:absolute; top: 50%; width:100%; margin-top:-8px; font-size:16px;
+}
+.qq-upload-drop-area-active {background:#FF7171;}
+
+.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
+.qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
+.qq-upload-file, 
+.qq-upload-spinner, 
+.qq-upload-size, 
+.qq-upload-cancel, 
+.qq-upload-failed-text {
+    margin-right: 7px;
+}
+
+.qq-upload-file {}
+.qq-upload-spinner {display:inline-block; background: url("/images/fileuploader/loading.gif"); width:15px; height:15px; vertical-align:text-bottom;}
+.qq-upload-size,.qq-upload-cancel {font-size:11px;}
+
+.qq-upload-failed-text {display:none;}
+.qq-upload-fail .qq-upload-failed-text {display:inline;}

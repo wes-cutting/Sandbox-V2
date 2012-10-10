@@ -1,0 +1,159 @@
+﻿#main .container { padding-top: 25px; }
+.hide { display: none; }
+.clr { clear: left; }
+.ui-accordion 
+{
+    border-bottom: solid 1px #EEE;
+    font-family: Helvetica;
+    font-size: 12px;
+}    
+    .ui-accordion a { color: #1C82B3; }
+    .ui-accordion a:hover { text-decoration: none; }
+    .ui-accordion .ui-accordion-header
+    {
+        padding: 15px;
+        background: url('/images/property/steps-bg.png') repeat-x bottom left;
+        margin: 0px; 
+        border: 1px solid #EAEAEA;
+        line-height: 20px;
+        -webkit-border-radius: 0px;
+        border-radius: 0px;
+        -moz-border-radius:0px;        
+        cursor: pointer;
+        font-size: 1.2em;
+        color: #6f6f6f;
+        text-decoration: underline;
+    }    
+    .ui-accordion .ui-accordion-header.disabled
+    {
+        cursor: default;
+        color: #999999;
+    }    
+        .ui-accordion .ui-accordion-header a 
+        {            
+            text-decoration: none;                        
+            background: none;      
+        }                        
+    .ui-accordion .ui-accordion-header.selected 
+    {
+        background: url('/images/property/selected-step-bg.png') repeat-x;
+        color: #fff;
+        font-size: 1.3em;
+        text-decoration: none;
+        cursor: default;
+    }
+        .ui-accordion .ui-accordion-header.selected a
+        {
+            font-size: 1.2em;
+            color: #ffffff;
+        }        
+    .ui-accordion .ui-accordion-content 
+    {    
+        border-left: 1px solid #EAEAEA;
+        border-right: 1px solid #EAEAEA;
+        background-color: #f5f5f5;   
+    }
+    .ui-accordion .ui-accordion-content.last 
+    {
+        border-bottom: 1px solid #cfcfcf;
+    }
+        .ui-accordion .contentSection 
+        {
+            position: relative; 
+            float: left; 
+            width: 703px; 
+            background: #fff url('/images/property/right-shadow-bg.png') repeat-y right;            
+        }
+            .ui-accordion .contentSection .tipIcon 
+            {
+                width: 16px; 
+                height: 16px; 
+                background: url('/images/property/tip.png') no-repeat top right; 
+                position: absolute; 
+                top: 22px; 
+                right: 0px; 
+                z-index: 1;
+            }            
+            .ui-accordion .content 
+            {
+                padding: 0px 28px 0px 20px;
+            }
+                .ui-accordion .content h2 
+                {
+                    border-bottom: solid 1px #cfcfcf;	
+	                color: #A7A7A7;
+                    margin: 10px 0px;
+                    padding: 10px 0px 5px 0px;
+                    font-size: 1.4em;
+                }                                       
+                .ui-accordion .content .hr 
+                {
+                    margin: 25px 0px;
+                    border-bottom: 1px solid #cfcfcf;                  
+                }
+                .ui-accordion .content select 
+                {
+                    -webkit-border-radius: 3px;
+                    -moz-border-radius: 3px;
+                    border-radius: 3px;                                    
+                    line-height: normal;        
+                    font-size: 1em;
+                    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                    font-weight: normal;           
+                    margin: 7px 0px 0px 0px;
+                    padding: 2px; 
+                    display: inline-block;
+                    color: #555;                            
+                    vertical-align: middle;      
+                }
+                .ui-accordion .content .validation-summary-errors 
+                {
+                    padding: 15px 0px 0px 0px;
+                }
+                .ui-accordion .content input[type=text], 
+                .ui-accordion .content textarea, 
+                .ui-accordion .content select 
+                { 
+                    margin: 7px 0px 0px 0px; 
+                }
+                .ui-accordion .content input[type="text"].readonly, textarea.readonly, select.readonly 
+                {
+                    background-color: #eee;
+                }
+                .ui-accordion .content ul 
+                {
+                    list-style: none;
+                    margin: 10px;
+	                padding: 0px;
+	                overflow: hidden;
+                }   
+                .ui-accordion .content li {
+                    float: left;
+                }
+                .ui-accordion .content .validation-summary-errors li 
+                {
+                    float: none;
+                }
+                .ui-accordion .content label {
+                    display: block;
+                    line-height: 1em;
+                    margin-top: 16px;
+                    font-weight: bold;
+                }                                                  
+            .ui-accordion .tipSection 
+            {            
+                float: left; 
+                width: 240px;
+            }
+                .ui-accordion .tipSection .tip 
+                {
+                    margin: 18px 15px 10px 10px;
+                }
+                    .ui-accordion .tipSection .tip p 
+                    {
+                        color: #999;
+                        margin: 0px 15px 0px 0px;                    
+                        font-family: 'covered by your grace'; 
+                        font-size: 1.4em;
+                        src: url('https://themes.googleusercontent.com/static/fonts/coveredbyyourgrace/v3/6ozZp4BPlrbDRWPe3EBGAzcaOoGrwtJRci4wjFnSRpA.woff') format('woff');                     
+                    }

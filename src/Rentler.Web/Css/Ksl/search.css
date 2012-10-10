@@ -1,0 +1,493 @@
+﻿
+
+.kslsearch 
+{
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    width: 664px;    
+}
+    .ksl-header {
+        height: 55px;
+        background: url('/images/backgrounds/ksl-search-background.png') repeat-x;
+    }
+        .ksl-header a.create-listing,
+        .ksl-header a.create-listing:visited {
+            float: right;
+            background: url('/images/backgrounds/ksl-create-background.png') repeat-x;
+            height: 50px;
+            display: block;
+            padding: 0px 18px;
+            padding-top: 5px;
+            line-height: 50px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .ksl-header .places {
+            float: left;
+            margin-left: 20px;
+            font-size: 2.2em;
+            color: #2e43b3;
+            line-height: 55px;
+        }
+        .ksl-header a.powered-by {
+            float: left;
+            background: url('/images/backgrounds/ksl-powered-by.png') no-repeat;
+            margin: 0;
+            width: 130px;
+            height: 55px;
+            margin-left: 10px;
+            -moz-border-radius: 0px;
+            -webkit-border-radius: 0px;
+            border-radius: 0px;
+            text-indent: -9999px; 
+            font-size: 0px; 
+            line-height: 0px;
+            outline: 0;
+            padding: 0; 
+            border: 0; 
+            text-decoration: none;
+            background-position: 0 0; 
+            cursor: pointer; /* hand-shaped cursor */ 
+            cursor: hand; /* for IE 5.x */ /**text-indent:0; 	*font-size:0;*/
+        }
+    .kslsearch a 
+    {        
+        color: #2354AC;
+        text-decoration: none;
+    }
+    .kslsearch a:hover 
+    {
+        text-decoration: underline;   
+    }
+    .kslsearch a:visited 
+    {
+        color: #959595;
+    }
+    .kslsearch button 
+    {
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 12px;
+        color: #2354AC;
+    }
+    .kslsearch button.blue 
+    {        
+        font-family: "Verdana, Bitstream Vera Sans", Arial, Helvetica, sans-serif;
+        background: url('/images/ksl/medButtonBackground.png') repeat-x;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+        border-radius: 0px;
+        font-weight: bold;
+        text-decoration: none;
+        line-height: 30px;
+        height: 30px;
+        color: #fff;
+        padding: 0px 20px;
+    }
+    .kslsearch button:hover
+    {        
+        text-decoration: underline;        
+    }    
+    .kslsearch input,select 
+    {
+        margin: 0;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+        border-radius: 0px;
+    }
+    .kslsearch select 
+    {        
+        line-height: normal;
+        font-size: 1em;        
+        padding: 2px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        background-color: #fff;        
+        font-family: Arial,Helvetica,sans-serif;
+        color: #000;	    
+    }
+    
+    .kslsearch .input-group 
+    {
+        float: left;
+        background: url('/images/ksl/searchDivider.png') repeat-y top right;        
+        margin-left: 19px;
+    }
+        .kslsearch .input-group label
+        {
+            display: block;
+            font-weight: bold;
+            line-height: 20px;
+            margin-top: 10px;
+        }
+        .kslsearch .input-group ul 
+        {
+            margin: 0px;
+            padding: 0px;
+        }
+        .kslsearch .input-group li 
+        {
+            float: left;
+            padding: 3px 0px;
+        }
+        .kslsearch .input-group li.clr 
+        {
+            padding: 0px;
+        }
+            .kslsearch label.checkbox
+            {
+                display: block;
+                line-height: 13px;
+                height: 13px;
+                min-height: 13px;
+                padding-top: 0px;
+                margin-bottom: 0px;
+                font-size: 1em;
+                font-weight: normal;
+                margin: 0px;                        
+            }                   
+                .kslsearch .checkbox input[type="checkbox"]
+                {                                                                                
+                    float: left;
+                    margin: 0px 7px 0px 0px;
+                    display: block;
+                    width: 13px;
+                    height: 13px;
+                    vertical-align: middle;                    
+                    font-size: 1em;                            
+                }
+    /* @group search form */
+    .kslsearch #search 
+    {
+        margin-bottom: 20px;
+    }    
+    .kslsearch .search-form 
+    {
+        padding-top: 13px;        
+        background-color: #f7f7f7;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e3e3e3;        
+    }            
+        .kslsearch .input-group.location
+        {
+            width: 201px;            
+        }
+            .kslsearch .input-group.location input
+            {
+                width: 176px;
+            }
+        .kslsearch .input-group.price
+        {
+            width: 236px;            
+        }
+            .kslsearch .input-group.price input
+            {
+                width: 88px;
+            }
+        .kslsearch .input-group.last
+        {
+            width: 170px;
+            background: none;
+        }
+            .kslsearch .input-group.last select 
+            {
+                width: 70px;
+            } 
+            .kslsearch .input-group.last select.type
+            {
+                width: 156px;
+            }        
+            .kslsearch .input-group .sub-group 
+            {
+                float: left;
+                width: 50%;
+            }              
+            .kslsearch .input-group span.to 
+            {               
+                margin: 0px 5px;
+            }            
+    .kslsearch .search-form-advanced 
+    {        
+        background-color: #f7f7f7;        
+    }
+        .kslsearch .search-form-advanced .selectrow
+        {
+            height: 81px;
+            border-bottom: 1px solid #e3e3e3;
+        }
+            .kslsearch .search-form-advanced .selectrow .input-group 
+            {
+                height: 81px;
+                background: none;
+            }
+                .kslsearch .search-form-advanced .selectrow .input-group label
+                {
+                    margin-top: 18px;
+                }
+            .kslsearch .input-group.bedsnbaths 
+            {
+                width: 201px;
+                background: none;
+            }
+                .kslsearch .input-group.bedsnbaths select 
+                {
+                    width: 83px;
+                }
+            .kslsearch .input-group.squareft 
+            {
+                width: 236px;
+                background: none;
+            }  
+                .kslsearch .input-group.squareft select 
+                {
+                    width: 95px;
+                }
+        .kslsearch .search-form-advanced .amenitiesrow 
+        {            
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e3e3e3;
+            position: relative;
+        }
+            .kslsearch .search-form-advanced .amenitiesrow .photosonly 
+            {
+                position: absolute;
+                bottom: 15px;
+                right: 19px;
+                width: 142px;
+                padding: 3px 0px;
+            }
+            .kslsearch .search-form-advanced .amenitiesrow .input-group 
+            {                
+                background: none;
+            }
+            .kslsearch .input-group.basic-amenities 
+            {
+                width: 314px;
+                margin-left: 19px;
+            }
+                .kslsearch .input-group.basic-amenities ul
+                {                    
+                    width: 314px;
+                }
+                .kslsearch .input-group.basic-amenities li 
+                {                    
+                    width: 157px;
+                }                
+            .kslsearch .input-group.community-amenities 
+            {
+                width: 142px;
+                margin-left: 14px;
+            }
+                .kslsearch .input-group.community-amenities ul
+                {                    
+                    width: 142px;
+                }
+                .kslsearch .input-group.community-amenities li 
+                {                    
+                    width: 142px;
+                }                
+            .kslsearch .input-group.terms 
+            {
+                width: 142px;
+                margin-left: 14px;
+            }
+            .kslsearch .input-group.terms ul 
+            {
+                width: 142px;                
+            }
+            .kslsearch .input-group.terms li
+            {
+                width: 142px;
+            }
+                .kslsearch .input-group.terms li select 
+                {
+                    margin-top: 7px;
+                    width: 142px;
+                }            
+                    
+    .kslsearch .search-form-actions 
+    {
+        background: url('/images/ksl/kslsearch-searchbar-back.jpg') repeat-x;          
+    }        
+        .kslsearch .search-form-actions .keywords 
+        {         
+            float: left;   
+            margin: 17px 0px 17px 19px;
+        }
+            .kslsearch .search-form-actions .keywords label 
+            {            
+                line-height: 18px;
+                display: inline-block;
+                font-weight: bold;
+                padding-top: 3px;
+                margin-bottom: 3px;
+                margin-right: 5px;
+            }
+            .kslsearch .search-form-actions .keywords input
+            {            
+                width: 354px;
+            }
+        .kslsearch .search-form-actions .actions 
+        {
+            float: right;
+            margin: 12px 10px 12px 0px;
+        }
+    /* @end search form */
+
+/* @group search results */
+.kslsearch .ksl-search-results {	
+}
+    .kslsearch .featuredResult 
+    {
+	    padding: 5px;
+	    background: url('/images/ksl/featured-text-bg.jpg') no-repeat;
+    }
+    .kslsearch .featuredTag
+    {
+	    text-align:center;
+        font-weight: bold;        
+        color: White;
+        background-color: #f7941d;
+        padding: 2px 0px 3px 0px;
+        width: 145px;
+        margin-left: auto;
+        margin-right: auto;                        
+        border-bottom-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+        -moz-border-bottom-right-radius: 6px;
+        -moz-border-bottom-left-radius: 6px;
+        -webkit-border-bottom-right-radius: 6px;
+        -webkit-border-bottom-left-radius: 6px;
+        font-size:0.8em;
+    }
+    .kslsearch .result {
+	    width: 165px;
+	    height: 225px;
+	    padding: 3px 27px 0px 28px;
+	    margin: 0px;
+	    margin-top: 17px;
+	    border-right: solid 1px #dedede;
+	    float: left;
+	    position: relative;
+	    font-family: Arial,Helvetica,sans-serif;
+	    font-size: 12px;
+    }		
+	    .kslsearch .result .ribbonOverlay 
+	    {
+		    width: 161px;
+            height: 54px;
+            position: absolute;
+            top: 0px;
+            left: 25px;
+	    }
+    .kslsearch .result.third {
+	    border: none;
+	    padding: 3px 28px 0px 28px;
+    }
+    .kslsearch .result .resultImage {
+	    margin-bottom: 5px;
+    }
+    .kslsearch .result .resultImage.featuredImg 
+    {
+	    margin-bottom: 0px;
+    }
+    .kslsearch .result .resultImage, 
+    .kslsearch .result .resultImage a,
+    .kslsearch .result .resultImage img {
+	    width: 165px;
+	    height: 123px;
+	    padding: 0px;
+    }
+    .kslsearch .result .resultImage a {
+	    border: none;
+	    margin: 0;
+	    padding: 0;
+    }
+    .kslsearch .result .resultAddress {
+	    font-weight: bold;
+	    color: #2354ac;
+	    font-size: 1.05em;	
+	    height: 15px;
+        overflow: hidden;		
+    }
+    .kslsearch .result .resultAddress a:visited {
+	    color: #959595;
+    }
+    .kslsearch .result .resultCityState {
+	    color: #808080;
+	    line-height: 1.5em;
+	    height: 18px;
+	    overflow: hidden;
+    }
+    .kslsearch .result .resultBedBath {
+	    color: #222222;
+	    line-height: 1.5em;
+    }
+    .kslsearch .result .resultPrice {
+	    color: #808080;
+	    line-height: 1.5em;
+    }
+    .kslsearch .result .resultPrice .price {
+	    font-weight: bold;
+	    color: #2354AC;
+    }
+/* @end search results */
+
+.kslsearch .pagingContainer {
+	padding-top: 0px;
+	height: auto;
+	border-top: solid 1px #dedede;
+	border-bottom: solid 1px #dedede;
+	margin: 0px 24px;
+}
+	.kslsearch .pagingContainer .pager {		
+		background-color: #fff;
+		line-height: 31px;		
+	}	
+	    .pager .resultsViewContainer 
+	    {
+	        float: left;
+	        width: 25%;	        	       
+	        margin: 0px;	        
+	    }	   
+	    .pager .pagerLinks 
+	    {
+	        float: left; 
+	        width: 50%; 	        
+	        text-align: center;
+	    }
+	    .pager .orderByContainer 
+	    {
+	        float: right;	               	        	       
+	        margin: 0px;	        
+	    }	        
+	    .pager select {
+	        margin: 0px;
+	        margin: 4px 0px;	        
+	    }
+	.kslsearch .pagingContainer .pager.empty 
+	{
+	    text-align: center;
+	}
+.kslsearch .pagingContainer.bottom {
+    height: 80px;
+    clear: left;
+    padding-top: 50px;
+    border: none;
+}
+    .kslsearch .pagingContainer.bottom .pager 	
+    {
+        background-color: #f1f1f1;			    
+	    text-align: center;
+	    line-height: 31px;	    
+    }		
+
+.kslsearch #map 
+{
+    height:470px;
+    /*width:616px;*/
+    margin:10px 24px 0px 24px;
+}
+.clr { clear: left; }
+.clr-r { clear: right; }
+.clr-b { clear: both; }
+.hide { display: none; }

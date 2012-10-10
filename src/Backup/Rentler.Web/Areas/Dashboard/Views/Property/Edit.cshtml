@@ -1,0 +1,323 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.PropertyEditModel
+@section title { Rentler - Create Listing }
+@section css {
+<link rel="Stylesheet" href="/css/pages/property.css" />
+<link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section js {
+<script type="text/javascript" src="/scripts/jquery.validate.js"></script>
+<script type="text/javascript" src="/scripts/jquery.validate.unobtrusive.js"></script>
+<script type="text/javascript" src="/scripts/knockout-2.1.0.js"></script>
+<script type="text/javascript" src="/scripts/mvcfoolproof.unobtrusive.min.js"></script>
+<script type="text/javascript" src="/js/rentler.knockoutBindings.js"></script>
+<script type="text/javascript" src="/js/rentler.property.create.js"></script>
+@* 
+    All I am doing here is creating a javascript view model and adding all
+    the contact infos to it. This allows knockout to bind to everything.
+*@
+<script type="text/javascript">
+    var viewModel = new rentler.property.create.CreateViewModel();
+    @foreach (var item in Model.Input.User.ContactInfos)
+    {
+        <text>
+            viewModel.contactInfos.push({
+                contactInfoId: @item.ContactInfoId,
+                contactInfoTypeCode: @item.ContactInfoTypeCode,
+                name: "@item.Name",
+                companyName: "@item.CompanyName",
+                email: "@item.Email",
+                phoneNumber: "@item.PhoneNumber",
+                showPhoneNumber: @item.ShowPhoneNumber.ToString().ToLower(),
+                showEmailAddress: @item.ShowEmailAddress.ToString().ToLower()
+            });
+        </text>
+    }
+    ko.applyBindings(viewModel);
+</script>
+}
+
+
+<div class="container">
+
+    <div id="accordion" class="ui-accordion">
+        <div class="ui-accordion-header selected">
+            <span class="stepEdit">Step 1 : Listing Information</span></div>
+        <div id="accordionPane1" class="ui-accordion-content" style="clear:right"> 
+
+        @using (Html.BeginForm("edit", "property", FormMethod.Post))
+        { 	
+            @Html.HiddenFor(m => m.Input.BuildingId);           
+            <div class="contentSection">
+                <div class="tipIcon top"></div>
+                <div class="content">
+                    <div class="sectionHeading top">Basic Information</div>
+
+                    <div id="validationWrapper" style="padding: 0px 10px;">
+                        @Html.ValidationSummary(false, "Please correct the errors and try again:")
+                    </div>                        
+            
+	                <ul class="formSection bottom">
+                        <li class="propertytypeli">
+                            <label for="Input_PropertyTypeCode">Property Type</label>
+			                @Html.DropDownListFor(m => m.Input.PropertyTypeCode, Rentler.Web.Axioms.SelectLists.PropertyTypes.OnlyValid)
+                        </li>
+		                <li class="addressli">
+			                @Html.LabelFor(m => m.Input.Address1)
+			                @Html.TextBoxFor(m => m.Input.Address1, new { @class = "address" })
+		                </li>
+		                <li class="address2li">
+			                @Html.LabelFor(m => m.Input.Address2)
+			                @Html.TextBoxFor(m => m.Input.Address2, new { @class = "address2" })
+		                </li>
+		                <li class="cityli">
+			                @Html.LabelFor(m => m.Input.City)
+			                @Html.TextBoxFor(m => m.Input.City, new { @class = "city" })
+		                </li>
+		                <li class="stateli">
+			                @Html.LabelFor(m => m.Input.State)
+			                @Html.DropDownListFor(m => m.Input.State, Rentler.Web.Axioms.SelectLists.States.AllStates, new { @class = "state" })
+		                </li>
+		                <li class="zipli">
+			                @Html.LabelFor(m => m.Input.Zip)
+			                @Html.TextBoxFor(m => m.Input.Zip, new { @class = "zip" })
+		                </li>
+		                <li id="acresItem" class="acresli">
+			                @Html.LabelFor(m => m.Input.Acres)
+                            @Html.DropDownListFor(m => m.Input.Acres, Rentler.Web.Axioms.SelectLists.Acres.AllAcres, new { @class = "acres" })						
+		                </li>
+		                <li class="squareli">
+			                @Html.LabelFor(m => m.Input.SquareFeet)
+			                @Html.TextBoxFor(m => m.Input.SquareFeet, new { @class = "square" })
+		                </li>
+		                <li class="yearli">
+			                @Html.LabelFor(m => m.Input.YearBuilt)
+			                @Html.TextBoxFor(m => m.Input.YearBuilt, new { @class = "year" })
+		                </li>  
+                        <li class="bedsli">
+			                @Html.LabelFor(m => m.Input.Bedrooms)
+			                @Html.TextBoxFor(m => m.Input.Bedrooms, new { @class = "beds" })
+		                </li>
+		                <li class="bathsli">
+			                @Html.LabelFor(m => m.Input.Bathrooms)
+			                @Html.TextBoxFor(m => m.Input.Bathrooms, new { @class = "baths", @Value = Model.Input.Bathrooms.ToString("0.##") })
+		                </li>     
+	                </ul>   
+                    <div style="clear:left;">&nbsp;</div>
+                </div>               
+            </div>
+            <div class="tipSection top">
+                <div class="tip">
+                    <p>Tenants use our map feature all the time! By entering your property's correct address, your listing is more likely to be recognized by a potential tenant. Make sure you use a valid street address for your listing, otherwise your listing won't show up on our maps.</p>
+                </div>        
+            </div>
+            <div style="clear:left;"></div>           
+    
+            <div class="contentSection">
+                <div class="tipIcon"></div>
+                <div class="content">
+                    <!-- Property Amenities -->
+                    <div class="sectionHeading amenitiesHeading">Amenities</div>
+	                <div class="amenitiesContainer">
+		                <ul class="amenities basic">
+		                @{ var propConfig = Rentler.Configuration.Amenities.Current.Property; }
+                        @foreach (var key in propConfig.Keys)
+                        {
+                            var isChecked = Model.Input.BuildingAmenities.Select(a => a.AmenityId).Contains(key);
+                            <li>
+                                <input type="hidden" name="Input.BuildingAmenities.Index" value="@key" />                                
+                                <input type="checkbox" name="Input.BuildingAmenities[@key].AmenityId" value="@key" @(isChecked ? "checked=checked" : "") />
+                                <label>&nbsp; @propConfig[key]</label>
+                            </li>
+                        }
+		                </ul>
+                        <div style="clear:left;">&nbsp;</div>
+                        <ul class="amenities withoptions bottom">
+                        @{ var propWithOptions = Rentler.Configuration.Amenities.Current.OptionsProperties; }
+                        @foreach (var key in propWithOptions.Keys)
+                        {
+                            <li>
+                                <label>@key</label>
+                                <input type="hidden" name="Input.BuildingAmenities.Index" value="@key" />
+                                <select name="Input.BuildingAmenities[@key].AmenityId">
+                                    <option value="">None</option>
+                                    @foreach (var innerKey in propWithOptions[key].Keys)
+                                    {
+                                        var isSelected = Model.Input.BuildingAmenities.Select(a => a.AmenityId).Contains(innerKey);
+                                        <option value="@innerKey" @(isSelected ? "selected=selected" : "")>@propWithOptions[key][innerKey]</option>
+                                    }
+                                </select>
+                            </li>
+                        }
+                        </ul>
+	                </div>               
+                </div>                   
+            </div>
+            <div class="tipSection">
+                <div class="tip">
+                    <p>Every amenity you check is completely searchable! This will help more qualified tenants find your property.</p>
+                </div>        
+            </div>
+            <div style="clear:left;"></div>
+    
+            <div class="contentSection">
+                <div class="tipIcon"></div>
+                <div class="content"> 
+                    <!-- Community Amenities -->
+	                <div class="sectionHeading amenitiesHeading">Community Amenities</div>
+                    <div class="amenitiesContainer">
+		                <ul class="amenities basic bottom">
+                        @{ var community = Rentler.Configuration.Amenities.Current.Community; }
+                        @foreach (var key in community.Keys)
+                        {
+                            var isChecked = Model.Input.BuildingAmenities.Select(a => a.AmenityId).Contains(key);
+                            <li>
+                                <input type="hidden" name="Input.BuildingAmenities.Index" value="@key" />
+                                <input type="checkbox" name="Input.BuildingAmenities[@key].AmenityId" value="@key" @(isChecked ? "checked=checked" : "") />
+                                <label>&nbsp; @community[key]</label>
+                            </li>
+                        }
+		                </ul>
+                        <div style="clear:left;"></div>
+                        <ul class="amenities withoptions bottom">
+		                @{ var communityWithOptions = Rentler.Configuration.Amenities.Current.OptionsCommunity; }
+                        @foreach (var key in communityWithOptions.Keys)
+                        {
+                            <li>
+                                <label>@key</label>
+                                <input type="hidden" name="Input.BuildingAmenities.Index" value="@key" />
+                                <select name="Input.BuildingAmenities[@key].AmenityId">
+                                    <option value="">None</option>
+                                    @foreach (var innerKey in communityWithOptions[key].Keys)
+                                    {
+                                        var isSelected = Model.Input.BuildingAmenities.Select(a => a.AmenityId).Contains(innerKey);
+                                        <option value="@innerKey" @(isSelected ? "selected=selected" : "")>@communityWithOptions[key][innerKey]</option>
+                                    }
+                                </select>
+                            </li>
+                        }
+                        </ul>
+                    </div>
+                </div>                   
+            </div>
+            <div class="tipSection">
+                <div class="tip">
+                    <p>The more community amenities you can check, the more times your property will show up in a tenant's search.</p>
+                </div>        
+            </div>
+            <div style="clear:left;"></div>  
+
+            <div class="contentSection">
+                <div class="tipIcon"></div>
+                <div class="content">
+                    <!-- Custom Amenities -->
+                    <div class="sectionHeading amenitiesHeading custom">Custom Amenities</div>            
+                    <div class="addCustomAmenity">
+	                    <input type="text" name="addCustomAmenity" maxlength="50" data-bind="value: newCustomAmenity, valueUpdate: 'afterkeydown', executeOnEnter: addCustomAmenityCallback" />
+	                    <a id="addCustomAmenity" href="#" data-bind="click: addCustomAmenityCallback">&nbsp;</a>		
+                        <span id="customAmenityErrorsBox" class="customAmenityErrors"></span>
+                    </div>	
+                    <div class="amenitiesContainer">
+		                <ul id="customAmenityList" class="amenities custom">
+                            @foreach (var item in Model.Input.CustomAmenities)
+                            {
+                                <li>
+                                    <input type="hidden" name="Input.CustomAmenities.Index" value="@item.Name" />
+                                    <input type="checkbox" name="Input.CustomAmenities[@item.Name].Name" value="@item.Name" checked="checked" />
+                                    <label>&nbsp; @item.Name</label>
+                                </li>
+                            }
+                            <!-- ko foreach: customAmenities -->
+                            <li>
+                                <input type="hidden" name="Input.CustomAmenities.Index" data-bind="value: name" />
+                                <input type="checkbox" name="" data-bind="value: name, attr: { name: submitName }" checked="checked" value="" />
+                                <label data-bind="text: '&nbsp; ' + name"></label>
+                            </li>
+                            <!-- /ko -->
+		                </ul>
+	                </div>	    
+                    <div style="clear:left;"></div>
+
+                    @{ var contactCount = Model.Input.User.ContactInfos.Count; }
+
+                    <div class="sectionHeading">Contact Information</div>
+                    <ul class="formSection">
+                        <li class="contactlistli @(contactCount == 0 ? "hide" : "")">
+                            <label>Saved Contact Information</label>
+                            <select name="Input.ContactInfoId">
+                            @foreach (var item in Model.Input.User.ContactInfos)
+                            {
+                                <option value="@item.ContactInfoId" @(item.ContactInfoId == Model.Input.ContactInfoId ? "selected=selected" : "")>@item.Name</option>
+                            }
+                                <option value="0">New</option>
+                            </select>
+                        </li>
+                        <li class="listingtypeli @(contactCount == 0 ? "fill" : "")">
+                            @Html.HiddenFor(m => m.Input.ContactInfo.ContactInfoId)
+                            @Html.LabelFor(m => m.Input.ContactInfo.ContactInfoTypeCode)
+			                @Html.DropDownListFor(m => m.Input.ContactInfo.ContactInfoTypeCode, Rentler.Web.Axioms.SelectLists.ContactInfoTypes.OnlyValid)
+                        </li>
+                        <li class="companynameli @(Model.Input.ContactInfo.ContactInfoType == Rentler.ContactInfoType.Personal ? "hide" : "")">
+			                @Html.LabelFor(m => m.Input.ContactInfo.CompanyName)
+			                @Html.TextBoxFor(m => m.Input.ContactInfo.CompanyName, new { @class = "companyName" })
+		                </li>
+                        <li class="nameli">
+			                @Html.LabelFor(m => m.Input.ContactInfo.Name)
+			                @Html.TextBoxFor(m => m.Input.ContactInfo.Name, new { @class = "name" })
+		                </li>
+                        <li class="displayphoneli">
+                            <label for="ListingContact_ShowPhoneNumber">&nbsp;</label>
+                            @Html.CheckBoxFor(m => m.Input.ContactInfo.ShowPhoneNumber)                    
+			                Tenants can call me
+		                </li>
+                        <li class="emailli">
+			                @Html.LabelFor(m => m.Input.ContactInfo.Email)
+			                @Html.TextBoxFor(m => m.Input.ContactInfo.Email, new { @class = "email" })
+		                </li>  
+                        <li class="phonenumberli">
+			                @Html.LabelFor(m => m.Input.ContactInfo.PhoneNumber)
+			                @Html.TextBoxFor(m => m.Input.ContactInfo.PhoneNumber, new { @class = "phoneNumber" })
+		                </li>
+                    </ul>       
+                    <div style="clear:left;">&nbsp;</div> 
+                    <div class="submitSection">
+                        <input id="step1submit" name="submit" type="submit" value="Continue to Next Step" />
+                        <br style="clear:right;" />
+                    </div>
+                </div>          
+            </div>
+            <div class="tipSection">
+                <div class="tip">
+                    <p>Your property may be unique, so be sure to show off all those special features by listing each of your property's custom amenities.</p>            
+                </div>        
+            </div>
+            <div style="clear:left;"></div>
+    
+            <div class="contentSection">
+                @*<div class="tipIcon"></div>*@
+                <div class="content">
+            
+                </div>          
+            </div>
+            @*<div class="tipSection">
+                <div class="tip">
+                    <p>This is where we put tips for each section.</p>            
+                </div>        
+            </div>*@
+            <div style="clear:left;"></div>
+      
+            @*<input type="hidden" id="step1BuildingId" name="BuildingId" value="@Model.BuildingId" />*@	
+        }
+        </div>
+    @if (Model.StepsAvailable > 1)
+    {
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/terms/@Model.Input.BuildingId">Step 2 : Terms</a></div>
+    }
+    @if (Model.StepsAvailable > 2)
+    {
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/promote/@Model.Input.BuildingId">Step 3 : Promote</a>                
+        </div>
+    }
+    </div>
+</div>

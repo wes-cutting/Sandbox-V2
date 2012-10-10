@@ -1,0 +1,21 @@
+﻿@model Rentler.Web.Email.EmailOrderReceiptModel
+@{
+	ViewBag.Title = "Receipt";
+	Layout = "~/Views/Shared/_EmailLayout.cshtml";
+}
+<div style="color: #313131;">Hello <span style="font-weight: bold; color: #313131;">@Model.Name</span>,</div>
+<p style="color: #313131;">Thank you for your purchase!</p>
+<ul style="margin: 0px 0px 15px 0px; padding: 0px; list-style: none;">
+@foreach (var item in Model.OrderItems)
+{
+    <li style="width: 325px; margin: 0px; padding: 0px 0px 5px 0px;">
+        <span style="float:right; color: #313131;">@item.Price.ToString("C2") ea</span>
+        <span style="color: #313131;">(@item.Quantity)</span>&nbsp;&nbsp;<span style="color: #313131;">@item.ProductDescription</span>
+        <div style="clear:right;"></div>
+    </li>    
+}
+</ul>
+<div style="color: #313131;"><span style="font-weight:bold; color: #313131;">Total:</span>&nbsp;@string.Format("{0:C2}", Model.OrderTotal)</div>
+<p style="color: #313131;">View your listing <a href="@Rentler.Web.Config.Hostname/listing/@Model.BuildingId">here</a>.</p>
+<p style="color: #313131;">We appreciate your business and strive to make sure you are satisfied with the level of service. If you have any questions, please don't hesitate to <a href="@Rentler.Web.Config.Hostname">contact us</a>!</p>
+<p style="color: #313131;">Thank you,<br />Rentler</p>

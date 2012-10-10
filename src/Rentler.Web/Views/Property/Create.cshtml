@@ -1,0 +1,22 @@
+﻿@model Rentler.Web.Models.PropertyCreateModel
+@section title {Create Your Property}
+@section css {
+<link rel="Stylesheet" href="/css/pages/property2.css?v=@Html.BuildNumber()" />
+<link rel="Stylesheet" href="/css/pages/create.css?v=@Html.BuildNumber()" />
+<link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section js {
+<script type="text/javascript" src="/scripts/jquery.validate.js"></script>
+<script type="text/javascript" src="/scripts/jquery.validate.unobtrusive.js"></script>
+}
+
+<div class="container">
+    <h1>Create Your Property</h1>
+    <div id="accordion" class="ui-accordion">
+        <div class="ui-accordion-header selected">
+            <span>Property Details</span></div>
+        <div id="accordionPane1" class="ui-accordion-content"> 
+            @Html.Partial(@"~\views\shared\createform.cshtml", Model)        
+        </div>
+    </div>
+</div>

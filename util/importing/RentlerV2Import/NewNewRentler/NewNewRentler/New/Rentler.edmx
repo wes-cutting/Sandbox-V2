@@ -1,0 +1,1707 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Rentler.Data.RentlerContextModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="RentlerDataRentlerContextModelStoreContainer">
+          <EntitySet Name="AffiliateUsers" EntityType="Rentler.Data.RentlerContextModel.Store.AffiliateUsers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApiKeys" EntityType="Rentler.Data.RentlerContextModel.Store.ApiKeys" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BuildingAmenities" EntityType="Rentler.Data.RentlerContextModel.Store.BuildingAmenities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Buildings" EntityType="Rentler.Data.RentlerContextModel.Store.Buildings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ContactInfoes" EntityType="Rentler.Data.RentlerContextModel.Store.ContactInfoes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomAmenities" EntityType="Rentler.Data.RentlerContextModel.Store.CustomAmenities" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FeaturedListings" EntityType="Rentler.Data.RentlerContextModel.Store.FeaturedListings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderItems" EntityType="Rentler.Data.RentlerContextModel.Store.OrderItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="Rentler.Data.RentlerContextModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Photos" EntityType="Rentler.Data.RentlerContextModel.Store.Photos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SavedBuildings" EntityType="Rentler.Data.RentlerContextModel.Store.SavedBuildings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserApplications" EntityType="Rentler.Data.RentlerContextModel.Store.UserApplications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserCreditCards" EntityType="Rentler.Data.RentlerContextModel.Store.UserCreditCards" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserInterests" EntityType="Rentler.Data.RentlerContextModel.Store.UserInterests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="Rentler.Data.RentlerContextModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ZipInfoes" EntityType="Rentler.Data.RentlerContextModel.Store.ZipInfoes" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_dbo_AffiliateUsers_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_AffiliateUsers_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="AffiliateUsers" EntitySet="AffiliateUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="BuildingAmenities" EntitySet="BuildingAmenities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId">
+            <End Role="ContactInfoes" EntitySet="ContactInfoes" />
+            <End Role="Buildings" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Buildings_dbo_Orders_TemporaryOrderId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_Buildings_dbo_Orders_TemporaryOrderId">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Buildings" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Buildings_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_Buildings_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Buildings" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ContactInfoes_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_ContactInfoes_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ContactInfoes" EntitySet="ContactInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomAmenities_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_CustomAmenities_dbo_Buildings_BuildingId">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="CustomAmenities" EntitySet="CustomAmenities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FeaturedListings_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_FeaturedListings_dbo_Buildings_BuildingId">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="FeaturedListings" EntitySet="FeaturedListings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderItems_dbo_Orders_OrderId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_OrderItems_dbo_Orders_OrderId">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Orders_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_Orders_dbo_Buildings_BuildingId">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Orders_dbo_UserCreditCards_UserCreditCardId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_Orders_dbo_UserCreditCards_UserCreditCardId">
+            <End Role="UserCreditCards" EntitySet="UserCreditCards" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Orders_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_Orders_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Photos_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_Photos_dbo_Buildings_BuildingId">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="Photos" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SavedBuildings_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_SavedBuildings_dbo_Buildings_BuildingId">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="SavedBuildings" EntitySet="SavedBuildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SavedBuildings_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_SavedBuildings_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SavedBuildings" EntitySet="SavedBuildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserApplications_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_UserApplications_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserApplications" EntitySet="UserApplications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserCreditCards_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_UserCreditCards_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserCreditCards" EntitySet="UserCreditCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserInterests_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_UserInterests_dbo_Buildings_BuildingId">
+            <End Role="Buildings" EntitySet="Buildings" />
+            <End Role="UserInterests" EntitySet="UserInterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserInterests_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.Store.FK_dbo_UserInterests_dbo_Users_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserInterests" EntitySet="UserInterests" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AffiliateUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AffiliateUserKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="ApiKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApiKeys">
+          <Key>
+            <PropertyRef Name="ApiKeyId" />
+          </Key>
+          <Property Name="ApiKeyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="BuildingAmenities">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+            <PropertyRef Name="AmenityId" />
+          </Key>
+          <Property Name="BuildingId" Type="bigint" Nullable="false" />
+          <Property Name="AmenityId" Type="nvarchar" Nullable="false" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Buildings">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+          </Key>
+          <Property Name="BuildingId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDateUtc" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateDateUtc" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="RibbonId" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateRibbonActivated" Type="datetime" />
+          <Property Name="ContactInfoId" Type="int" />
+          <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="250" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Zip" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Latitude" Type="real" Nullable="false" />
+          <Property Name="Longitude" Type="real" Nullable="false" />
+          <Property Name="PropertyTypeCode" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" />
+          <Property Name="SquareFeet" Type="int" />
+          <Property Name="Acres" Type="real" />
+          <Property Name="YearBuilt" Type="int" />
+          <Property Name="Bedrooms" Type="int" />
+          <Property Name="Bathrooms" Type="real" />
+          <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="DateAvailableUtc" Type="datetime" />
+          <Property Name="DateActivatedUtc" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsCreditCheckRequired" Type="bit" Nullable="false" />
+          <Property Name="IsBackgroundCheckRequired" Type="bit" Nullable="false" />
+          <Property Name="Deposit" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="RefundableDeposit" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="LeaseLengthCode" Type="int" Nullable="false" />
+          <Property Name="IsSmokingAllowed" Type="bit" Nullable="false" />
+          <Property Name="ArePetsAllowed" Type="bit" Nullable="false" />
+          <Property Name="IsRemovedByAdmin" Type="bit" Nullable="false" />
+          <Property Name="IsReported" Type="bit" Nullable="false" />
+          <Property Name="ReportedText" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="HasPriority" Type="bit" Nullable="false" />
+          <Property Name="DatePrioritized" Type="datetime" />
+          <Property Name="PetFee" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="TemporaryOrderId" Type="int" />
+          <Property Name="PrimaryPhotoId" Type="uniqueidentifier" />
+          <Property Name="PrimaryPhotoExtension" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ContactInfoes">
+          <Key>
+            <PropertyRef Name="ContactInfoId" />
+          </Key>
+          <Property Name="ContactInfoId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ContactInfoTypeCode" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShowPhoneNumber" Type="bit" Nullable="false" />
+          <Property Name="ShowEmailAddress" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomAmenities">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="BuildingId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FeaturedListings">
+          <Key>
+            <PropertyRef Name="FeaturedListingId" />
+          </Key>
+          <Property Name="FeaturedListingId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingId" Type="bigint" Nullable="false" />
+          <Property Name="ScheduledDate" Type="datetime" Nullable="false" />
+          <Property Name="Zip" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="OrderItems">
+          <Key>
+            <PropertyRef Name="OrderItemId" />
+          </Key>
+          <Property Name="OrderItemId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ProductOption" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductDescription" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingId" Type="bigint" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserCreditCardId" Type="int" />
+          <Property Name="OrderTotal" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="PromoCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="OrderStatusCode" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Photos">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Name="PhotoId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BuildingId" Type="bigint" Nullable="false" />
+          <Property Name="IsPrimary" Type="bit" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="Extension" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="CreateDateUtc" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UpdateDateUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SavedBuildings">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="BuildingId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BuildingId" Type="bigint" Nullable="false" />
+          <Property Name="CreateDateUtc" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserApplications">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Ssn" Type="nvarchar" MaxLength="50" />
+          <Property Name="PresentPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="PresentAddressLine1" Type="nvarchar" MaxLength="250" />
+          <Property Name="PresentAddressLine2" Type="nvarchar" MaxLength="250" />
+          <Property Name="PresentCity" Type="nvarchar" MaxLength="250" />
+          <Property Name="PresentState" Type="nvarchar" MaxLength="50" />
+          <Property Name="PresentZip" Type="nvarchar" MaxLength="10" />
+          <Property Name="PresentLandlord" Type="nvarchar" MaxLength="50" />
+          <Property Name="PresentLandlordPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousAddressLine1" Type="nvarchar" MaxLength="250" />
+          <Property Name="PreviousAddressLine2" Type="nvarchar" MaxLength="250" />
+          <Property Name="PreviousCity" Type="nvarchar" MaxLength="250" />
+          <Property Name="PreviousState" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousZip" Type="nvarchar" MaxLength="10" />
+          <Property Name="PreviousLandlord" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousLandlordPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="PresentEmployer" Type="nvarchar" MaxLength="50" />
+          <Property Name="PresentEmployerPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyContact" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousEmployer" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousEmployerPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyContactPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyContactAddressLine1" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmergencyContactAddressLine2" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmergencyContactCity" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmergencyContactState" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmergencyContactZip" Type="nvarchar" MaxLength="10" />
+          <Property Name="VehicleYear" Type="int" />
+          <Property Name="VehicleMake" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleModel" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleLicenseNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleState" Type="nvarchar" MaxLength="50" />
+          <Property Name="HasBeenConvicted" Type="bit" Nullable="false" />
+          <Property Name="ConvictedExplaination" Type="nvarchar" MaxLength="500" />
+          <Property Name="HasEverBeenUnlawfulDetainer" Type="bit" Nullable="false" />
+          <Property Name="CreateDateUtc" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDateUtc" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserCreditCards">
+          <Key>
+            <PropertyRef Name="UserCreditCardId" />
+          </Key>
+          <Property Name="UserCreditCardId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Alias" Type="bigint" />
+          <Property Name="AccountReference" Type="uniqueidentifier" />
+          <Property Name="CardNumber" Type="nvarchar" Nullable="false" MaxLength="16" />
+          <Property Name="CardName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExpirationMonth" Type="int" Nullable="false" />
+          <Property Name="ExpirationYear" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="Zip" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserInterests">
+          <Key>
+            <PropertyRef Name="UserInterestId" />
+          </Key>
+          <Property Name="UserInterestId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BuildingId" Type="bigint" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ResponseMessage" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ApplicationSubmitted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDateUtc" Type="datetime" Nullable="false" />
+          <Property Name="CreateDateUtc" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ReferenceId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZipInfoes">
+          <Key>
+            <PropertyRef Name="ZipInfoId" />
+          </Key>
+          <Property Name="ZipInfoId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Latitude" Type="real" Nullable="false" />
+          <Property Name="Longitude" Type="real" Nullable="false" />
+          <Property Name="CityAliasName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="StateCode" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="ZipCode" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AffiliateUsers_dbo_Users_UserId">
+          <End Role="Users" Type="Rentler.Data.RentlerContextModel.Store.Users" Multiplicity="1" />
+          <End Role="AffiliateUsers" Type="Rentler.Data.RentlerContextModel.Store.AffiliateUsers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AffiliateUsers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId">
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BuildingAmenities" Type="Rentler.Data.RentlerContextModel.Store.BuildingAmenities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="BuildingAmenities">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId">
+          <End Role="ContactInfoes" Type="Rentler.Data.RentlerContextModel.Store.ContactInfoes" Multiplicity="0..1" />
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfoes">
+              <PropertyRef Name="ContactInfoId" />
+            </Principal>
+            <Dependent Role="Buildings">
+              <PropertyRef Name="ContactInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Buildings_dbo_Orders_TemporaryOrderId">
+          <End Role="Orders" Type="Rentler.Data.RentlerContextModel.Store.Orders" Multiplicity="0..1" />
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="Buildings">
+              <PropertyRef Name="TemporaryOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Buildings_dbo_Users_UserId">
+          <End Role="Users" Type="Rentler.Data.RentlerContextModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Buildings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ContactInfoes_dbo_Users_UserId">
+          <End Role="Users" Type="Rentler.Data.RentlerContextModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ContactInfoes" Type="Rentler.Data.RentlerContextModel.Store.ContactInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ContactInfoes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomAmenities_dbo_Buildings_BuildingId">
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CustomAmenities" Type="Rentler.Data.RentlerContextModel.Store.CustomAmenities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="CustomAmenities">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FeaturedListings_dbo_Buildings_BuildingId">
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FeaturedListings" Type="Rentler.Data.RentlerContextModel.Store.FeaturedListings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="FeaturedListings">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderItems_dbo_Orders_OrderId">
+          <End Role="Orders" Type="Rentler.Data.RentlerContextModel.Store.Orders" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderItems" Type="Rentler.Data.RentlerContextModel.Store.OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Orders_dbo_Buildings_BuildingId">
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="0..1" />
+          <End Role="Orders" Type="Rentler.Data.RentlerContextModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Orders_dbo_UserCreditCards_UserCreditCardId">
+          <End Role="UserCreditCards" Type="Rentler.Data.RentlerContextModel.Store.UserCreditCards" Multiplicity="0..1" />
+          <End Role="Orders" Type="Rentler.Data.RentlerContextModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCreditCards">
+              <PropertyRef Name="UserCreditCardId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserCreditCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Orders_dbo_Users_UserId">
+          <End Role="Users" Type="Rentler.Data.RentlerContextModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Orders" Type="Rentler.Data.RentlerContextModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Photos_dbo_Buildings_BuildingId">
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Photos" Type="Rentler.Data.RentlerContextModel.Store.Photos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="Photos">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SavedBuildings_dbo_Buildings_BuildingId">
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="1" />
+          <End Role="SavedBuildings" Type="Rentler.Data.RentlerContextModel.Store.SavedBuildings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="SavedBuildings">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SavedBuildings_dbo_Users_UserId">
+          <End Role="Users" Type="Rentler.Data.RentlerContextModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SavedBuildings" Type="Rentler.Data.RentlerContextModel.Store.SavedBuildings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="SavedBuildings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserApplications_dbo_Users_UserId">
+          <End Role="Users" Type="Rentler.Data.RentlerContextModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserApplications" Type="Rentler.Data.RentlerContextModel.Store.UserApplications" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserApplications">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserCreditCards_dbo_Users_UserId">
+          <End Role="Users" Type="Rentler.Data.RentlerContextModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserCreditCards" Type="Rentler.Data.RentlerContextModel.Store.UserCreditCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserCreditCards">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserInterests_dbo_Buildings_BuildingId">
+          <End Role="Buildings" Type="Rentler.Data.RentlerContextModel.Store.Buildings" Multiplicity="1" />
+          <End Role="UserInterests" Type="Rentler.Data.RentlerContextModel.Store.UserInterests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Buildings">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="UserInterests">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserInterests_dbo_Users_UserId">
+          <End Role="Users" Type="Rentler.Data.RentlerContextModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserInterests" Type="Rentler.Data.RentlerContextModel.Store.UserInterests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserInterests">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Rentler.Data.RentlerContextModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="RentlerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AffiliateUsers" EntityType="Rentler.Data.RentlerContextModel.AffiliateUser" />
+          <EntitySet Name="ApiKeys" EntityType="Rentler.Data.RentlerContextModel.ApiKey" />
+          <EntitySet Name="BuildingAmenities" EntityType="Rentler.Data.RentlerContextModel.BuildingAmenity" />
+          <EntitySet Name="CustomAmenities" EntityType="Rentler.Data.RentlerContextModel.CustomAmenity" />
+          <EntitySet Name="FeaturedListings" EntityType="Rentler.Data.RentlerContextModel.FeaturedListing" />
+          <EntitySet Name="OrderItems" EntityType="Rentler.Data.RentlerContextModel.OrderItem" />
+          <EntitySet Name="Orders" EntityType="Rentler.Data.RentlerContextModel.Order" />
+          <EntitySet Name="Photos" EntityType="Rentler.Data.RentlerContextModel.Photo" />
+          <EntitySet Name="SavedBuildings" EntityType="Rentler.Data.RentlerContextModel.SavedBuilding" />
+          <EntitySet Name="UserApplications" EntityType="Rentler.Data.RentlerContextModel.UserApplication" />
+          <EntitySet Name="UserCreditCards" EntityType="Rentler.Data.RentlerContextModel.UserCreditCard" />
+          <EntitySet Name="Users" EntityType="Rentler.Data.RentlerContextModel.User" />
+          <EntitySet Name="ZipInfoes" EntityType="Rentler.Data.RentlerContextModel.ZipInfo" />
+          <AssociationSet Name="AffiliateUser_User" Association="Rentler.Data.RentlerContextModel.AffiliateUser_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AffiliateUser" EntitySet="AffiliateUsers" />
+          </AssociationSet>
+          <AssociationSet Name="OrderItem_Order" Association="Rentler.Data.RentlerContextModel.OrderItem_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="Order_User" Association="Rentler.Data.RentlerContextModel.Order_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="Order_UserCreditCard" Association="Rentler.Data.RentlerContextModel.Order_UserCreditCard">
+            <End Role="UserCreditCard" EntitySet="UserCreditCards" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="SavedBuilding_User" Association="Rentler.Data.RentlerContextModel.SavedBuilding_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SavedBuilding" EntitySet="SavedBuildings" />
+          </AssociationSet>
+          <AssociationSet Name="UserApplication_User" Association="Rentler.Data.RentlerContextModel.UserApplication_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserApplication" EntitySet="UserApplications" />
+          </AssociationSet>
+          <AssociationSet Name="UserCreditCard_User" Association="Rentler.Data.RentlerContextModel.UserCreditCard_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserCreditCard" EntitySet="UserCreditCards" />
+          </AssociationSet>
+          <EntitySet Name="UserInterests" EntityType="Rentler.Data.RentlerContextModel.UserInterest" />
+          <AssociationSet Name="UserInterest_User" Association="Rentler.Data.RentlerContextModel.UserInterest_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserInterest" EntitySet="UserInterests" />
+          </AssociationSet>
+          <EntitySet Name="Buildings" EntityType="Rentler.Data.RentlerContextModel.Building" />
+          <EntitySet Name="ContactInfoes" EntityType="Rentler.Data.RentlerContextModel.ContactInfo" />
+          <AssociationSet Name="FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="BuildingAmenity" EntitySet="BuildingAmenities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId" Association="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId">
+            <End Role="ContactInfo" EntitySet="ContactInfoes" />
+            <End Role="Building" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Buildings_dbo_Orders_TemporaryOrderId" Association="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_Orders_TemporaryOrderId">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Building" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Buildings_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_Users_UserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Building" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CustomAmenities_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.FK_dbo_CustomAmenities_dbo_Buildings_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="CustomAmenity" EntitySet="CustomAmenities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FeaturedListings_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.FK_dbo_FeaturedListings_dbo_Buildings_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="FeaturedListing" EntitySet="FeaturedListings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Orders_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.FK_dbo_Orders_dbo_Buildings_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Photos_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.FK_dbo_Photos_dbo_Buildings_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Photo" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SavedBuildings_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.FK_dbo_SavedBuildings_dbo_Buildings_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="SavedBuilding" EntitySet="SavedBuildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_UserInterests_dbo_Buildings_BuildingId" Association="Rentler.Data.RentlerContextModel.FK_dbo_UserInterests_dbo_Buildings_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="UserInterest" EntitySet="UserInterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ContactInfoes_dbo_Users_UserId" Association="Rentler.Data.RentlerContextModel.FK_dbo_ContactInfoes_dbo_Users_UserId">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ContactInfo" EntitySet="ContactInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AffiliateUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="AffiliateUserKey" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ApiKey" Nullable="false" />
+          <Property Type="String" Name="PasswordHash" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Rentler.Data.RentlerContextModel.AffiliateUser_User" FromRole="AffiliateUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ApiKey">
+          <Key>
+            <PropertyRef Name="ApiKeyId" />
+          </Key>
+          <Property Type="Guid" Name="ApiKeyId" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BuildingAmenity">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+            <PropertyRef Name="AmenityId" />
+          </Key>
+          <Property Type="Int64" Name="BuildingId" Nullable="false" />
+          <Property Type="String" Name="AmenityId" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Building" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId" FromRole="BuildingAmenity" ToRole="Building" />
+        </EntityType>
+        <EntityType Name="CustomAmenity">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Type="Int64" Name="BuildingId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Building" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_CustomAmenities_dbo_Buildings_BuildingId" FromRole="CustomAmenity" ToRole="Building" />
+        </EntityType>
+        <EntityType Name="FeaturedListing">
+          <Key>
+            <PropertyRef Name="FeaturedListingId" />
+          </Key>
+          <Property Type="Int32" Name="FeaturedListingId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="BuildingId" Nullable="false" />
+          <Property Type="DateTime" Name="ScheduledDate" Nullable="false" />
+          <Property Type="String" Name="Zip" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Building" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_FeaturedListings_dbo_Buildings_BuildingId" FromRole="FeaturedListing" ToRole="Building" />
+        </EntityType>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="OrderItemId" />
+          </Key>
+          <Property Type="Int32" Name="OrderItemId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="OrderId" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="String" Name="ProductId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductOption" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductDescription" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Order" Relationship="Rentler.Data.RentlerContextModel.OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Type="Int32" Name="OrderId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="BuildingId" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="UserCreditCardId" />
+          <Property Type="Decimal" Name="OrderTotal" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="PromoCode" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="Int32" Name="OrderStatusCode" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderItems" Relationship="Rentler.Data.RentlerContextModel.OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
+          <NavigationProperty Name="User" Relationship="Rentler.Data.RentlerContextModel.Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="UserCreditCard" Relationship="Rentler.Data.RentlerContextModel.Order_UserCreditCard" FromRole="Order" ToRole="UserCreditCard" />
+          <NavigationProperty Name="Buildings" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_Orders_TemporaryOrderId" FromRole="Order" ToRole="Building" />
+          <NavigationProperty Name="Building" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Orders_dbo_Buildings_BuildingId" FromRole="Order" ToRole="Building" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="PhotoId" />
+          </Key>
+          <Property Type="Guid" Name="PhotoId" Nullable="false" />
+          <Property Type="Int64" Name="BuildingId" Nullable="false" />
+          <Property Type="Boolean" Name="IsPrimary" Nullable="false" />
+          <Property Type="Int32" Name="SortOrder" Nullable="false" />
+          <Property Type="String" Name="Extension" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDateUtc" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UpdateDateUtc" Nullable="false" />
+          <Property Type="String" Name="UpdatedBy" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Building" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Photos_dbo_Buildings_BuildingId" FromRole="Photo" ToRole="Building" />
+        </EntityType>
+        <EntityType Name="SavedBuilding">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="BuildingId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int64" Name="BuildingId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDateUtc" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Rentler.Data.RentlerContextModel.SavedBuilding_User" FromRole="SavedBuilding" ToRole="User" />
+          <NavigationProperty Name="Building" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_SavedBuildings_dbo_Buildings_BuildingId" FromRole="SavedBuilding" ToRole="Building" />
+        </EntityType>
+        <EntityType Name="UserApplication">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="FirstName" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Ssn" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentAddressLine1" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentAddressLine2" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentCity" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentState" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentZip" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentLandlord" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentLandlordPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousAddressLine1" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousAddressLine2" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousCity" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousState" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousZip" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousLandlord" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousLandlordPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentEmployer" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PresentEmployerPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContact" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousEmployer" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousEmployerPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContactPhone" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContactAddressLine1" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContactAddressLine2" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContactCity" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContactState" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EmergencyContactZip" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="VehicleYear" />
+          <Property Type="String" Name="VehicleMake" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VehicleModel" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VehicleColor" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VehicleLicenseNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VehicleState" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="HasBeenConvicted" Nullable="false" />
+          <Property Type="String" Name="ConvictedExplaination" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="HasEverBeenUnlawfulDetainer" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDateUtc" />
+          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UpdateDateUtc" />
+          <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Rentler.Data.RentlerContextModel.UserApplication_User" FromRole="UserApplication" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserCreditCard">
+          <Key>
+            <PropertyRef Name="UserCreditCardId" />
+          </Key>
+          <Property Type="Int32" Name="UserCreditCardId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int64" Name="Alias" />
+          <Property Type="Guid" Name="AccountReference" />
+          <Property Type="String" Name="CardNumber" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CardName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ExpirationMonth" Nullable="false" />
+          <Property Type="Int32" Name="ExpirationYear" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address2" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Zip" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="DateTime" Name="UpdateDate" />
+          <Property Type="String" Name="UpdatedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="Rentler.Data.RentlerContextModel.Order_UserCreditCard" FromRole="UserCreditCard" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="Rentler.Data.RentlerContextModel.UserCreditCard_User" FromRole="UserCreditCard" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordHash" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UpdateDateUtc" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDateUtc" Nullable="false" />
+          <Property Type="String" Name="UpdatedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Guid" Name="ReferenceId" Nullable="false" />
+          <NavigationProperty Name="AffiliateUser" Relationship="Rentler.Data.RentlerContextModel.AffiliateUser_User" FromRole="User" ToRole="AffiliateUser" />
+          <NavigationProperty Name="Orders" Relationship="Rentler.Data.RentlerContextModel.Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="SavedBuildings" Relationship="Rentler.Data.RentlerContextModel.SavedBuilding_User" FromRole="User" ToRole="SavedBuilding" />
+          <NavigationProperty Name="UserApplication" Relationship="Rentler.Data.RentlerContextModel.UserApplication_User" FromRole="User" ToRole="UserApplication" />
+          <NavigationProperty Name="UserCreditCards" Relationship="Rentler.Data.RentlerContextModel.UserCreditCard_User" FromRole="User" ToRole="UserCreditCard" />
+          <NavigationProperty Name="UserInterests" Relationship="Rentler.Data.RentlerContextModel.UserInterest_User" FromRole="User" ToRole="UserInterest" />
+          <NavigationProperty Name="Buildings" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_Users_UserId" FromRole="User" ToRole="Building" />
+          <NavigationProperty Name="ContactInfoes" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_ContactInfoes_dbo_Users_UserId" FromRole="User" ToRole="ContactInfo" />
+        </EntityType>
+        <EntityType Name="ZipInfo">
+          <Key>
+            <PropertyRef Name="ZipInfoId" />
+          </Key>
+          <Property Type="Int64" Name="ZipInfoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Single" Name="Latitude" Nullable="false" />
+          <Property Type="Single" Name="Longitude" Nullable="false" />
+          <Property Type="String" Name="CityAliasName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StateCode" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ZipCode" Nullable="false" />
+        </EntityType>
+        <Association Name="AffiliateUser_User">
+          <End Type="Rentler.Data.RentlerContextModel.User" Role="User" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.AffiliateUser" Role="AffiliateUser" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AffiliateUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderItem_Order">
+          <End Type="Rentler.Data.RentlerContextModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Order_User">
+          <End Type="Rentler.Data.RentlerContextModel.User" Role="User" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Order_UserCreditCard">
+          <End Type="Rentler.Data.RentlerContextModel.UserCreditCard" Role="UserCreditCard" Multiplicity="0..1" />
+          <End Type="Rentler.Data.RentlerContextModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCreditCard">
+              <PropertyRef Name="UserCreditCardId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserCreditCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SavedBuilding_User">
+          <End Type="Rentler.Data.RentlerContextModel.User" Role="User" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.SavedBuilding" Role="SavedBuilding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="SavedBuilding">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserApplication_User">
+          <End Type="Rentler.Data.RentlerContextModel.User" Role="User" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.UserApplication" Role="UserApplication" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserApplication">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserCreditCard_User">
+          <End Type="Rentler.Data.RentlerContextModel.User" Role="User" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.UserCreditCard" Role="UserCreditCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserCreditCard">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserInterest">
+          <Key>
+            <PropertyRef Name="UserInterestId" />
+          </Key>
+          <Property Type="Int32" Name="UserInterestId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int64" Name="BuildingId" Nullable="false" />
+          <Property Type="String" Name="Message" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ResponseMessage" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="ApplicationSubmitted" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Rentler.Data.RentlerContextModel.UserInterest_User" FromRole="UserInterest" ToRole="User" />
+          <NavigationProperty Name="Building" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_UserInterests_dbo_Buildings_BuildingId" FromRole="UserInterest" ToRole="Building" />
+        </EntityType>
+        <Association Name="UserInterest_User">
+          <End Type="Rentler.Data.RentlerContextModel.User" Role="User" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.UserInterest" Role="UserInterest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserInterest">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+          </Key>
+          <Property Type="Int64" Name="BuildingId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDateUtc" />
+          <Property Type="String" Name="CreatedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UpdateDateUtc" />
+          <Property Type="String" Name="UpdatedBy" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="RibbonId" MaxLength="50" FixedLength="false" Unicode="true" />
+					<Property Type="DateTime" Name="DateRibbonActivated" />
+					<Property Type="Int32" Name="ContactInfoId" />
+          <Property Type="String" Name="Address1" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address2" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="State" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Zip" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Single" Name="Latitude" Nullable="false" />
+          <Property Type="Single" Name="Longitude" Nullable="false" />
+          <Property Type="Int32" Name="PropertyTypeCode" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SquareFeet" />
+          <Property Type="Single" Name="Acres" />
+          <Property Type="Int32" Name="YearBuilt" />
+          <Property Type="Int32" Name="Bedrooms" />
+          <Property Type="Single" Name="Bathrooms" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="DateAvailableUtc" />
+          <Property Type="DateTime" Name="DateActivatedUtc" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="IsCreditCheckRequired" Nullable="false" />
+          <Property Type="Boolean" Name="IsBackgroundCheckRequired" Nullable="false" />
+          <Property Type="Decimal" Name="Deposit" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="RefundableDeposit" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="LeaseLengthCode" Nullable="false" />
+          <Property Type="Boolean" Name="IsSmokingAllowed" Nullable="false" />
+          <Property Type="Boolean" Name="ArePetsAllowed" Nullable="false" />
+          <Property Type="Boolean" Name="IsRemovedByAdmin" Nullable="false" />
+          <Property Type="Boolean" Name="IsReported" Nullable="false" />
+          <Property Type="String" Name="ReportedText" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Boolean" Name="HasPriority" Nullable="false" />
+          <Property Type="DateTime" Name="DatePrioritized" />
+          <Property Type="Decimal" Name="PetFee" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="TemporaryOrderId" />
+          <Property Type="Guid" Name="PrimaryPhotoId" />
+          <Property Type="String" Name="PrimaryPhotoExtension" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BuildingAmenities" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId" FromRole="Building" ToRole="BuildingAmenity" />
+          <NavigationProperty Name="ContactInfo" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId" FromRole="Building" ToRole="ContactInfo" />
+          <NavigationProperty Name="Order" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_Orders_TemporaryOrderId" FromRole="Building" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_Users_UserId" FromRole="Building" ToRole="User" />
+          <NavigationProperty Name="CustomAmenities" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_CustomAmenities_dbo_Buildings_BuildingId" FromRole="Building" ToRole="CustomAmenity" />
+          <NavigationProperty Name="FeaturedListings" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_FeaturedListings_dbo_Buildings_BuildingId" FromRole="Building" ToRole="FeaturedListing" />
+          <NavigationProperty Name="Orders" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Orders_dbo_Buildings_BuildingId" FromRole="Building" ToRole="Order" />
+          <NavigationProperty Name="Photos" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Photos_dbo_Buildings_BuildingId" FromRole="Building" ToRole="Photo" />
+          <NavigationProperty Name="SavedBuildings" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_SavedBuildings_dbo_Buildings_BuildingId" FromRole="Building" ToRole="SavedBuilding" />
+          <NavigationProperty Name="UserInterests" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_UserInterests_dbo_Buildings_BuildingId" FromRole="Building" ToRole="UserInterest" />
+        </EntityType>
+        <EntityType Name="ContactInfo">
+          <Key>
+            <PropertyRef Name="ContactInfoId" />
+          </Key>
+          <Property Type="Int32" Name="ContactInfoId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="ContactInfoTypeCode" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyName" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="ShowPhoneNumber" Nullable="false" />
+          <Property Type="Boolean" Name="ShowEmailAddress" Nullable="false" />
+          <NavigationProperty Name="Buildings" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId" FromRole="ContactInfo" ToRole="Building" />
+          <NavigationProperty Name="User" Relationship="Rentler.Data.RentlerContextModel.FK_dbo_ContactInfoes_dbo_Users_UserId" FromRole="ContactInfo" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId">
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.BuildingAmenity" Role="BuildingAmenity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="BuildingAmenity">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId">
+          <End Type="Rentler.Data.RentlerContextModel.ContactInfo" Role="ContactInfo" Multiplicity="0..1" />
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactInfo">
+              <PropertyRef Name="ContactInfoId" />
+            </Principal>
+            <Dependent Role="Building">
+              <PropertyRef Name="ContactInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Buildings_dbo_Orders_TemporaryOrderId">
+          <End Type="Rentler.Data.RentlerContextModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="Building">
+              <PropertyRef Name="TemporaryOrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Buildings_dbo_Users_UserId">
+          <End Type="Rentler.Data.RentlerContextModel.User" Role="User" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Building">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CustomAmenities_dbo_Buildings_BuildingId">
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.CustomAmenity" Role="CustomAmenity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="CustomAmenity">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FeaturedListings_dbo_Buildings_BuildingId">
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.FeaturedListing" Role="FeaturedListing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="FeaturedListing">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Orders_dbo_Buildings_BuildingId">
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="0..1" />
+          <End Type="Rentler.Data.RentlerContextModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Photos_dbo_Buildings_BuildingId">
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.Photo" Role="Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SavedBuildings_dbo_Buildings_BuildingId">
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.SavedBuilding" Role="SavedBuilding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="SavedBuilding">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_UserInterests_dbo_Buildings_BuildingId">
+          <End Type="Rentler.Data.RentlerContextModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.UserInterest" Role="UserInterest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="UserInterest">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ContactInfoes_dbo_Users_UserId">
+          <End Type="Rentler.Data.RentlerContextModel.User" Role="User" Multiplicity="1" />
+          <End Type="Rentler.Data.RentlerContextModel.ContactInfo" Role="ContactInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="ContactInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentlerDataRentlerContextModelStoreContainer" CdmEntityContainer="RentlerEntities">
+          <EntitySetMapping Name="AffiliateUsers">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.AffiliateUser">
+              <MappingFragment StoreEntitySet="AffiliateUsers">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="ApiKey" ColumnName="ApiKey" />
+                <ScalarProperty Name="AffiliateUserKey" ColumnName="AffiliateUserKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApiKeys">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.ApiKey">
+              <MappingFragment StoreEntitySet="ApiKeys">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApiKeyId" ColumnName="ApiKeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuildingAmenities">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.BuildingAmenity">
+              <MappingFragment StoreEntitySet="BuildingAmenities">
+                <ScalarProperty Name="AmenityId" ColumnName="AmenityId" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomAmenities">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.CustomAmenity">
+              <MappingFragment StoreEntitySet="CustomAmenities">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeaturedListings">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.FeaturedListing">
+              <MappingFragment StoreEntitySet="FeaturedListings">
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="ScheduledDate" ColumnName="ScheduledDate" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="FeaturedListingId" ColumnName="FeaturedListingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductOption" ColumnName="ProductOption" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderItemId" ColumnName="OrderItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="OrderStatusCode" ColumnName="OrderStatusCode" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="PromoCode" ColumnName="PromoCode" />
+                <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+                <ScalarProperty Name="UserCreditCardId" ColumnName="UserCreditCardId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.Photo">
+              <MappingFragment StoreEntitySet="Photos">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdateDateUtc" ColumnName="UpdateDateUtc" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SavedBuildings">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.SavedBuilding">
+              <MappingFragment StoreEntitySet="SavedBuildings">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserApplications">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.UserApplication">
+              <MappingFragment StoreEntitySet="UserApplications">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdateDateUtc" ColumnName="UpdateDateUtc" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+                <ScalarProperty Name="HasEverBeenUnlawfulDetainer" ColumnName="HasEverBeenUnlawfulDetainer" />
+                <ScalarProperty Name="ConvictedExplaination" ColumnName="ConvictedExplaination" />
+                <ScalarProperty Name="HasBeenConvicted" ColumnName="HasBeenConvicted" />
+                <ScalarProperty Name="VehicleState" ColumnName="VehicleState" />
+                <ScalarProperty Name="VehicleLicenseNumber" ColumnName="VehicleLicenseNumber" />
+                <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+                <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+                <ScalarProperty Name="VehicleMake" ColumnName="VehicleMake" />
+                <ScalarProperty Name="VehicleYear" ColumnName="VehicleYear" />
+                <ScalarProperty Name="EmergencyContactZip" ColumnName="EmergencyContactZip" />
+                <ScalarProperty Name="EmergencyContactState" ColumnName="EmergencyContactState" />
+                <ScalarProperty Name="EmergencyContactCity" ColumnName="EmergencyContactCity" />
+                <ScalarProperty Name="EmergencyContactAddressLine2" ColumnName="EmergencyContactAddressLine2" />
+                <ScalarProperty Name="EmergencyContactAddressLine1" ColumnName="EmergencyContactAddressLine1" />
+                <ScalarProperty Name="EmergencyContactPhone" ColumnName="EmergencyContactPhone" />
+                <ScalarProperty Name="PreviousEmployerPhone" ColumnName="PreviousEmployerPhone" />
+                <ScalarProperty Name="PreviousEmployer" ColumnName="PreviousEmployer" />
+                <ScalarProperty Name="EmergencyContact" ColumnName="EmergencyContact" />
+                <ScalarProperty Name="PresentEmployerPhone" ColumnName="PresentEmployerPhone" />
+                <ScalarProperty Name="PresentEmployer" ColumnName="PresentEmployer" />
+                <ScalarProperty Name="PreviousLandlordPhone" ColumnName="PreviousLandlordPhone" />
+                <ScalarProperty Name="PreviousLandlord" ColumnName="PreviousLandlord" />
+                <ScalarProperty Name="PreviousZip" ColumnName="PreviousZip" />
+                <ScalarProperty Name="PreviousState" ColumnName="PreviousState" />
+                <ScalarProperty Name="PreviousCity" ColumnName="PreviousCity" />
+                <ScalarProperty Name="PreviousAddressLine2" ColumnName="PreviousAddressLine2" />
+                <ScalarProperty Name="PreviousAddressLine1" ColumnName="PreviousAddressLine1" />
+                <ScalarProperty Name="PresentLandlordPhone" ColumnName="PresentLandlordPhone" />
+                <ScalarProperty Name="PresentLandlord" ColumnName="PresentLandlord" />
+                <ScalarProperty Name="PresentZip" ColumnName="PresentZip" />
+                <ScalarProperty Name="PresentState" ColumnName="PresentState" />
+                <ScalarProperty Name="PresentCity" ColumnName="PresentCity" />
+                <ScalarProperty Name="PresentAddressLine2" ColumnName="PresentAddressLine2" />
+                <ScalarProperty Name="PresentAddressLine1" ColumnName="PresentAddressLine1" />
+                <ScalarProperty Name="PresentPhone" ColumnName="PresentPhone" />
+                <ScalarProperty Name="Ssn" ColumnName="Ssn" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserCreditCards">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.UserCreditCard">
+              <MappingFragment StoreEntitySet="UserCreditCards">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ExpirationYear" ColumnName="ExpirationYear" />
+                <ScalarProperty Name="ExpirationMonth" ColumnName="ExpirationMonth" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="AccountReference" ColumnName="AccountReference" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserCreditCardId" ColumnName="UserCreditCardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+                <ScalarProperty Name="UpdateDateUtc" ColumnName="UpdateDateUtc" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZipInfoes">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.ZipInfo">
+              <MappingFragment StoreEntitySet="ZipInfoes">
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CityAliasName" ColumnName="CityAliasName" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="ZipInfoId" ColumnName="ZipInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInterests">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.UserInterest">
+              <MappingFragment StoreEntitySet="UserInterests">
+                <ScalarProperty Name="ApplicationSubmitted" ColumnName="ApplicationSubmitted" />
+                <ScalarProperty Name="ResponseMessage" ColumnName="ResponseMessage" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserInterestId" ColumnName="UserInterestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.Building">
+              <MappingFragment StoreEntitySet="Buildings">
+                <ScalarProperty Name="DateRibbonActivated" ColumnName="DateRibbonActivated" />
+                <ScalarProperty Name="PrimaryPhotoExtension" ColumnName="PrimaryPhotoExtension" />
+                <ScalarProperty Name="PrimaryPhotoId" ColumnName="PrimaryPhotoId" />
+                <ScalarProperty Name="TemporaryOrderId" ColumnName="TemporaryOrderId" />
+                <ScalarProperty Name="PetFee" ColumnName="PetFee" />
+                <ScalarProperty Name="DatePrioritized" ColumnName="DatePrioritized" />
+                <ScalarProperty Name="HasPriority" ColumnName="HasPriority" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ReportedText" ColumnName="ReportedText" />
+                <ScalarProperty Name="IsReported" ColumnName="IsReported" />
+                <ScalarProperty Name="IsRemovedByAdmin" ColumnName="IsRemovedByAdmin" />
+                <ScalarProperty Name="ArePetsAllowed" ColumnName="ArePetsAllowed" />
+                <ScalarProperty Name="IsSmokingAllowed" ColumnName="IsSmokingAllowed" />
+                <ScalarProperty Name="LeaseLengthCode" ColumnName="LeaseLengthCode" />
+                <ScalarProperty Name="RefundableDeposit" ColumnName="RefundableDeposit" />
+                <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+                <ScalarProperty Name="IsBackgroundCheckRequired" ColumnName="IsBackgroundCheckRequired" />
+                <ScalarProperty Name="IsCreditCheckRequired" ColumnName="IsCreditCheckRequired" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateActivatedUtc" ColumnName="DateActivatedUtc" />
+                <ScalarProperty Name="DateAvailableUtc" ColumnName="DateAvailableUtc" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="YearBuilt" ColumnName="YearBuilt" />
+                <ScalarProperty Name="Acres" ColumnName="Acres" />
+                <ScalarProperty Name="SquareFeet" ColumnName="SquareFeet" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PropertyTypeCode" ColumnName="PropertyTypeCode" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+                <ScalarProperty Name="RibbonId" ColumnName="RibbonId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdateDateUtc" ColumnName="UpdateDateUtc" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDateUtc" ColumnName="CreateDateUtc" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactInfoes">
+            <EntityTypeMapping TypeName="Rentler.Data.RentlerContextModel.ContactInfo">
+              <MappingFragment StoreEntitySet="ContactInfoes">
+                <ScalarProperty Name="ShowEmailAddress" ColumnName="ShowEmailAddress" />
+                <ScalarProperty Name="ShowPhoneNumber" ColumnName="ShowPhoneNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactInfoTypeCode" ColumnName="ContactInfoTypeCode" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Rentler" ZoomLevel="80">
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.AffiliateUser" Width="1.5" PointX="3" PointY="12.125" Height="2.1725878906250031" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.ApiKey" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.BuildingAmenity" Width="1.5" PointX="7.5" PointY="15.25" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.CustomAmenity" Width="1.5" PointX="7.5" PointY="17.5" Height="1.595683593749996" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.FeaturedListing" Width="1.5" PointX="7.5" PointY="19.875" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.OrderItem" Width="1.5" PointX="12.75" PointY="24.25" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.Order" Width="1.5" PointX="10.5" PointY="23.75" Height="3.7109993489583388" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.Photo" Width="1.5" PointX="7.5" PointY="27.125" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.SavedBuilding" Width="1.5" PointX="10.5" PointY="20.25" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.UserApplication" Width="1.5" PointX="3" PointY="36.875" Height="9.4800423177083246" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.UserCreditCard" Width="1.5" PointX="3" PointY="30.5" Height="5.63401367187501" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.User" Width="1.5" PointX="0.75" PointY="21.25" Height="4.480205078124996" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.ZipInfo" Width="1.5" PointX="2.75" PointY="0.75" Height="2.3648893229166674" />
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.AffiliateUser_User" >
+          <ConnectorPoint PointX="1.5" PointY="21.25" />
+          <ConnectorPoint PointX="1.5" PointY="13.211293945312502" />
+          <ConnectorPoint PointX="3" PointY="13.211293945312502" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.OrderItem_Order" >
+          <ConnectorPoint PointX="12" PointY="25.528595377604162" />
+          <ConnectorPoint PointX="12.75" PointY="25.528595377604162" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.Order_User" >
+          <ConnectorPoint PointX="0.976072626953125" PointY="25.922506510416667" />
+          <ConnectorPoint PointX="0.976072626953125" PointY="29.528056640624996" />
+          <ConnectorPoint PointX="1.1813159205729167" PointY="29.528056640624996" />
+          <ConnectorPoint PointX="1.3479825872395832" PointY="29.528056640624996" />
+          <ConnectorPoint PointX="1.7052437936197917" PointY="29.528056640624996" />
+          <ConnectorPoint PointX="1.8719104602864582" PointY="29.528056640624996" />
+          <ConnectorPoint PointX="7.25" PointY="29.528056640624996" />
+          <ConnectorPoint PointX="7.25" PointY="25.4062505" />
+          <ConnectorPoint PointX="10.5" PointY="25.4062505" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.Order_UserCreditCard" >
+          <ConnectorPoint PointX="4.5" PointY="33.317006835937505" />
+          <ConnectorPoint PointX="11.25" PointY="33.317006835937505" />
+          <ConnectorPoint PointX="11.25" PointY="27.460999348958335" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.SavedBuilding_User" >
+          <ConnectorPoint PointX="1.5266131904296874" PointY="25.922506510416667" />
+          <ConnectorPoint PointX="1.5266131904296874" PointY="26.172506510416667" />
+          <ConnectorPoint PointX="1.7052437936197917" PointY="26.172506510416667" />
+          <ConnectorPoint PointX="1.8719104602864582" PointY="26.172506510416667" />
+          <ConnectorPoint PointX="4.875" PointY="26.172506510416667" />
+          <ConnectorPoint PointX="4.875" PointY="17.625" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="17.625" />
+          <ConnectorPoint PointX="5.958333333333333" PointY="17.625" />
+          <ConnectorPoint PointX="6.1979191666666678" PointY="17.625" />
+          <ConnectorPoint PointX="6.3645858333333338" PointY="17.625" />
+          <ConnectorPoint PointX="7.25" PointY="17.625" />
+          <ConnectorPoint PointX="7.25" PointY="19.345683593750003" />
+          <ConnectorPoint PointX="10.125" PointY="19.345683593750003" />
+          <ConnectorPoint PointX="10.125" PointY="21.336293945312498" />
+          <ConnectorPoint PointX="10.5" PointY="21.336293945312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.UserApplication_User" >
+          <ConnectorPoint PointX="1.26464925390625" PointY="25.922506510416667" />
+          <ConnectorPoint PointX="1.26464925390625" PointY="41.615021158854162" />
+          <ConnectorPoint PointX="3" PointY="41.615021158854162" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.UserCreditCard_User" >
+          <ConnectorPoint PointX="1.788577126953125" PointY="25.922506510416667" />
+          <ConnectorPoint PointX="1.788577126953125" PointY="33.317006835937505" />
+          <ConnectorPoint PointX="3" PointY="33.317006835937505" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.UserInterest" Width="1.5" PointX="10.5" PointY="16.25" Height="2.5571907552083388" />
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.UserInterest_User" >
+          <ConnectorPoint PointX="1.9062525" PointY="21.25" />
+          <ConnectorPoint PointX="1.9062525" PointY="17.172841796875" />
+          <ConnectorPoint PointX="5.791666666666667" PointY="17.172841796875" />
+          <ConnectorPoint PointX="5.958333333333333" PointY="17.172841796875" />
+          <ConnectorPoint PointX="10.5" PointY="17.172841796875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.Building" Width="1.5" PointX="5.125" PointY="17.875" Height="11.403056640624996" />
+        <EntityTypeShape EntityType="Rentler.Data.RentlerContextModel.ContactInfo" Width="1.5" PointX="2.5" PointY="18.125" Height="3.1340950520833388" />
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_BuildingAmenities_dbo_Buildings_BuildingId" >
+          <ConnectorPoint PointX="5.875" PointY="17.875" />
+          <ConnectorPoint PointX="5.875" PointY="16.047841796875" />
+          <ConnectorPoint PointX="7.5" PointY="16.047841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_ContactInfoes_ContactInfoId" >
+          <ConnectorPoint PointX="4" PointY="19.692047526041669" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="19.692047526041669" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="19.692047526041669" />
+          <ConnectorPoint PointX="5.125" PointY="19.692047526041669" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_Orders_TemporaryOrderId" >
+          <ConnectorPoint PointX="10.5" PointY="26.29687525" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="26.29687525" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="26.29687525" />
+          <ConnectorPoint PointX="6.625" PointY="26.29687525" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_Buildings_dbo_Users_UserId" >
+          <ConnectorPoint PointX="2.25" PointY="23.622050781250003" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="23.622050781250003" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="23.622050781250003" />
+          <ConnectorPoint PointX="5.125" PointY="23.622050781250003" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_CustomAmenities_dbo_Buildings_BuildingId" >
+          <ConnectorPoint PointX="6.625" PointY="18.485341796875" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="18.485341796875" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="18.485341796875" />
+          <ConnectorPoint PointX="7.5" PointY="18.485341796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_FeaturedListings_dbo_Buildings_BuildingId" >
+          <ConnectorPoint PointX="6.625" PointY="20.865143229166669" />
+          <ConnectorPoint PointX="7.5" PointY="20.865143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_Orders_dbo_Buildings_BuildingId" >
+          <ConnectorPoint PointX="6.625" PointY="24.51562525" />
+          <ConnectorPoint PointX="10.5" PointY="24.51562525" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_Photos_dbo_Buildings_BuildingId" >
+          <ConnectorPoint PointX="6.625" PointY="28.201528320312498" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="28.201528320312498" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="28.201528320312498" />
+          <ConnectorPoint PointX="7.5" PointY="28.201528320312498" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_SavedBuildings_dbo_Buildings_BuildingId" >
+          <ConnectorPoint PointX="6.625" PointY="22.170187174479167" />
+          <ConnectorPoint PointX="10.5" PointY="22.170187174479167" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_UserInterests_dbo_Buildings_BuildingId" >
+          <ConnectorPoint PointX="6.2812525000000008" PointY="17.875" />
+          <ConnectorPoint PointX="6.2812525000000008" PointY="17.336423398437496" />
+          <ConnectorPoint PointX="10.5" PointY="17.336423398437496" />
+        </AssociationConnector>
+        <AssociationConnector Association="Rentler.Data.RentlerContextModel.FK_dbo_ContactInfoes_dbo_Users_UserId" >
+          <ConnectorPoint PointX="1.093748" PointY="21.25" />
+          <ConnectorPoint PointX="1.093748" PointY="19.656248000000005" />
+          <ConnectorPoint PointX="1.4166666666666667" PointY="19.656248000000005" />
+          <ConnectorPoint PointX="1.5833333333333333" PointY="19.656248000000005" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="19.656248000000005" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="19.656248000000005" />
+          <ConnectorPoint PointX="2.5" PointY="19.656248000000005" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.875" name="Rentler">
+  <DataContextMoniker Name="/RentlerDataContext" />
+  <nestedChildShapes>
+    <classShape Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" absoluteBounds="4.75, 0.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/RentlerDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12061f93-b831-462d-b188-245aa26b5ef4" absoluteBounds="4.7650000000000006, 0.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="05b6f6c1-eba7-4026-8f2d-ebf7fff1bb2b" absoluteBounds="7.25, 0.5, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/RentlerDataContext/Building" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d2118625-12e3-4180-aeb4-80b58d5b6ebf" absoluteBounds="7.2650000000000006, 0.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 2.15465413411458); (7.25 : 2.15465413411458)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_Building" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="05b6f6c1-eba7-4026-8f2d-ebf7fff1bb2b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b4f6463a-9de5-422e-80e1-e78c0c5ab05f" absoluteBounds="4.75, 4.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/RentlerDataContext/AffiliateUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b4f6e583-f2ac-428f-982a-0d04fe547246" absoluteBounds="4.7650000000000006, 5.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.72486743189251 : 3.80930826822917); (5.72486743189251 : 4.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_AffiliateUser" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="b4f6463a-9de5-422e-80e1-e78c0c5ab05f" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="184ebee2-af81-4bf6-a830-2b6913eaeba4" absoluteBounds="7.375, 5.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/RentlerDataContext/AuthToken" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be0b96b5-d8e8-4fe2-ad75-926c1a0fb937" absoluteBounds="7.3900000000000006, 6.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.281252 : 3.80930826822917); (6.281252 : 4.625); (6.82291916666667 : 4.625 : JumpStart); (6.98958583333333 : 4.625 : JumpEnd); (7 : 4.625); (7 : 6.76044840494792); (7.375 : 6.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_AuthToken" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="184ebee2-af81-4bf6-a830-2b6913eaeba4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4a6ab2f1-fce8-4460-9d32-f4e0fa9afae7" absoluteBounds="0.5, 0.5, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/RentlerDataContext/LandlordInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d05a542-6b10-4e62-8197-b7f818081cb6" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 1.429686875); (2.75208333333333 : 1.429686875 : JumpStart); (2.58541666666667 : 1.429686875 : JumpEnd); (2.5 : 1.429686875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_LandlordInfo" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="4a6ab2f1-fce8-4460-9d32-f4e0fa9afae7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7662998e-b058-40b4-9180-38709d2b0469" absoluteBounds="0.5, 5.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/RentlerDataContext/RoleUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="16a3f5bf-9313-4b28-9f6f-85b9609048c3" absoluteBounds="0.51500000000000012, 5.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 3.16666666666667); (4.375 : 4.18430826822917); (3.83333333333333 : 4.18430826822917); (3.83333333333333 : 3.85097493489583); (2.92708333333333 : 3.85097493489583); (2.92708333333333 : 6.19314697265625); (2.89583333333333 : 6.19314697265625 : JumpStart); (2.58541666666667 : 6.19314697265625 : JumpEnd); (2.5 : 6.19314697265625)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_RoleUser" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="7662998e-b058-40b4-9180-38709d2b0469" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e982bcfd-780d-4fe2-9775-39e868a8f0b5" absoluteBounds="2.75, 7.25, 2, 2.5401025390625">
+      <DataClassMoniker Name="/RentlerDataContext/UserContract" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2b6b43a-35e9-457e-9fba-c562d8152bd4" absoluteBounds="2.765, 7.7100000000000009, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.23097786378503 : 3.80930826822917); (4.59652049056441 : 3.80930826822917 : JumpStart); (4.42985382389774 : 3.80930826822917 : JumpEnd); (4.29796875 : 3.80930826822917); (4.29796875 : 4.49760495117187); (4.75 : 4.49760495117187); (4.75 : 7.25)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_UserContract" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="e982bcfd-780d-4fe2-9775-39e868a8f0b5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d0c16f08-d954-4691-bc92-1c02c92ba5cd" absoluteBounds="3.125, 3.25, 2, 8.8860498046875">
+      <DataClassMoniker Name="/RentlerDataContext/ApplicationInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9f70f661-54d9-4f2f-8af7-1d332763bd10" absoluteBounds="3.14, 3.71, 1.9700000000000002, 8.3260498046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 2.48437375); (3.9062475 : 2.48437375); (3.9062475 : 3.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_ApplicationInfo" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="d0c16f08-d954-4691-bc92-1c02c92ba5cd" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="6cbf5f0f-aa79-4d6e-9336-df817eab0212" absoluteBounds="1.875, 8.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/RentlerDataContext/UserInterest" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90f64386-3f2b-4ce0-9541-300214644d53" absoluteBounds="1.8900000000000001, 8.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 1.9570303125); (2.7 : 1.9570303125); (2.7 : 7.0862939453125); (2.58333333333333 : 7.0862939453125 : JumpStart); (2.41666666666667 : 7.0862939453125 : JumpEnd); (0.55 : 7.0862939453125); (0.55 : 12.1093082682292); (2.4999995 : 12.1093082682292); (2.4999995 : 11.8093082682292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_UserInterest" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="6cbf5f0f-aa79-4d6e-9336-df817eab0212" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.75 : 0.9335914375); (2.66875 : 0.9335914375); (2.66875 : 7.1487939453125); (2.58333333333333 : 7.1487939453125 : JumpStart); (2.41666666666667 : 7.1487939453125 : JumpEnd); (0.425 : 7.1487939453125); (0.425 : 12.3593082682292); (2.84375125 : 12.3593082682292); (2.84375125 : 11.8093082682292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_UserInterest1" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="6cbf5f0f-aa79-4d6e-9336-df817eab0212" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="330cba83-4ea8-413b-8322-1fe4385e64a7" absoluteBounds="0.75, 7.625, 2, 2.5401025390625">
+      <DataClassMoniker Name="/RentlerDataContext/Alert" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce68506b-8eae-467d-8d01-c6206d2a6187" absoluteBounds="0.765, 8.085, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 2.82552020833333); (3.98958083333333 : 2.82552020833333 : JumpStart); (3.82291416666667 : 2.82552020833333 : JumpEnd); (2.8125 : 2.82552020833333); (2.8125 : 7); (2.78333333333333 : 7 : JumpStart); (2.58541666666667 : 7 : JumpEnd); (2.5 : 7); (2.5 : 7.375); (1.7499995 : 7.375); (1.7499995 : 7.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_Alert" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="330cba83-4ea8-413b-8322-1fe4385e64a7" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="81ebf881-a839-4750-b1f8-bf128b3ec8d7" absoluteBounds="6, 7.625, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/RentlerDataContext/SavedListing" />
+      <nestedChildShapes>
+        <elementListCompartment Id="235704d6-a406-4ccf-a68b-28e79d6c2f69" absoluteBounds="6.015, 8.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.75 : 3.01323320117187); (6.9062525 : 3.01323320117187); (6.9062525 : 7.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RentlerDataContext/User/User_SavedListing" />
+      <nodes>
+        <classShapeMoniker Id="35e3f7bb-e103-4a6c-a5a3-f7dce4514eb9" />
+        <classShapeMoniker Id="81ebf881-a839-4750-b1f8-bf128b3ec8d7" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

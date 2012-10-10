@@ -1,0 +1,110 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.PropertyManageModel
+@section title {Dashboard - Manage Property}
+@section description { }
+@section css 
+{    
+    <link href="/css/pages/dashboard.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    <link href="/css/pages/dashboard-property-manage.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    <link href="/css/pages/listing.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    <link href="/css/scrim.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+}
+@section js
+{
+    <script src="/js/rentler.scrim.js?v=@Html.BuildNumber()"></script>   
+    <script src="/js/rentler.property.manage.js?v=@Html.BuildNumber()"></script>
+}
+
+@Html.Partial("TabsNavigation", "myproperties")
+
+@* Secondary Top Banner *@
+<div class="address-information">
+    <div class="container slim">
+        <div class="tenant-status">No Tenant</div>
+        <div class="basic-address">@Model.Listing.Address1 @Model.Listing.Address2</div>
+        <div class="basic-city-state">
+            @Model.Listing.City, @Model.Listing.State @Model.Listing.Zip - 
+            <a href="/dashboard/property/edit/@Model.Listing.BuildingId">Edit Address</a>
+        </div>
+    </div>
+</div>
+@* End Secondary Top Banner *@
+
+
+<div class="container slim">
+
+    <div class="right-listing-preview">
+        <div class="right-listing-head">Search Preview</div>
+        <div class="right-listing-content">
+            <div class="result">
+                <a href="#">
+                    <div class="result-image">
+                        <img src="@Html.GetPhotoLink(@Model.Listing.BuildingId, @Model.Listing.PrimaryPhotoId, 200, 150, @Model.Listing.PrimaryPhotoExtension)" alt="Building Image" />
+                    </div>
+                    <div class="result-info">
+                        <div class="title">@(string.IsNullOrWhiteSpace(Model.Listing.Title) ? Model.Listing.Address1 : Model.Listing.Title)</div>
+			            <div class="location">@Model.Listing.City, @Model.Listing.State</div>
+                        <div class="bed-baths">@Model.Listing.Bedrooms beds @Model.Listing.Bathrooms.Value.ToString("0.#") baths</div>
+                        <div class="price-container"><span class="price">@Model.Listing.Price.ToString("C0")</span> per month</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    @* Listing Details *@
+    <div class="left-listing-details">
+        <div class="dark-heading">Your Listing</div>
+        <div class="dark-heading-content">
+            <div class="details-overview">
+                <a href="#" class="button blue details-viewlisting">View Listing</a>
+                <div class="details-title">@(string.IsNullOrWhiteSpace(Model.Listing.Title) ? Model.Listing.Address1 : Model.Listing.Title)</div>
+                <div class="details-expiration">Expiration Date: 10/7/2012</div>
+            </div>
+
+            <div class="listing-detail-actions">
+                <ul class="listing-action-stats solid-hor-list">
+                    <li>Page Views: @Model.Listing.PageViews</li>
+                    <li>Search Views: @Model.Listing.SearchViews</li>
+                </ul>
+                <ul class="solid-hor-list">
+                    <li>
+                        <a href="/dashboard/property/list/@Model.Listing.BuildingId">Edit Listing</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/property/promote/@Model.Listing.BuildingId">Promote Listing</a>
+                    </li>
+                    <li class="hide-from-results">
+                        <input type="checkbox" />
+                        <div>Hide from Search Results</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="app-accent">
+                <div class="app-list-title">Applications Recieved</div>
+                <div class="app-overview">
+                    <ul class="solid-hor-list listing-action-stats">
+                        <li>(203) 788-5124</li>
+                        <li>Sent 9/14/2012</li>
+                        <li><a href="#">Review Application</a></li>
+                    </ul>
+                    <div class="app-name">
+                        <a href="#">Matthew Kruskamp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="delete-listing-container">
+            <div class="delete-permanent">
+                <a href="#" data-item="delete-property">Permanently Delete Property</a>
+            </div>
+            <div class="delete-create-date">You created this property on 7/13/2012</div>
+        </div>
+
+    </div>
+    @* End Listing Details *@
+    
+</div>
+
+@Html.Partial("DeletePartial", Model.Listing)

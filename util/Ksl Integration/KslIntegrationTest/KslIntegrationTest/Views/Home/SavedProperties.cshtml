@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Listing";
+}
+
+@section Css{
+	<!--global css -->
+	<link rel="stylesheet" href="@ViewBag.RentlerHost/css/embed/timGlobal.css" />
+
+	<!--local css, and scripts needed at the top-->
+	<link rel="stylesheet" href="@ViewBag.RentlerHost/css/embed/search.css" />
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/lib/modernizr-1.5.min.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/loader.js"></script>
+}
+
+@section Scripts{
+	<!--global scripts-->
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/lib/plugins.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/lib/shadedborder.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/global.js"></script>
+
+	<!--local scripts needed for this page-->
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/cmn/lib/jcarousellite.js"></script>
+	<script type="text/javascript" src="@ViewBag.RentlerHost/js/embed/savedproperties.js"></script>
+}
+
+@Html.Raw(ViewBag.SavedPropertiesHtml);

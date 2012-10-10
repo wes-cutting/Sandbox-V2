@@ -1,0 +1,151 @@
+﻿.home {
+    background: url('/images/home-background.png') repeat-x;
+}
+.home .hero {
+    height: 420px;
+    background: url('/images/home-hero.png') no-repeat bottom center;
+}
+
+.hero-intro {
+    padding-top: 64px;
+}
+    .hero-intro h1 {
+        color: #444d52;
+        margin: 0;
+        font-family: 'Georgia', 'Times News Roman', 'Serif';
+        font-size: 3.3em;
+        line-height: 1em;
+        text-align: center;
+    }
+.search-form {
+    margin-top: 55px;
+    /*margin-top: 38px;*/
+    background: #fff;
+    height: 50px;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 704px;
+    border-bottom: solid 1px #b8b8b8;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+}
+.search-form input[type=text], .search-form select {
+    height: 32px;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif;
+    font-size: 1.4em;
+    padding: 3px 10px;
+    *line-height: 32px;
+    float: left;
+    margin: 0px;
+    -webkit-box-shadow: inset 0 1px 2px 0 #ccc;
+       -moz-box-shadow: inset 0 1px 2px 0 #ccc;
+            box-shadow: inset 0 1px 2px 0 #ccc;
+}
+.search-form input.location {
+    width: 370px;
+    margin-left: 10px;
+}
+.search-form input.max-price {
+    width: 170px;
+    margin-left: 10px;
+}
+.search-form button {
+    float: left;
+    margin-left: 10px;
+}
+.home .indicator {
+    background: url('/images/home-indicator.png') no-repeat;
+    width: 20px;
+    height: 10px;
+    margin-left: 205px;
+    margin-top: -1px;
+}
+.home .features {
+	margin: 0px 5px;
+}
+	.featureSet {
+		width: 300px;
+		margin-right: 30px;
+		float: left;
+	}
+	.featureSet h1 {
+		height: 54px;
+		font-family: 'Georgia', 'Times News Roman', 'Serif';
+		color: #444D52;
+		font-size: 3em;
+		padding-top: 16px;
+		margin: 0px;
+		line-height: 1em;
+		text-align: center;
+	}
+	.featureSet ul {
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+	}
+	.featureSet li {
+		margin: 0px;
+		padding: 0px;
+		height: 39px;
+		color: #808d93;
+		line-height: 16px;
+		padding-top: 6px;
+		padding-left: 40px;
+		padding-right: 26px;
+		background: url('/images/timImage/divide-dotted-x.gif') repeat-x top left;
+	}
+	.featureSet li.single {
+		line-height: 45px;
+		padding-top: 0px;
+		height: 45px;
+	}
+	.featureSet li .check {
+		background: url('/images/timImage/ui.png') no-repeat -190px -348px;
+		width: 9px;
+		height: 9px;
+		position: relative;
+		margin-top: 12px;
+		margin-left: -22px;
+		float: left;
+	}
+	.featureSet li.single .check {
+		margin-top: 18px;
+	}
+	.featureSet li.buttonHolder {
+		padding-top: 23px;
+		height: auto;
+		line-height: inherit;
+		text-align: center;
+		padding-left: 0px;
+	}
+	.featureSet.llove {
+	    margin-right: 0px;
+	}
+	.featureSet.talking {
+        margin-top: 20px;
+	    width: 280px;
+	}
+	.featureSet.talking li {
+	    background: none;
+	}
+	.featureSet.talking h2 {
+	    color: #7398A8;
+        font-size: 1.7em;
+        margin: 0px;
+        font-family: 'Georgia','Times News Roman','Serif';
+	}
+	.featureSet.talking h2.name {
+	    margin-bottom: 10px;
+	    color: #434c51;
+	}
+body .scrimContent {
+	width: auto;
+	top: 15%;
+	margin-left: -334px;
+}
+body .scrimClose {
+	top: 15%;
+	margin-left: 290px;
+}

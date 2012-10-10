@@ -1,0 +1,19 @@
+﻿@model Rentler.Web.Email.EmailListingInterestedModel
+@{
+	ViewBag.Title = "Interested";
+	Layout = null;
+}
+@Model.LandlordName,
+
+@Model.LeadName has shown interest in your property at:
+
+@Model.Address1 @Model.Address2
+@Model.City, @Model.State @Model.Zip
+
+@Model.Text -From @Model.LeadEmail
+
+One feature of Rentler is the ability for tenants to fill out an application and submit it directly to you!
+
+Request an application from @Model.LeadEmail @Rentler.Web.Config.Hostname/property/requestapp/@Model.LeadId
+
+Note: RENTLER.COM DOES NOT REGULATE OR VERIFY THE CONTENT OF THESE MESSAGES. RENTLER EXPRESSLY DISCLAIMS ALL LIABILITY FOR THE CONTENT OR USE OF ANY MATERIAL POSTED VIA THE USER.

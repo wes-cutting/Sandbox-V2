@@ -1,0 +1,25 @@
+﻿@model string
+
+            <div class="well side-nav" style="max-width: 340px; padding: 8px 0;">
+                <ul class="nav nav-list">
+                <li class="nav-header">General</li>
+                <li class="@(Model == "Users" ? "active" : "")">
+                    <i class="icon-user @(Model == "Users" ? "icon-white" : "")"></i> 
+                    <a href="/admin/user/search">Users</a>
+                </li>
+                <li class="@(Model == "Roles" ? "active" : "")">
+                    <i class="icon-tags @(Model == "Roles" ? "icon-white" : "")"></i> 
+                    <a href="/admin/role/search">Roles</a>
+                </li>
+                <li class="nav-header">Sales</li>
+                <li class="@(Model == "Promocodes" ? "active" : "")">
+                    <i class="icon-barcode @(Model == "Promocodes" ? "icon-white" : "")"></i> 
+                    <a href="/admin/role/search">Promo Codes</a>
+                </li>
+                <li class="nav-header">Support</li>
+                <li class="@(Model == "Reported" ? "active" : "")">
+                    <i class="icon-flag @(Model == "Reported" ? "icon-white" : "")"></i> 
+                    <a href="/admin/reported/search">Reported Listings</a>
+                </li>
+                </ul>
+            </div>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\Users\Cyberkruz\Projects\Rentler\Rentlerv2\RentlerTests.nunit</TopNode>
+  <SelectedNode>[0-1021]C:\Users\Cyberkruz\Projects\Rentler\Rentlerv2\Rentler.Web.Tests\bin\Debug\Rentler.Web.Tests.dll</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\Users\Cyberkruz\Projects\Rentler\Rentlerv2\RentlerTests.nunit" Expanded="true" />
+    <Node UniqueName="[0-1017]C:\Users\Cyberkruz\Projects\Rentler\Rentlerv2\Rentler.Tests\bin\Debug\Rentler.Tests.dll" Expanded="true" />
+    <Node UniqueName="[0-1018]Rentler" Expanded="true" />
+    <Node UniqueName="[0-1019]Rentler.Tests" Expanded="true" />
+    <Node UniqueName="[0-1020]Rentler.Tests.Commerce" Expanded="true" />
+    <Node UniqueName="[0-1015]Rentler.Tests.Commerce.ProductBaseTests" Expanded="true" />
+    <Node UniqueName="[0-1008]Rentler.Tests.Commerce.RibbonProductTests" Expanded="true" />
+    <Node UniqueName="[0-1001]Rentler.Tests.SerializerExtensionsTests" Expanded="true" />
+    <Node UniqueName="[0-1021]C:\Users\Cyberkruz\Projects\Rentler\Rentlerv2\Rentler.Web.Tests\bin\Debug\Rentler.Web.Tests.dll" Expanded="true" />
+  </Nodes>
+</VisualState>

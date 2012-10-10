@@ -1,0 +1,36 @@
+﻿@model Rentler.PaginatedList<Rentler.BuildingPreview>
+@section title {Favorites}
+@section description {View all of the properties that you have saved}
+@section css {
+<link rel="Stylesheet" href="/css/pages/dashboard.css?v=@Html.BuildNumber()" />
+}
+@section js {
+<script type="text/javascript" src="/scripts/jquery.infinitescroll.js"></script>
+<script type="text/javascript" src="/js/rentler.listing.favorites.js?v=@Html.BuildNumber()"></script>
+}
+
+@Html.Partial("TabsNavigation", "favorites")
+
+<div class="container saved-properties">
+
+    @if (Model.Count > 0)
+    {
+        @Html.Partial("SearchResults", Model)
+    }
+    else
+    {
+        <div class="saved-hero">
+            <div class="hero-image">
+                <a href="/search">
+                    <img src="/images/noimage-200x150.jpg" alt="Building Image">
+                </a>
+            </div>
+        
+            <div class="saved-hero-info">
+                <h1>Save your favorite homes</h1>
+                <p>With Rentler you can quickly save the homes that you are interested in so you can compare them quickly. Search to start adding favorites.</p>
+                <p class=""><a href="/search" class="button green">Find your next home</a></p>
+            </div>
+        </div>
+    }
+</div>

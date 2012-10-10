@@ -1,0 +1,470 @@
+﻿/*
+
+NOT SURE IF THIS FILE IS NEEDED ANYMORE!
+
+*/
+
+.live-loader {
+    text-align: center;
+    padding-top: 20px;
+}
+.live-loader.hide {
+    display: none;
+}
+
+
+.darkHeading {
+	height: 40px;
+	line-height: 40px;
+	padding: 0px 15px;
+	-moz-border-radius:4px; 
+	-webkit-border-radius:4px; 
+	border-radius: 4px;
+	font-size: 1.1em;
+	background: url('/images/heading-gradient-dark.jpg') repeat-x;
+	color: #fff;
+}
+    .darkHeading .subHeading {
+		float: right;
+		color: #99ccff;
+		text-decoration: none;
+	}
+	
+.button { display: inline-block; text-indent: -9999px; 
+		  background-image: url('/images/ui.png'); background-repeat: no-repeat; 
+		  height: 42px; margin: 0; padding: 0; border: 0; text-decoration: none; 
+		  background-position: 0 0; cursor: pointer; /* hand-shaped cursor */ 
+		  cursor: hand; /* for IE 5.x */ /**text-indent:0; 	*font-size:0;*/ }
+.button:hover { background-position: 0px -39px; }
+.button.green { height: 30px; line-height: 30px; }
+
+/* start /landlord/home/index styles */
+
+.property-search {
+    height: 63px;
+    padding-top: 20px;
+    background: url('/images/dash-hor.png') repeat-x bottom;
+}
+    .property-search .search-section {
+        float: left;
+        margin-right: 5px;
+    }
+.clearLeft { clear: left; }
+
+.myProperties {
+		padding-top: 20px;
+		clear: left;
+	}
+		.myProperties ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.myProperties ul li {
+			width: 160px;
+			float: left;
+			padding: 0px 10px;
+		}		
+		.myProperties .accountImage {
+			width: 160px;
+			height: 105px;
+			padding-top: 20px;
+			padding-bottom: 6px;
+		}
+		.myProperties .accountImageBlock 
+		{
+		    position:relative;
+		}
+		.myProperties .accountImage img {
+			width: 160px;
+			height: 105px;
+		}
+		.myProperties .propertyAddress {
+			font-size: .9em;
+			font-weight: bold;
+			margin-top: 6px;
+		}
+		.myProperties .propertyCity {
+			font-size: .9em;
+			color: #808080;
+		}
+		.myProperties .propertyStatus {
+			width: 23px;
+			height: 23px;
+			background: url('/images/ui.png') no-repeat -214px -316px;
+			float: right;
+			margin-right: 4px;
+			margin-top: 5px;
+		}
+		.myProperties .propertyStatus.active {
+			background-position: -191px -316px;
+		}
+		.myProperties .accountImageOverlay 
+		{
+		    width: 160px;
+		    height:105px;
+		    top: 20px;		    
+		    position:absolute;		    
+		    background-image:url('/images/propertyremoved.png');
+		    text-align: center;		    
+		}
+		    .accountImageOverlay .overlayText {
+		        color:#fff;
+		        margin: 25px 15px 0px 15px;
+		    }
+		.myProperties .button.addProperty {
+			margin-top: 20px;
+			background-position: 0px -160px;
+			width: 160px;
+			height: 106px;
+		}
+		.myProperties .button.addProperty:hover {
+			background-position: 0px -266px;
+		}
+		.myProperties .button.addProperty {
+			margin-top: 20px;
+			background-position: 0px -160px;
+			width: 160px;
+			height: 106px;
+		}
+		.myProperties .button.addProperty:hover {
+			background-position: 0px -266px;
+		}
+/* /landlord/home/index styles end */
+		
+/* start /landlord/property/manage styles */
+
+.houseHeading {
+	border: solid 1px #ccc;
+	padding: 10px 15px 10px 10px;
+	/*height: 181px;*/
+	width: 688px;	
+}    	
+	.houseHeading .unitImageBlock 
+    {
+        float:left;
+        width:198px;
+        position:relative;
+    }
+        .unitImageBlock .unitImageContainer {
+            width:198px;
+            height:149px;
+        }
+        .unitImageBlock .unitImageOverlay {
+            position:absolute;
+            width:198px;
+            height:149px;
+            background-image:url('/images/propertyremoved-198x149.png');
+        }        
+            .unitImageOverlay .overlayText {
+                color:#fff;
+                margin:45px 25px 0px 25px;
+                text-align:center;
+                font-size:1.2em;
+            } 
+        .unitImageBlock .activate 
+        {
+            margin-top: 0px;
+            background-image: none;
+            height: 31px;
+	        border-bottom: solid 1px #ccc;
+	        border-left: solid 1px #ccc;
+	        border-right: solid 1px #ccc;
+	        line-height: 31px;
+	        text-align: center;
+	        margin-top: -4px;
+	        -moz-border-radius: 0px 0px 4px 4px; 
+	        -webkit-border-radius: 0px 0px 4px 4px; 
+	        border-radius: 0px 0px 4px 4px;
+	        background-color: #f3f3f3;
+        }
+            .activate.loading  
+            {    
+                background-image: url('/images/ajax-loader.gif');
+                background-repeat: no-repeat;
+                background-position: 5px 5px;
+            }   
+            .activate .check 
+            {
+                background-position: right center;
+                background-repeat: no-repeat;
+                display: inline-block;    
+                padding-right: 18px;
+                text-align: left;
+            }
+            .activate .check.hide 
+            {
+                display: none;
+            }
+            .activate #deactivateListing 
+            {
+                background-image: url('/images/checked.png');
+            }
+            .activate #activateListing 
+            {
+                background-image: url('/images/unchecked.png');
+            }      
+    
+    .houseHeading .accountImage {
+	    float: left;
+	    width: 198px;		
+    }
+        .accountImage .imageLink, .unitImage {
+	        width: 198px;
+	        height: 149px;
+        }
+        
+.accountRight {
+	width: 470px;	
+	float: left;
+	margin-left: 10px;
+}
+    .listingHeading {
+		padding-top: 0px;
+		height: 60px;
+		margin-left: 16px;
+	}
+	    .listingHeadingLeft {
+		    float: left;
+		    height: 40px;
+	    }
+		    .portfoliolistingAddress  {
+		        font-size: 1.9em; line-height: 1em; 
+		    }
+		    .listingCity {
+		        padding-top: 4px;
+		        color: #999999; 
+		    }
+		.listingHeadingRight {
+		    height: 40px;
+		    float: right;
+	    }
+		    .listingPrice { font-family: Georgia, Serif; color: #ec1c24; font-size: 2.1em; line-height: 1em; }
+		    .listingPriceLabel { color: #999; text-align: center; }
+		    .listingTitleContainer { margin-bottom: 8px; }
+		    .listingTitle { font-size: 1.7em; }
+				        	  
+	.bedBathStats 
+	{
+	    width: 470px;
+		height: 41px;
+		margin: 0;
+		padding: 0;
+		list-style: none;		
+		margin-bottom: 20px;		
+	}	     
+		.bedBathStats li {
+			background: url('/images/divide-dotted-y.gif') repeat-y 0px 0px;
+			width: 60px;
+			float: left;
+			text-align: center;			
+		}	
+		.bedBathStats li.first {
+	        background: none;
+		    margin-left: -5px;
+	    }	   
+		.bedBathStats li .count {
+			font-size: 1.23em;
+			font-family: Georgia, Serif;
+		}
+		.bedBathStats li .label {
+			font-size: .9em;
+			color: #999;
+		}
+				
+	.searchStats, .listingActions {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		width: 470px;
+		line-height: 23px;
+		margin-right: 20px;
+	}	
+	.searchStats {
+		margin-top: 20px;
+		height: 23px;
+		margin-bottom: 5px;
+	}
+	    .searchStats li {
+		    color: #999;
+	    }
+	    .searchStats li, .listingActions li {
+		    float: right;
+		    margin-left: 10px;
+		    padding-left: 9px;
+		    background: url('/images/divide-dotted-y.gif') repeat-y top left;
+	    }
+    
+	    .searchStats li.last, .listingActions li.last {
+		    background: none;
+		    border: 0;
+	    }
+	    		    
+	.listingActions {
+		background: url('/images/divide-dotted-x.gif') repeat-x top left;
+		padding-top: 5px;
+	}
+	    .listingActions li {
+		    background: none;
+		    border-left: solid 1px #ccc;
+	    }
+	    
+	.listingActions 
+	{
+	    margin-left: 16px;
+	    color: #3992BE;
+	    background: url('/images/divide-dotted-x.gif') repeat-x top left;
+	    font-size: 1em;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica;
+	}	
+	    span 
+	    {
+	        display: inline-block;
+	        padding-top: 3px;
+	        line-height: 18px;
+	        margin-bottom: 3px; 
+	    }
+	    .radio
+        {
+            display: inline-block;            
+            line-height: 18px;
+            height: 18px;
+            min-height: 18px;
+            padding-top: 3px;
+            margin-bottom: 3px;
+            font-size: 1em;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica;
+        }    
+            .radio input[type="radio"]
+            {                                                                                
+                float: left;
+                margin: 3px 7px 0px 7px;                
+                width: 13px;
+                height: 13px;
+                vertical-align: middle;                    
+                font-size: 1em;
+                font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+            }
+        .deleteAction, .editAction 
+        {
+            float: right;
+            line-height: 18px; 
+            padding: 0px;
+            margin-top: 3px;
+            padding-left: 10px;           
+            background: url('/images/divide-dotted-y.gif') repeat-y top left;
+        }
+        .editAction {
+            background: none;
+            padding-right: 10px;
+        }
+            .deleteAction button
+            {
+                display: inline-block;
+                padding-top: 3px;
+                margin-bottom: 3px;
+                line-height: 18px;
+            }
+            .deleteAction button:hover
+            {
+                text-decoration: none;
+            }
+
+#finance .gradHeading, #tenants .gradHeading {
+	margin-top: -20px;
+	margin-bottom: 20px;
+}
+.gradHeading.multiline {
+	padding-top: 25px;
+	font-size: 1.1em;
+}
+.gradHeading .subHeading {
+	font-size: 1em;
+	color: #999;
+	padding-top: 10px;
+}
+.hsection 
+{
+    width: 340px;  
+}
+.hsection.applications 
+{
+    float: right;
+}
+    .hsection h2 
+    {
+        border-bottom: solid 2px #cfcfcf;
+	    background: none;
+	    margin: 0px 0px 5px 0px;
+	    padding: 0px 0px 5px 0px;
+	    font-weight: bold;
+	    line-height: 18px;	    
+	    font-size: 1.2em;
+    }
+        .hsection h2 .accent 
+        {
+            font-weight: normal;
+	        color: #EC1C24;
+	        line-height: 18px;
+	        margin: 0px;
+	        padding: 0px;
+        }
+.itemList 
+{
+    margin: 0px;
+    padding: 0px;
+}
+.itemList {
+	margin-top: 0px;
+	margin-bottom: 25px;
+}
+    .itemList .none {
+	    background: none;
+	    line-height: normal;
+	    padding: 0px;
+    }    
+    .itemList .rightLink {
+	    float: right;
+	    margin-left: 20px;
+    }
+    .itemList a {
+	    color: #1d82b5;
+	    font-weight: normal;
+    }
+    .itemList a:hover {
+	    text-decoration: underline;
+    }
+    .itemList li 
+    {
+        line-height: 30px;
+    }
+    .itemList li.deleting a
+    {
+        color: #ccc;
+        text-decoration: none;
+    }
+    
+.scrimInnerContent 
+{
+    background-color: #f3f3f3;
+    padding: 20px;
+}
+
+.modalPromptContainer {
+    margin: 10px;
+}
+    .modalPromptContainer p {
+        margin: 10px;
+    }
+    
+    .modalPromptContainer .message,
+    .modalPromptContainer .error {
+        margin-top: 20px;
+    }
+       
+    .modalPromptContainer .error p 
+    {
+        color: Red;
+    }
+
+/* /landlord/property/manage styles end */

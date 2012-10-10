@@ -1,0 +1,58 @@
+﻿@model Rentler.Web.Models.PropertyEditModel
+@using (Html.BeginForm("edit", "property", FormMethod.Post, new { @id = "step1Form" }))
+{ 	
+    <div class="contentSection">
+        <div class="tipIcon top"></div>
+        <div class="content">            
+            <div id="validationWrapper" style="padding: 0px 10px;">
+                @Html.ValidationSummary(false, "Please correct the errors and try again:")
+            </div>                        
+            
+	        <ul>
+                <li class="propertytypeli">
+                    <label for="Input_PropertyTypeCode">Property Type</label>
+			        @Html.DropDownListFor(m => m.Input.PropertyTypeCode, Rentler.Web.Axioms.SelectLists.PropertyTypes.OnlyValid)
+                </li>
+		        <li class="addressli">
+			        @Html.LabelFor(m => m.Input.Address1)
+			        @Html.TextBoxFor(m => m.Input.Address1, new { @class = "address" })
+		        </li>
+		        <li class="address2li">
+			        @Html.LabelFor(m => m.Input.Address2)
+			        @Html.TextBoxFor(m => m.Input.Address2, new { @class = "address2" })
+		        </li>
+		        <li class="cityli">
+			        @Html.LabelFor(m => m.Input.City)
+			        @Html.TextBoxFor(m => m.Input.City, new { @class = "city" })
+		        </li>
+		        <li class="stateli">
+			        @Html.LabelFor(m => m.Input.State)
+			        @Html.DropDownListFor(m => m.Input.State, Rentler.Web.Axioms.SelectLists.States.AllStates, new { @class = "state" })
+		        </li>
+		        <li class="zipli">
+			        @Html.LabelFor(m => m.Input.Zip)
+			        @Html.TextBoxFor(m => m.Input.Zip, new { @class = "zip" })
+		        </li>                        
+            </ul>
+                    
+            <div class="clr"></div>
+
+            <div class="form-actions"> 
+                <button type="submit" name="command" value="save" class="button green submit">Save</button>
+                <span>or</span>              
+                <button type="submit" name="command" value="list" class="text submit">@Html.Raw((Model.Input.IsListed ? "Save and Edit Listing" : "Save and List Property"))</button>                
+                
+                <a href="/property/manage/@Model.Input.BuildingId">&lt; Cancel</a>
+                <div style="clear:right;"></div>                                
+            </div>
+        </div>               
+    </div>
+    <div class="tipSection top">
+        <div class="tip">
+			<p>This gets your property into your dashboard. From here, you can add a listing to advertise your property on Rentler and KSL!</p>
+        </div>        
+    </div>
+    <div style="clear:left;"></div>
+    
+    @Html.HiddenFor(m => m.Input.BuildingId)
+}

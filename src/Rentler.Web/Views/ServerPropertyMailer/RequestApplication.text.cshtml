@@ -1,0 +1,19 @@
+﻿@model Rentler.Web.Email.EmailRequestApplicationModel
+@{
+    ViewBag.Title = "Request Application";
+    Layout = null;
+}
+@Model.LeadFirstName,
+
+Thanks for showing interest in my property. This is a request for you to submit your application:
+
+@Model.Address1 @Model.Address2
+@Model.City, @Model.State @Model.Zip
+
+@Model.Text -From @Model.LandlordEmail
+
+With Rentler you can fill out an application and send it directly to the landlord. This application is saved so that you can submit your application to multiple landlords.
+
+Click here: @Rentler.Web.Config.Hostname/account/sendapp/@Model.LeadId to send your application
+
+Note: RENTLER.COM DOES NOT REGULATE OR VERIFY THE CONTENT OF THESE MESSAGES. RENTLER EXPRESSLY DISCLAIMS ALL LIABILITY FOR THE CONTENT OR USE OF ANY MATERIAL POSTED VIA THE USER.

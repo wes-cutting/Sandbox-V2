@@ -1,0 +1,284 @@
+﻿@model Rentler.Web.Models.OrderCheckoutModel
+
+@using (Html.BeginForm("checkout", "order", FormMethod.Post, new { id = "checkoutForm", target = "_top" }))
+{ 	            
+    <div class="contentSection">        
+        <div class="content">
+            <div class="checkoutSectionHeading top">Summary of Charges</div>
+            <div class="checkoutSection">                                   
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th class="price">Price</th>
+                        </tr>                        
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.Order.OrderItems)
+                    {                        
+                        <tr>
+                            <td>@item.ProductDescription</td>
+                            <td class="price">@item.Price.ToString("C2")</td>
+                        </tr>
+                    }
+                        <tr class="summary">
+                            <td>Total:</td>
+                            <td class="price">@Model.Order.OrderTotal.ToString("C2")</td>
+                        </tr>
+                    </tbody>                
+                </table>
+            </div>
+            <div class="checkoutSectionHeading top">Payment</div>
+            <div class="checkoutSection">
+                <div id="existingPayments">
+                    <div class="tableHeading">
+                        <ul class="paymentTable">
+                            <li class="radioandcardcol boldText">Payment Methods</li>
+                            <li class="nameoncardcol">Name on Card</li>
+                            <li class="expirationcol">Expiration Date</li>
+                            <li class="actioncol">&nbsp;</li>
+                        </ul>
+                        <div class="clr"></div>                                            
+                    </div>
+                    <div class="tableBody">
+                        <ul data-bind="foreach: paymentMethods">                                                                                                
+                            <li class="paymentMethod">
+                            <!-- ko if: userCreditCardId == 0 -->
+                                <label class="radio">
+                                    <input 
+                                        type="radio" 
+                                        name="Input.SelectedPaymentMethod.AccountReference" 
+                                        value="" 
+                                        class="pmradio" 
+                                        data-bind="value: accountReference, checked: $parent.selectedPaymentMethod().accountReference" />
+                                    Add a new card
+                                </label>                                        
+                            <!-- /ko -->
+                            <!-- ko ifnot: userCreditCardId == 0 -->
+                                <ul class="paymentTable">
+                                    <li class="radiocol">
+                                        <input type="radio" name="Input.SelectedPaymentMethod.AccountReference" value="" class="pmradio" data-bind="value: accountReference, checked: $parent.selectedPaymentMethod().accountReference" />
+                                    </li>
+                                    <li class="cardnumbercol">                                                                                                                                        
+                                        <span class="col1span" data-bind="text: cardNumber"></span>                                            
+                                    </li>
+                                    <li class="nameoncardcol">                            
+                                        <span class="col2span" data-bind="text: cardName"></span>
+                                    </li>
+                                    <li class="expirationcol">                                            
+                                        <span class="col3span" data-bind="text: expiration()"></span>                                            
+                                    </li>
+                                    <li class="actioncol">                                            
+                                        <span class="col4span">
+                                            <a class="deletePaymentMethod" href="" data-bind="click: $parent.deleteCardClick">Delete</a>
+                                        </span>                                            
+                                    </li>
+                                </ul>
+                                <div class="clr"></div>
+                            <!-- /ko -->
+                            </li>                                                                     
+                        </ul>                     
+                    </div>
+                </div>                
+                <div id="newCardSection">
+                    <div class="checkoutSectionHeading">Payment Information</div>
+                    <div class="checkoutSection"> 
+                        <div id="newCardValidation">
+                            @Html.ValidationSummary(false, "Please correct the errors and try again:")
+                        </div>                        
+                                                                                                  
+                        <ul class="newCardForm">
+                            <li class="nameoncardli">                                            
+                                <label>Name on Card</label>
+                                <input type="hidden" name="Input.SelectedPaymentMethod.UserCreditCardId" value="" data-bind="value: selectedPaymentMethod().userCreditCardId" />
+                                <input type="hidden" name="Input.SelectedPaymentMethod.CreateDate" value="" data-bind="value: selectedPaymentMethod().createDate" />
+                                <input type="hidden" name="Input.SelectedPaymentMethod.CreatedBy" value="" data-bind="value: selectedPaymentMethod().createdBy" />                                
+                                <input
+                                    id="Input_SelectedPaymentMethod_CardName" 
+                                    type="text" 
+                                    name="Input.SelectedPaymentMethod.CardName" 
+                                    value="" 
+                                    class="creditCard" 
+                                    data-bind="
+                                        value: selectedPaymentMethod().cardName,                                                 
+                                        readonly: isSaved" 
+                                    data-val="true" 
+                                    data-val-length="The field CardName must be a string with a maximum length of 50." 
+                                    data-val-length-max="50" 
+                                    data-val-required="The CardName field is required." />                                                                                                                                 
+                            </li>                            
+                            <li class="creditcardnumberli">
+                                <label>Credit Card Number</label>                                
+                                <input 
+                                    type="text" 
+                                    name="Input.SelectedPaymentMethod.CardNumber" 
+                                    value="" 
+                                    class="creditCard" 
+                                    data-bind="
+                                        value: selectedPaymentMethod().cardNumber,                                                
+                                        readonly: isSaved" 
+                                    data-val="true" 
+                                    data-val-length="The field CardNumber must be a string with a maximum length of 16." 
+                                    data-val-length-max="16" 
+                                    data-val-required="The CardNumber field is required." />                                                                                                                                                                  
+                            </li>
+                            <li class="expirationdateli">
+                                <label>Expiration Date</label>
+                                <select 
+                                    name="Input.SelectedPaymentMethod.ExpirationMonth" 
+                                    class="monthList creditCard"
+                                    data-bind="
+                                        options: months, 
+                                        optionsText: 'text', 
+                                        optionsValue: 'value', 
+                                        value: selectedPaymentMethod().expirationMonth,
+                                        disabled: isSaved"
+                                    data-val="true" 
+                                    data-val-required="The Expiration Date: Month field is required.">
+                                </select>
+                                <input                                             
+                                    type="hidden" 
+                                    name="Input.SelectedPaymentMethod.ExpirationMonth" 
+                                    value=""
+                                    data-bind="value: selectedPaymentMethod().expirationMonth, if: isSaved" />
+                                        
+                                <select 
+                                    name="Input.SelectedPaymentMethod.ExpirationYear" 
+                                    class="yearList creditCard"
+                                    data-bind="
+                                        options: years, 
+                                        optionsText: 'text', 
+                                        optionsValue: 'value', 
+                                        value: selectedPaymentMethod().expirationYear,
+                                        disabled: isSaved"
+                                    data-val="true" 
+                                    data-val-required="The Expiration Date: Year field is required">
+                                </select>
+                                <input                                             
+                                    type="hidden" 
+                                    name="Input.SelectedPaymentMethod.ExpirationYear" 
+                                    value=""
+                                    data-bind="value: selectedPaymentMethod().expirationYear, if: isSaved" />                                                                                                                           
+                            </li>
+							<li class="firstnameli">
+								<label>First Name</label>                                
+                                <input 
+                                    type="text" 
+                                    name="Input.SelectedPaymentMethod.FirstName" 
+                                    value=""                                             
+                                    data-bind="value: selectedPaymentMethod().firstName" 
+                                    data-val="true" 
+                                    data-val-length="The field FirstName must be a string with a maximum length of 50." 
+                                    data-val-length-max="50" 
+                                    data-val-required="The FirstName field is required." />								        
+							</li>
+							<li class="lastnameli">
+								<label>Last Name</label>                                
+                                <input 
+                                    type="text" 
+                                    name="Input.SelectedPaymentMethod.LastName" 
+                                    value=""                                             
+                                    data-bind="value: selectedPaymentMethod().lastName" 
+                                    data-val="true" 
+                                    data-val-length="The field LastName must be a string with a maximum length of 50." 
+                                    data-val-length-max="50" 
+                                    data-val-required="The LastName field is required." />								        
+							</li>
+                            <li class="addressli">
+                                <label>Billing Address</label>                                
+                                <input 
+                                    type="text" 
+                                    name="Input.SelectedPaymentMethod.Address1" 
+                                    value=""                                             
+                                    data-bind="value: selectedPaymentMethod().address1" 
+                                    data-val="true" 
+                                    data-val-length="The field Address1 must be a string with a maximum length of 50." 
+                                    data-val-length-max="50" 
+                                    data-val-required="The Address1 field is required." />                                        
+                            </li>
+                            <li class="address2li">
+                                <label>&nbsp;</label>
+                                <input 
+                                    type="text" 
+                                    name="Input.SelectedPaymentMethod.Address2" 
+                                    value=""                                             
+                                    data-bind="value: selectedPaymentMethod().address2" />                                        
+                            </li>
+                            <li class="cityli">
+                                <label>City</label>                                
+                                <input 
+                                    type="text" 
+                                    name="Input.SelectedPaymentMethod.City" 
+                                    value=""                                             
+                                    data-bind="value: selectedPaymentMethod().city" 
+                                    data-val="true" 
+                                    data-val-length="The field City must be a string with a maximum length of 50." 
+                                    data-val-length-max="50" 
+                                    data-val-required="The City field is required." />                                        
+                            </li>
+                            <li class="stateli">
+                                <label>State</label>                                
+                                <select 
+                                    name="Input.SelectedPaymentMethod.State" 
+                                    class="stateList creditCard"
+                                    data-bind="
+                                        options: states, 
+                                        optionsText: 'text', 
+                                        optionsValue: 'value', 
+                                        value: selectedPaymentMethod().state" 
+                                    data-val="true" 
+                                    data-val-length="The State field must be a string with a maximum length of 2." 
+                                    data-val-length-max="2" 
+                                    data-val-required="The State field is required.">
+                                </select>                                                                     
+                            </li>
+                            <li class="zipli">
+                                <label>Zip Code</label>                                
+                                <input 
+                                    type="text" 
+                                    name="Input.SelectedPaymentMethod.Zip" 
+                                    value=""                                             
+                                    data-bind="value: selectedPaymentMethod().zip" 
+                                    data-val="true" 
+                                    data-val-length="The field Zip must be a string with a maximum length of 10." 
+                                    data-val-length-max="10" 
+                                    data-val-required="The Zip field is required." />                                        
+                            </li>
+                            <li class="savecardli" data-bind="ifnot: isSaved">
+                                <label class="checkbox">
+                                    @Html.CheckBoxFor(m => m.Input.SaveCard)
+                                    Save this information for future purchases                                            
+                                </label>                                      
+                            </li>       
+                        </ul> 
+                        <div class="clr"></div>                               
+                    </div>
+                </div>
+            </div>                                    
+            <div class="sectionSeparator"></div>                                
+                    
+            <div class="sectionSeparator hide"></div>
+
+            <div class="checkoutSection hide">
+                <p><span class="boldText">Promo Code:</span>You can only enter one promotional code</p>
+                <div id="promoCodeForm">
+                    @*@Html.TextBoxFor(m => m.PromoCode)        *@            
+                    <a id="validatePromo" href="#">Validate Promo Code</a>
+                </div>                
+                <p id="promostatus"></p>                    
+            </div>
+                        
+            <div class="submitSection">               
+                <input id="step4submit" name="submit" type="submit" value="Complete Transaction" />
+				<div class="loader hide" style="float:right;margin-right:50px;">
+					<img src="/images/loader.gif" />
+				</div>
+                <div style="clear:right;"></div>
+            </div> 
+        </div>               
+    </div>
+    <div class="tipSection">&nbsp;</div>
+    <div style="clear:left;"></div>
+	@Html.HiddenFor(m => m.Input.OrderId, new { @Value = Model.Order.OrderId })
+	@Html.HiddenFor(m => m.Input.BuildingId, new { @Value = Model.Order.BuildingId })
+}

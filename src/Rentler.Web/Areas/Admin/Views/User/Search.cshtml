@@ -1,0 +1,55 @@
+﻿@using Rentler.Web.Axioms.Extensions;
+@using MvcPaging;
+@model Rentler.Web.Areas.Admin.Models.UserSearchModel
+           
+<div class="container">
+
+    <div class="row">
+        <div class="span3">
+        @Html.Partial("AdminSideNavPartial", "Users")
+        </div>
+        <div class="span9">
+            <div class="page-header">
+                <h1>Users</h1>
+            </div>
+
+            @using (Html.BeginForm("search", "user", FormMethod.Get, new { @class="form-search" }))
+            {
+                <div class="pull-right">@Model.Results.TotalCount Users</div>
+                @Html.TextBoxFor(m => m.Query, new { @class="input-large search-query", placeholder="Search for user" })
+                @Html.HiddenFor(m => m.Page)
+                <button type="submit" class="btn">Search</button>
+            }
+
+            @if (Model.Results.Count < 1)
+            {
+                <p>No Results</p>
+            }
+            else
+            {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>UserId</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.Results)
+                {
+                    <tr>
+                        <td>@item.UserId</td>
+                        <td>@item.Username</td>
+                        <td>@item.Email</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            }
+
+            @Html.Pager(Model.Results.PageSize, Model.Results.PageNumber, Model.Results.TotalCount).Options(p => p.RouteValues(Html.GetRouteData()).DisplayTemplate("AdminPagingDisplayTemplate").MaxNrOfPages(5))
+
+        </div>
+    </div>
+</div>

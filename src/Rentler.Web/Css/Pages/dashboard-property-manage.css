@@ -1,0 +1,199 @@
+﻿/*
+    @group Secondary Top Header
+*/
+.address-information {
+    -webkit-box-shadow: 0px 2px 4px #CCC;
+       -moz-box-shadow: 0px 2px 4px #CCC;
+            box-shadow: 0px 2px 4px #CCC;
+    height: 54px;
+    border-bottom: solid 1px #ccc;
+    padding-top: 22px;
+    margin-bottom: 20px;
+}
+    .tenant-status {
+        float: right;
+        height: 36px;
+        line-height: 36px;
+        background: url('/images/backgrounds/no-tenant.png') no-repeat top right;
+        padding-right: 48px;
+        text-align: right;
+        font-size: 1.3em;
+        color: #999;
+    }
+    .basic-address {
+        font-size: 1.7em;
+        line-height: 1em;
+    }
+    .basic-city-state {
+        color: #999;
+        line-height: 1.6em;
+    } 
+/* end Secondary Top Header */
+
+.left-listing-details {
+    width: 720px;
+}
+.right-listing-preview {
+    float: right;
+    width: 198px;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+}
+    .right-listing-head {
+        background: #f6f6f6;
+        padding: 10px;
+        color: #808080;
+        border-bottom: solid 1px #ccc;
+        -webkit-border-radius: 6px 6px 0px 0px;
+           -moz-border-radius: 6px 6px 0px 0px;
+                border-radius: 6px 6px 0px 0px;
+    }
+    .right-listing-content {
+        background: #fff;
+        padding: 5px 0px 0px 5px;
+        -webkit-border-radius: 0px 0px 6px 6px;
+           -moz-border-radius: 0px 0px 6px 6px;
+                border-radius: 0px 0px 6px 6px;
+    }
+.dark-heading {
+    height: 50px;
+    background: url('/images/backgrounds/dark-heading.png') repeat-x;
+    line-height: 50px;
+    padding: 0px 15px;
+    color: #fff;
+    font-size: 1.28em;
+}
+.dark-heading-content {
+    border: solid 1px #dedede;
+    border-top: none;
+}
+
+/*
+    @group ListingDetails
+*/
+.details-overview {
+    padding: 15px 15px;
+    border-bottom: solid 1px #dedede;
+}
+    .details-viewlisting {
+        float: right;
+        margin-top: 2px;
+    }
+    .details-title {
+        font-size: 1.4em;
+        line-height: 1em;
+    }
+    .details-expiration {
+        color: #999;
+        padding-top: 5px;
+        line-height: 1em;
+    }
+.listing-detail-actions {
+    -webkit-box-shadow: 0px 2px 4px #CCC;
+       -moz-box-shadow: 0px 2px 4px #CCC;
+            box-shadow: 0px 2px 4px #CCC;
+    height: 22px;
+    border-bottom: solid 1px #ccc;
+    padding: 7px 0px;
+    position: relative;
+}
+    ul.solid-hor-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .solid-hor-list li {
+        float: left;
+        border-right: solid 1px #ccc;
+        height: 22px;
+        line-height: 22px;
+        padding: 0px 10px;
+        margin: 0;
+        color: #666;
+    }
+        .solid-hor-list li.hide-from-results input {
+            position: absolute;
+            margin-top: 5px;
+        }
+        .solid-hor-list li.hide-from-results div {
+            position: absolute;
+            margin-left: 17px;
+        }
+        .solid-hor-list li:last-child {
+            border-right: none;
+        }
+    .listing-action-stats {
+        float: right;
+    }
+    
+/* @end ListingDetails */
+
+/*
+    @group Applications
+*/
+.app-accent {
+    background: #f5f5f5;
+    padding: 10px;
+}
+    .app-loading {
+        text-align: center;
+        padding: 10px;
+    }
+    .app-list-title {
+        line-height: 36px;
+        color: #808080;
+        font-size: 1.2em;
+    }
+    .app-overview {
+        padding: 12px;
+        margin-top: 5px;
+        background: #fff;
+        border: solid 1px #ccc;
+    }
+    .app-name {
+        font-size: 1.4em;
+        line-height: 22px;
+    }
+    .app-description {
+        text-align: center;
+        font-size: 1.2em;
+        color: #51606a;
+        line-height: 1.4em;
+        padding: 10px;
+    }
+        .accent-description {
+            color: #222;
+            font-weight: bold;
+        }
+        .sub-description {
+            font-size: .8em;
+            color: #222;
+            margin: 10px 0px 15px 0px;
+        }
+    
+/* @end Applications */
+
+/* 
+    @group Delete
+*/
+.delete-listing-container {
+    border: solid 1px #dedede;
+    margin-top: 10px;
+    padding: 8px 10px;
+}
+    .delete-permanent {
+        float: right;
+    }
+        .delete-permanent a {
+            color: Red;
+        }
+    .delete-create-date {
+        color: #999;
+    }
+/* @end Delete */
+
+.container.super-slim {
+    width: 720px;
+}

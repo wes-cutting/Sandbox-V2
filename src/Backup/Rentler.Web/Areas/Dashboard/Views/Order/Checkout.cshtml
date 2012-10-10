@@ -1,0 +1,365 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.OrderCheckoutModel
+@section title { Rentler - Create Listing }
+@section css { 
+    <link href="/css/pages/property.css" rel="Stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section js { 
+    <script type="text/javascript">
+        var hostname = "@Rentler.Web.Config.Hostname";
+    </script>            
+    <script src="/scripts/knockout-2.1.0.js"></script>    
+    <script src="/js/rentler.knockoutBindings.js"></script>    
+    <script src="/js/rentler.checkout.js"></script>
+    <script type="text/javascript">
+        var viewModel = new rentler.checkout.CreateViewModel();               
+
+        @foreach (var card in Model.Order.User.UserCreditCards)
+        {
+            <text>
+                viewModel.paymentMethods.push(
+                    new rentler.checkout.paymentMethod(
+                        @card.UserCreditCardId,
+                        -1,
+                        "@card.AccountReference",
+                        "@card.CardName",
+                        "@card.CardNumber",
+                        @card.ExpirationMonth,
+                        @card.ExpirationYear,
+                        "@card.FirstName",
+                        "@card.LastName",
+                        "@card.Address1",
+                        "@card.Address2",
+                        "@card.City",
+                        "@card.State",
+                        "@card.Zip",
+                        "@card.CreateDate",
+                        "@card.CreatedBy")
+                );
+            </text>
+        }
+
+        @foreach(var item in @Rentler.Web.Axioms.SelectLists.Months.MonthNumbers) 
+        {            
+            <text>
+                viewModel.months.push(
+                    new rentler.checkout.selectListItem(
+                        "@item.Text",
+                        @item.Value
+                    )
+                );
+            </text>
+        }
+
+        @foreach(var item in @Rentler.Web.Axioms.SelectLists.Years.ExpirationYears) 
+        {
+            <text>
+                viewModel.years.push(
+                    new rentler.checkout.selectListItem(
+                        "@item.Text",
+                        @item.Value
+                    )
+                );
+            </text>
+        }
+
+        @foreach(var item in @Rentler.Web.Axioms.SelectLists.States.AllStates) 
+        {
+            <text>
+                viewModel.states.push(
+                    new rentler.checkout.selectListItem(
+                        "@item.Text",
+                        "@item.Value"
+                    )
+                );
+            </text>
+        }
+
+        @if(Model.Input.SelectedPaymentMethod.UserCreditCardId > 0)
+        {
+            // find payment method
+            <text>
+                var pm = viewModel.findPaymentMethodById(@Model.Input.SelectedPaymentMethod.UserCreditCardId);
+                if(pm) {
+                    viewModel.selectedPaymentMethod(pm);
+                    
+                    var newCard = new rentler.checkout.paymentMethod(
+                        0, -1, "", "", "", 0, 0, "", "", "", "", "", "", "", new Date().toDateString(), "web");
+
+                    viewModel.paymentMethods.push(newCard);
+                    viewModel.isSaved(true)
+                }
+            </text>
+        }
+        else 
+        {
+            <text>
+                // set values on new card
+                var newCard = new rentler.checkout.paymentMethod(
+                    0, -1, 
+                    "@Model.Input.SelectedPaymentMethod.AccountReference", 
+                    "@Model.Input.SelectedPaymentMethod.CardName", 
+                    "@Model.Input.SelectedPaymentMethod.CardNumber", 
+                    @Model.Input.SelectedPaymentMethod.ExpirationMonth, 
+                    @Model.Input.SelectedPaymentMethod.ExpirationYear,
+                    "@Model.Input.SelectedPaymentMethod.FirstName", 
+                    "@Model.Input.SelectedPaymentMethod.LastName", 
+                    "@Model.Input.SelectedPaymentMethod.Address1", 
+                    "@Model.Input.SelectedPaymentMethod.Address2", 
+                    "@Model.Input.SelectedPaymentMethod.City", 
+                    "@Model.Input.SelectedPaymentMethod.State", 
+                    "@Model.Input.SelectedPaymentMethod.Zip",
+                    "@Model.Input.SelectedPaymentMethod.CreateDate", 
+                    "@Model.Input.SelectedPaymentMethod.CreatedBy");
+                
+                viewModel.selectedPaymentMethod(newCard);
+                viewModel.paymentMethods.push(newCard);
+                viewModel.isSaved(false);
+            </text>
+        }
+                                                                     
+        ko.applyBindings(viewModel);
+    </script>
+}
+
+<div class="container">
+    <div id="accordion" class="ui-accordion">
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/edit/@Model.Order.BuildingId">Step 1 : Listing Information</a></div>
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/terms/@Model.Order.BuildingId">Step 2 : Terms</a></div>
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/promote/@Model.Order.BuildingId">Step 3 : Promote</a></div>
+        <div class="ui-accordion-header selected">
+            <span class="stepEdit">Step 4 : Checkout</span></div>
+        <div class="ui-accordion-content charges">
+        @using (Html.BeginForm("checkout", "order", new { area = "dashboard" }, FormMethod.Post))
+        { 	            
+            <div class="contentSection">        
+                <div class="content">
+                    <div class="checkoutSectionHeading top">Payment</div>
+                    <div class="checkoutSection">
+                        <div id="existingPayments">
+                            <div class="tableHeading">
+                                <ul class="paymentTable">
+                                    <li class="radioandcardcol boldText">Payment Methods</li>
+                                    <li class="nameoncardcol">Name on Card</li>
+                                    <li class="expirationcol">Expiration Date</li>
+                                    <li class="actioncol">&nbsp;</li>
+                                </ul>
+                                <div class="clr"></div>                                            
+                            </div>
+                            <div class="tableBody">
+                                <ul data-bind="foreach: paymentMethods">                                                                                                
+                                    <li class="paymentMethod">
+                                    <!-- ko if: userCreditCardId == 0 -->
+                                        <label class="radio">
+                                            <input 
+                                                type="radio" 
+                                                name="Input.SelectedPaymentMethod.AccountReference" 
+                                                value="" 
+                                                class="pmradio" 
+                                                data-bind="value: accountReference, checked: $parent.selectedPaymentMethod().accountReference" />
+                                            Add a new card
+                                        </label>                                        
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: userCreditCardId == 0 -->
+                                        <ul class="paymentTable">
+                                            <li class="radiocol">
+                                                <input type="radio" name="Input.SelectedPaymentMethod.AccountReference" value="" class="pmradio" data-bind="value: accountReference, checked: $parent.selectedPaymentMethod().accountReference" />
+                                            </li>
+                                            <li class="cardnumbercol">                                                                                                                                        
+                                                <span class="col1span" data-bind="text: cardNumber"></span>                                            
+                                            </li>
+                                            <li class="nameoncardcol">                            
+                                                <span class="col2span" data-bind="text: cardName"></span>
+                                            </li>
+                                            <li class="expirationcol">                                            
+                                                <span class="col3span" data-bind="text: expiration()"></span>                                            
+                                            </li>
+                                            <li class="actioncol">                                            
+                                                <span class="col4span">
+                                                    <a class="deletePaymentMethod" href="" data-bind="attr: { href: '/dashboard/property/deletecard/' + userCreditCardId }">Delete</a>
+                                                </span>                                            
+                                            </li>
+                                        </ul>
+                                        <div class="clr"></div>
+                                    <!-- /ko -->
+                                    </li>                                                                     
+                                </ul>                     
+                            </div>
+                        </div>                
+                        <div id="newCardSection">
+                            <div class="checkoutSectionHeading">Payment Information</div>
+                            <div class="checkoutSection"> 
+                                <div id="newCardValidation">
+                                    @Html.ValidationSummary(false, "Please correct the errors and try again:")
+                                </div>                        
+                                                                                                  
+                                <ul class="newCardForm">
+                                    <li class="nameoncardli">                                            
+                                        <label>Name on Card</label>
+                                        <input type="hidden" name="Input.SelectedPaymentMethod.UserCreditCardId" value="" data-bind="value: selectedPaymentMethod().userCreditCardId" />
+                                        <input type="hidden" name="Input.SelectedPaymentMethod.CreateDate" value="" data-bind="value: selectedPaymentMethod().createDate" />
+                                        <input type="hidden" name="Input.SelectedPaymentMethod.CreatedBy" value="" data-bind="value: selectedPaymentMethod().createdBy" />
+                                        <input 
+                                            type="text" 
+                                            name="Input.SelectedPaymentMethod.CardName" 
+                                            value="" 
+                                            class="creditCard" 
+                                            data-bind="
+                                                value: selectedPaymentMethod().cardName,                                                 
+                                                readonly: isSaved" />                                                    
+                                    </li>                            
+                                    <li class="creditcardnumberli">
+                                        <label>Credit Card Number</label>
+                                        <input 
+                                            type="text" 
+                                            name="Input.SelectedPaymentMethod.CardNumber" 
+                                            value="" 
+                                            class="creditCard" 
+                                            data-bind="
+                                                value: selectedPaymentMethod().cardNumber,                                                
+                                                readonly: isSaved" />                                                                                                                                                                  
+                                    </li>
+                                    <li class="expirationdateli">
+                                        <label>Expiration Date</label>
+                                        <select 
+                                            name="Input.SelectedPaymentMethod.ExpirationMonth" 
+                                            class="monthList creditCard"
+                                            data-bind="
+                                                options: months, 
+                                                optionsText: 'text', 
+                                                optionsValue: 'value', 
+                                                value: selectedPaymentMethod().expirationMonth,
+                                                disabled: isSaved">
+                                        </select>
+                                        <input                                             
+                                            type="hidden" 
+                                            name="Input.SelectedPaymentMethod.ExpirationMonth" 
+                                            value=""
+                                            data-bind="value: selectedPaymentMethod().expirationMonth, if: isSaved" />
+                                        
+                                        <select 
+                                            name="Input.SelectedPaymentMethod.ExpirationYear" 
+                                            class="yearList creditCard"
+                                            data-bind="
+                                                options: years, 
+                                                optionsText: 'text', 
+                                                optionsValue: 'value', 
+                                                value: selectedPaymentMethod().expirationYear,
+                                                disabled: isSaved">
+                                        </select>
+                                        <input                                             
+                                            type="hidden" 
+                                            name="Input.SelectedPaymentMethod.ExpirationYear" 
+                                            value=""
+                                            data-bind="value: selectedPaymentMethod().expirationYear, if: isSaved" />                                                                                                                           
+                                    </li>
+							        <li class="firstnameli">
+								        <label>First Name</label>
+                                        <input 
+                                            type="text" 
+                                            name="Input.SelectedPaymentMethod.FirstName" 
+                                            value=""                                             
+                                            data-bind="value: selectedPaymentMethod().firstName" />								        
+							        </li>
+							        <li class="lastnameli">
+								        <label>Last Name</label>
+                                        <input 
+                                            type="text" 
+                                            name="Input.SelectedPaymentMethod.LastName" 
+                                            value=""                                             
+                                            data-bind="value: selectedPaymentMethod().lastName" />								        
+							        </li>
+                                    <li class="addressli">
+                                        <label>Billing Address</label>
+                                        <input 
+                                            type="text" 
+                                            name="Input.SelectedPaymentMethod.Address1" 
+                                            value=""                                             
+                                            data-bind="value: selectedPaymentMethod().address1" />                                        
+                                    </li>
+                                    <li class="address2li">
+                                        <label>&nbsp;</label>
+                                        <input 
+                                            type="text" 
+                                            name="Input.SelectedPaymentMethod.Address2" 
+                                            value=""                                             
+                                            data-bind="value: selectedPaymentMethod().address2" />                                        
+                                    </li>
+                                    <li class="cityli">
+                                        <label>City</label>
+                                        <input 
+                                            type="text" 
+                                            name="Input.SelectedPaymentMethod.City" 
+                                            value=""                                             
+                                            data-bind="value: selectedPaymentMethod().city" />                                        
+                                    </li>
+                                    <li class="stateli">
+                                        <label>State</label>
+                                        <select 
+                                            name="Input.SelectedPaymentMethod.State" 
+                                            class="stateList creditCard"
+                                            data-bind="
+                                                options: states, 
+                                                optionsText: 'text', 
+                                                optionsValue: 'value', 
+                                                value: selectedPaymentMethod().state">
+                                        </select>                                                                     
+                                    </li>
+                                    <li class="zipli">
+                                        <label>Zip Code</label>
+                                        <input 
+                                            type="text" 
+                                            name="Input.SelectedPaymentMethod.Zip" 
+                                            value=""                                             
+                                            data-bind="value: selectedPaymentMethod().zip" />                                        
+                                    </li>
+                                    <li class="savecardli" data-bind="ifnot: isSaved">
+                                        <label class="checkbox">
+                                            @Html.CheckBoxFor(m => m.Input.SaveCard)
+                                            Save this information for future purchases                                            
+                                        </label>                                      
+                                    </li>       
+                                </ul> 
+                                <div class="clr"></div>                               
+                            </div>
+                        </div>
+                    </div>                                    
+                    <div class="sectionSeparator"></div>
+                    
+                    <div class="checkoutSection">    
+                        <h3>Summary of Charges</h3>                    
+                        <ul>
+                        @foreach (var item in Model.Order.OrderItems)
+                        {
+                            //var product = Rentler.Configuration.Products.GetProduct(item.ProductId).FromOrderItem(item);
+                            <li>@item.ProductDescription</li>
+                        }
+                        </ul>
+                    </div>
+                    
+                    <div class="sectionSeparator hide"></div>
+
+                    <div class="checkoutSection hide">
+                        <p><span class="boldText">Promo Code:</span>You can only enter one promotional code</p>
+                        <div id="promoCodeForm">
+                            @*@Html.TextBoxFor(m => m.PromoCode)        *@            
+                            <a id="validatePromo" href="#">Validate Promo Code</a>
+                        </div>                
+                        <p id="promostatus"></p>                    
+                    </div>
+                    <div class="sectionSeparator"></div>
+                    <div class="submitSection">               
+                        <input id="step4submit" name="submit" type="submit" value="Complete Transaction" />
+                        <div style="clear:right;"></div>
+                    </div> 
+                </div>               
+            </div>
+            <div class="tipSection">&nbsp;</div>
+            <div style="clear:left;"></div>             
+        }                        
+        </div> 
+    </div>
+</div>

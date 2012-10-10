@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0539A612-E10E-404D-8E39-C144714638FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rentler</RootNamespace>
+    <AssemblyName>Rentler</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|AnyCPU'">
+    <OutputPath>bin\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Rentler.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live|AnyCPU'">
+    <OutputPath>bin\Live\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Rentler.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BookSleeve, Version=1.1.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BookSleeve.1.1.0.8\lib\BookSleeve.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="MVC Foolproof Validation">
+      <HintPath>..\packages\foolproof.0.9.4517\lib\MVC Foolproof Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Mvc.Mailer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcMailer.1.1\lib\40\Mvc.Mailer.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcExtensions">
+      <HintPath>..\packages\MvcExtensions.2.5.0\lib\net40\MvcExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcExtensions.Foolproof">
+      <HintPath>..\packages\MvcExtensions.Foolproof.2.5.0\lib\net40\MvcExtensions.Foolproof.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.0.0.480\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Text.3.9.21\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BoundBoxSearchSearch.cs" />
+    <Compile Include="Adapters\IPhotoAdapter.cs" />
+    <Compile Include="Adapters\IOrderAdapter.cs" />
+    <Compile Include="Adapters\IProductAdapter.cs" />
+    <Compile Include="Adapters\IFeaturedAdapter.cs" />
+    <Compile Include="Adapters\IListingStatsAdapter.cs" />
+    <Compile Include="Adapters\IAccountAdapter.cs" />
+    <Compile Include="Adapters\IAuthAdapter.cs" />
+    <Compile Include="Adapters\IFriendlyZipAdapter.cs" />
+    <Compile Include="Adapters\IListingAdapter.cs" />
+    <Compile Include="Adapters\IPropertyAdapter.cs" />
+    <Compile Include="Adapters\ISearchAdapter.cs" />
+    <Compile Include="Adapters\IUnitAdapter.cs" />
+    <Compile Include="AffiliateUser.cs" />
+    <Compile Include="ApiKey.cs" />
+    <Compile Include="Auth\CookieAuthenticator.cs" />
+    <Compile Include="Auth\CustomAuthentication.cs" />
+    <Compile Include="Auth\IAuthenticator.cs" />
+    <Compile Include="Auth\Identity.cs" />
+    <Compile Include="Azure\BlobAdapter.cs" />
+    <Compile Include="Azure\RetryPolicies.cs" />
+    <Compile Include="BankInfo.cs" />
+    <Compile Include="Building.cs" />
+    <Compile Include="BuildingAmenity.cs" />
+    <Compile Include="BuildingPreview.cs" />
+    <Compile Include="Commerce\FeaturedDateProduct.cs" />
+    <Compile Include="Commerce\PaymentFacade.cs" />
+    <Compile Include="Commerce\PaymentManager.cs" />
+    <Compile Include="Commerce\PriorityListingProduct.cs" />
+    <Compile Include="Commerce\Product.cs" />
+    <Compile Include="Commerce\RibbonProduct.cs" />
+    <Compile Include="Common\Application.cs" />
+    <Compile Include="Common\PropertyPreview.cs" />
+    <Compile Include="Common\Listing.cs" />
+    <Compile Include="Common\PropertySearch.cs" />
+    <Compile Include="Common\ReportedListing.cs" />
+    <Compile Include="Common\User.cs" />
+    <Compile Include="Configuration\MimeTypes.cs" />
+    <Compile Include="Configuration\Products.cs" />
+    <Compile Include="Configuration\States.cs" />
+    <Compile Include="Configuration\Photos.cs" />
+    <Compile Include="Data\IBuildingQueries.cs" />
+    <Compile Include="Data\IDataService.cs" />
+    <Compile Include="Data\IDataServiceFactory.cs" />
+    <Compile Include="Data\IListingQueries.cs" />
+    <Compile Include="Data\IUserQueries.cs" />
+    <Compile Include="Data\Tracer.cs" />
+    <Compile Include="Drawing\ImageScaler.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Facades\IAccountFacade.cs" />
+    <Compile Include="Facades\IListingFacade.cs" />
+    <Compile Include="Facades\IPropertyFacade.cs" />
+    <Compile Include="Facades\IRoleFacade.cs" />
+    <Compile Include="Facades\IUserFacade.cs" />
+    <Compile Include="FeaturedListing.cs" />
+    <Compile Include="Haversine.cs" />
+    <Compile Include="LocationBounds.cs" />
+    <Compile Include="RedisPublisher.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RoleUser.cs" />
+    <Compile Include="UserInterest.cs" />
+    <Compile Include="Web\Email\AccountMailer.cs" />
+    <Compile Include="Web\Email\IListingMailer.cs" />
+    <Compile Include="Web\Email\IOrderMailer.cs" />
+    <Compile Include="EnumExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="ListingCountModel.cs" />
+    <Compile Include="ModpayCustomer.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderItem.cs" />
+    <Compile Include="OrderStatus.cs" />
+    <Compile Include="PaymentInformationResult.cs" />
+    <Compile Include="PaymentType.cs" />
+    <Compile Include="Service References\ExternalServices.Modpay\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ExternalServices.PayForward\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SinglePayeeCreditResult.cs" />
+    <Compile Include="UserApplication.cs" />
+    <Compile Include="UserBank.cs" />
+    <Compile Include="UserCreditCard.cs" />
+    <Compile Include="Validation\ContactInfoValidation.cs" />
+    <Compile Include="Web\Email\IAccountMailer.cs" />
+    <Compile Include="Web\Email\Core\MailerBaseExtensions.cs" />
+    <Compile Include="Web\Email\Core\MailerService.cs" />
+    <Compile Include="Web\Email\IPropertyMailer.cs" />
+    <Compile Include="Web\Email\ListingMailer.cs" />
+    <Compile Include="Web\Email\OrderMailer.cs" />
+    <Compile Include="Web\Email\PropertyMailer.cs" />
+    <Compile Include="Web\MimeHandler.cs" />
+    <Compile Include="Web\UploadFileStream.cs" />
+    <Compile Include="ZipInfoPreview.cs" />
+    <Compile Include="Redis\ConnectionGateway.cs" />
+    <Compile Include="Configuration\Amenities.cs" />
+    <Compile Include="Configuration\App.cs" />
+    <Compile Include="Configuration\Ribbons.cs" />
+    <Compile Include="ContactInfo.cs" />
+    <Compile Include="ContactInfoType.cs" />
+    <Compile Include="CustomAmenity.cs" />
+    <Compile Include="Data\RentlerContext.cs" />
+    <Compile Include="Data\RentlerContextInitializer.cs" />
+    <Compile Include="LeaseLength.cs" />
+    <Compile Include="PaginatedList.cs" />
+    <Compile Include="Photo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyType.cs" />
+    <Compile Include="Redis\CacheKeys.cs" />
+    <Compile Include="SavedBuilding.cs" />
+    <Compile Include="Search.cs" />
+    <Compile Include="SerializerExtensions.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="ZipInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Service References\ExternalServices.Modpay\modpay.wsdl" />
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.AccountSettings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.AssociationInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.BankInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.CardPayment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.CCPayment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.CustInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.CustInfoExtended.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.PaymentInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.PaymentInfoWithDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.Payments.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.Modpay\Rentler.ExternalServices.Modpay.PaymentSchedule.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExternalServices.PayForward\payforwardWS.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ExternalServices.Modpay\" />
+    <WCFMetadataStorage Include="Service References\ExternalServices.PayForward\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ExternalServices.PayForward\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ExternalServices.PayForward\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ExternalServices.PayForward\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ExternalServices.Modpay\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ExternalServices.Modpay\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ExternalServices.Modpay\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SinglePaymentResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CardPaymentResult.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

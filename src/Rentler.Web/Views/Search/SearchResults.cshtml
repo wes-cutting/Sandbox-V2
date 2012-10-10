@@ -1,0 +1,33 @@
+﻿@model Rentler.Search
+
+<ul class="search-results">
+@foreach (var item in Model.Results)
+{
+    <div data-page="@Model.Results.PageNumber" style="display: none;"></div>
+    <li class="result">
+        <a href="/listing/@item.BuildingId" data-quick="/listing/@item.BuildingId">
+            <div class="result-image">
+			@if(!string.IsNullOrWhiteSpace(item.RibbonId))
+			{
+			    <img class="ribbon-overlay" src="@Html.GetRibbonLink(item.RibbonId)" alt="" />
+			}
+                <img src="@Html.GetPhotoLink(@item.BuildingId, @item.PrimaryPhotoId, 200, 150, @item.PrimaryPhotoExtension)" alt="Building Image" />
+            </div>
+            <div class="result-info">
+                <div class="title">@(string.IsNullOrWhiteSpace(item.Title) ? item.Address1 : item.Title)</div>
+			    <div class="location">@item.City, @item.State</div>
+                <div class="bed-baths">@item.Bedrooms beds @item.Bathrooms.ToString("0.#") baths</div>
+                <div class="price-container"><span class="price">@item.Price.ToString("C0")</span> per month</div>
+            </div>
+        </a>
+		@if(item.IsFeatured)
+		{ 
+		<div class="featured">Featured</div>
+		}
+    </li>
+}
+</ul>
+<div class="loading"></div>
+<div class="navigation" style="display: none;">
+	@Html.Pager(Model.Results.PageSize, Model.Results.PageNumber, Model.Results.TotalCount).Options(p => p.RouteValues(Html.GetRouteData()))
+</div>

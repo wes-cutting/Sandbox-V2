@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Rentler" Class="RentlerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=Rentler;Integrated Security=True" SettingsObjectName="KslDupeKilla.Terminal.Properties.Settings" SettingsPropertyName="RentlerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsLandlord" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_Building" Member="Buildings" ThisKey="UserId" OtherKey="UserId" Type="Building" />
+      <Association Name="User_AffiliateUser" Member="AffiliateUser" ThisKey="UserId" OtherKey="UserId" Type="AffiliateUser" Cardinality="One" />
+      <Association Name="User_AuthToken" Member="AuthTokens" ThisKey="UserId" OtherKey="UserId" Type="AuthToken" />
+      <Association Name="User_LandlordInfo" Member="LandlordInfos" ThisKey="UserId" OtherKey="UserId" Type="LandlordInfo" />
+      <Association Name="User_RoleUser" Member="RoleUsers" ThisKey="UserId" OtherKey="UserId" Type="RoleUser" />
+      <Association Name="User_UserContract" Member="UserContracts" ThisKey="UserId" OtherKey="UserId" Type="UserContract" />
+      <Association Name="User_ApplicationInfo" Member="ApplicationInfo" ThisKey="UserId" OtherKey="UserId" Type="ApplicationInfo" Cardinality="One" />
+      <Association Name="User_UserInterest" Member="UserInterests" ThisKey="UserId" OtherKey="UserId" Type="UserInterest" />
+      <Association Name="User_UserInterest1" Member="UserInterests1" ThisKey="UserId" OtherKey="LandlordUserId" Type="UserInterest" />
+      <Association Name="User_Alert" Member="Alerts" ThisKey="UserId" OtherKey="UserId" Type="Alert" />
+      <Association Name="User_SavedListing" Member="SavedListings" ThisKey="UserId" OtherKey="UserId" Type="SavedListing" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Buildings" Member="Buildings">
+    <Type Name="Building">
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PropertyInfoId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AddressLine1" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="AddressLine2" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Zip" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Neighborhood" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PrimaryPhotoId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ListingRemovedByAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryPhotoExtension" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="sid" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="User_Building" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AffiliateUsers" Member="AffiliateUsers">
+    <Type Name="AffiliateUser">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AffiliateUserKey" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ApiKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_AffiliateUser" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AuthTokens" Member="AuthTokens">
+    <Type Name="AuthToken">
+      <Column Name="Token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RequireLogin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ApiKey" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_AuthToken" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LandlordInfo" Member="LandlordInfos">
+    <Type Name="LandlordInfo">
+      <Column Name="LandlordInfoId" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AddressLine1" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="AddressLine2" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Zip" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="AllowPhone" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowEmail" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BackgroundCreditStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DigitalSignature" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DigitalSignatureDateUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BackgroundCreditContract" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BackgroundCreditUsername" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BackgroundCreditPassword" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ReadAppendicies" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReadAppendiciesDateUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_LandlordInfo" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoleUsers" Member="RoleUsers">
+    <Type Name="RoleUser">
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_RoleUser" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserContracts" Member="UserContracts">
+    <Type Name="UserContract">
+      <Column Name="UserContractId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ContractId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_UserContract" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ApplicationInfo" Member="ApplicationInfos">
+    <Type Name="ApplicationInfo">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Ssn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PresentPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PresentAddressLine1" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PresentAddressLine2" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PresentCity" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PresentState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PresentZip" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="PresentLandlord" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PresentLandlordPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PreviousAddressLine1" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PreviousAddressLine2" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PreviousCity" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="PreviousState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PreviousZip" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="PreviousLandlord" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PreviousLandlordPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PresentEmployer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PresentEmployerPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PreviousEmployer" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PreviousEmployerPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmergencyContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmergencyContactPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmergencyContactAddressLine1" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="EmergencyContactAddressLine2" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="EmergencyContactCity" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="EmergencyContactState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmergencyContactZip" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="VehicleYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VehicleMake" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VehicleModel" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VehicleColor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VehicleLicenseNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VehicleState" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HasBeenConvicted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ConvictionExplanation" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="HasEverBeenUnlawfulDetainer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_ApplicationInfo" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserInterests" Member="UserInterests">
+    <Type Name="UserInterest">
+      <Column Name="UserInterestId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LandlordUserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ListingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ShowApplicationInfo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllowBackgroundCheck" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ResponseMessage" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Association Name="User_UserInterest" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+      <Association Name="User_UserInterest1" Member="User1" ThisKey="LandlordUserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Alerts" Member="Alerts">
+    <Type Name="Alert">
+      <Column Name="AlertId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="BuildingId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDismissed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ReceiveType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_Alert" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SavedListings" Member="SavedListings">
+    <Type Name="SavedListing">
+      <Column Name="SavedListingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ListingId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_SavedListing" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

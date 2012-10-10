@@ -1,0 +1,49 @@
+﻿@model Rentler.Web.Models.PropertyTermsModel
+@section title { Rentler - Create Listing }
+@section css { 
+    <link href="/css/pages/property.css" rel="Stylesheet" />
+    <link href="/css/datepicker.css" rel="Stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section js { 
+    <script src="/scripts/jquery.validate.js"></script>
+    <script src="/scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="/scripts/mvcfoolproof.unobtrusive.min.js"></script>
+    <script src="/scripts/knockout-2.1.0.js"></script>
+    <script src="/scripts/jquery-ui-1.8.20.min.js"></script>
+    <script src="/js/rentler.property.terms.js"></script>
+    <script type="text/javascript">
+        var viewModel = new rentler.property.terms.CreateViewModel();
+
+        viewModel.petsAllowed("@Model.Input.ArePetsAllowed.ToString().ToLower()");
+
+        ko.applyBindings(viewModel);
+    </script>
+}
+
+<div>
+    <div id="accordion" class="ui-accordion">
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/ksl/listing/list/@Model.Input.BuildingId">List Property - Details</a>                
+        </div>
+        <div class="ui-accordion-header selected">
+            <span class="stepEdit">List Property - Terms</span>                
+        </div>
+        <div id="accordionPane1" class="ui-accordion-content" style="clear:right">
+            @Html.Partial(@"~\views\shared\termsform.cshtml", Model)
+        </div>
+    @if (Model.StepsAvailable > 3)
+    {
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/ksl/listing/promote/@Model.Input.BuildingId">Promote Listing</a>                
+        </div>
+    }
+    @if (Model.StepsAvailable > 4)
+    {
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/ksl/order/checkout/@Model.Input.TemporaryOrderId.Value">Checkout</a>
+        </div>
+    }    
+    </div>
+    </div>
+</div>

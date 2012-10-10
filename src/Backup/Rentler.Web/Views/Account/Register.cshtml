@@ -1,0 +1,90 @@
+﻿@model Rentler.Web.Models.AccountRegisterModel
+@section title { Register }
+@section description {}
+@section css {
+    <link href="/css/pages/register.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+}
+@section js {
+    <script type="text/javascript" src="/scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div id="register" class="container">
+    <div class="centerHeading">
+		<h1>Renting just got easier</h1>
+		<div>Login to take advantage of all of Rentler's amazing features. Don’t have an Account? No worries, registration is free!</div>
+	</div>
+    <div class="registrationContainer">
+		<div class="registerBox">
+			<div class="darkHeading">Create a Renter Account</div>
+            @using(Html.BeginForm("register", "account", FormMethod.Post, new { @class="form-horizontal" }))
+            {
+                @Html.ValidationSummary("Please correct the errors and try again:")
+                <fieldset>
+                    <div class="control-group">
+                        <label for="Input_UserName" class="control-label">Username</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.Input.UserName)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="Input_Password" class="control-label">Password</label>
+                        <div class="controls">
+                            @Html.PasswordFor(m => m.Input.Password)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="Input_ConfirmPassword" class="control-label">Confirm</label>
+                        <div class="controls">
+                            @Html.PasswordFor(m => m.Input.ConfirmPassword)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="Input_Email" class="control-label">Email</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.Input.Email)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="Input_FirstName" class="control-label">First name</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.Input.FirstName)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="Input_LastName" class="control-label">Last name</label>
+                        <div class="controls">
+                            @Html.TextBoxFor(m => m.Input.LastName)
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div>
+                            <label class="checkbox">
+                                @Html.CheckBoxFor(m => m.Input.AgreesToTerms)
+                                I agree to the <a href="/home/terms" target="_blank">Terms and Conditions</a> and allow Rentler to contact me via email
+                            </label>                           						
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="button blue">Register</button>
+                    </div>
+                </fieldset>                                
+            }
+        </div>
+    </div>
+    <div class="registerMarketing">
+		<div>
+			<div class="sectionHead">Tenant Tools.</div>
+			<div>
+            Leasing a home is supposed to be less hassle and headache than owning, right? Well with Rentler, you'll love leasing. Rentler's made it easier to search, compare and lease homes than ever before. You can tool around town from the comfort of your couch. We've brought intuitive functionality to tenants like one-application-for-all and descriptions with the info you're really looking for.
+			</div>
+		</div>
+		<div>
+			<div class="sectionHead">Landlord Love.</div>
+			<div>
+                Rentler is a powerful online property management tool designed by landlords for landlords. With Rentler you'll save time, effort and headache as you effectively and efficiently accomplish frequent property management tasks through automated, streamlined functionality. From Auto pay set up to intelligent background checks, we're putting the ease back into lease.
+		    </div>
+	    </div>	
+    </div>
+    <div style="clear:left;"></div>
+</div>

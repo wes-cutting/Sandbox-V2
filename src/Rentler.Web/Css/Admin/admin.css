@@ -1,0 +1,18 @@
+﻿body {
+    margin-top: 41px;
+}
+
+.side-nav {
+    margin-top: 20px;
+}
+.side-nav [class^="icon-"] {
+    float: left;
+    margin-top: 6px;
+    margin-right: 6px;
+}
+
+.listing {
+    margin-top: 20px;
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 20px;
+}

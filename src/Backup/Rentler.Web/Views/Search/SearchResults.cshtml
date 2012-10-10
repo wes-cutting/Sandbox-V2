@@ -1,0 +1,32 @@
+﻿@model Rentler.Search
+
+<ul class="search-results">
+@foreach (var item in Model.Results)
+{
+    <li class="result">
+        <div class="result-image">
+            <a href="/listing/@item.BuildingId" data-quick="/listing/quick/@item.BuildingId">
+                <img src="@Html.GetPhotoLink(@item.BuildingId, @item.PrimaryPhotoId, 200, 150, @item.PrimaryPhotoExtension)" alt="Building Image" />
+            </a>
+        </div>
+        <div class="result-info">
+			@if(!string.IsNullOrWhiteSpace(item.RibbonId))
+			{
+			<img class="ribbon-overlay" src="https://www.rentler.com/images/ribbons/nearapark-161x54.png" alt="" />
+			}
+            <div class="title">@(string.IsNullOrWhiteSpace(item.Title) ? item.Address1 : item.Title)</div>
+			<div class="location">@item.City, @item.State</div>
+            <div class="bed-baths">@item.Bedrooms beds @item.Bathrooms.ToString("0.#") baths</div>
+            <div class="price-container"><span class="price">$@item.Price</span> per month</div>
+        </div>
+		@if(item.IsFeatured)
+		{ 
+		<div class="featured">Featured</div>
+		}
+    </li>
+}
+</ul>
+<div class="loading"></div>
+<div class="navigation">
+	@Html.Pager(Model.Results.PageSize, Model.Results.PageNumber, Model.Results.TotalCount).Options(p => p.RouteValues(Html.GetRouteData()))
+</div>

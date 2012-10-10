@@ -1,0 +1,14 @@
+﻿@model Rentler.Web.Email.EmailSendApplicationModel
+@{
+    ViewBag.Title = "Application Sent";
+    Layout = "~/Views/Shared/_EmailLayout.cshtml";
+}
+<div class="marginBottom" style="margin-bottom: 10px;">@Model.LandlordFirstName,</div>
+<div class="marginBottom" style="margin-bottom: 10px;">@Model.LeadName has submitted an application to your property.</div>
+<div class="marginBottom" style="margin-bottom: 10px;">
+	<a href="@Rentler.Web.Config.Hostname/property/manage/@Model.BuildingId">Click here to view this property</a>
+</div>
+<div class="marginBottom grey" style="margin-bottom: 10px; color: #808080;">
+<br />
+Note: RENTLER.COM DOES NOT REGULATE OR VERIFY THE CONTENT OF THESE MESSAGES. RENTLER EXPRESSLY DISCLAIMS ALL LIABILITY FOR THE CONTENT OR USE OF ANY MATERIAL POSTED VIA THE USER.
+</div>

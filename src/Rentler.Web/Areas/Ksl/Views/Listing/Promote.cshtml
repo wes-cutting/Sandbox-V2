@@ -1,0 +1,107 @@
+﻿@model Rentler.Web.Models.PropertyPromoteModel
+@section title { Rentler - Create Listing }
+@section css { 
+    <link href="/css/fileuploader.css" rel="Stylesheet" />
+    <link href="/css/pages/property.css" rel="Stylesheet" />    
+    <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section js { 
+    <script type="text/javascript">
+        var hostname = "@Rentler.Web.Config.Hostname";
+        var photoStore = "@Rentler.Configuration.App.BlobStorageHostname" + "@Rentler.Configuration.App.PhotoFolder";
+    </script>            
+    <script src="/scripts/knockout-2.1.0.js"></script>
+    <script src="/scripts/amplify.min.js"></script>
+    <script src="/scripts/fileuploader.js"></script>
+    <script src="/scripts/jquery.datepick.js"></script>
+    <script src="/scripts/jquery-ui-1.8.20.min.js"></script>
+    <script src="/js/rentler.knockoutBindings.js?@Html.BuildNumber()"></script>        
+    <script src="/js/rentler.featuredCalendar.js?@Html.BuildNumber()"></script>
+    <script src="/js/rentler.uploader.js?@Html.BuildNumber()"></script>
+    <script src="/js/rentler.property.promote.js?@Html.BuildNumber()"></script>
+    <script type="text/javascript">
+        var viewModel = new rentler.property.promote.CreateViewModel();        
+        
+        viewModel.title("@Model.Input.Title");
+        viewModel.description("@Model.Input.Description");
+        
+        viewModel.ribbons.push({ id:"none", name:"None", displayHtml:"None", src:"", selectable:true });
+
+        @foreach (var k in Rentler.Configuration.Ribbons.Current.AvailableRibbons.Keys)
+        {
+            bool isSelectable = string.IsNullOrEmpty(Model.Input.PurchasedRibbonId) || Model.Input.PurchasedRibbonId != k;
+            var selectable = isSelectable.ToString().ToLower();
+            <text>
+                viewModel.ribbons.push({
+                    id: "@k",
+                    name: "@Rentler.Configuration.Ribbons.Current.AvailableRibbons[k]",
+                    displayHtml: "$19.95",
+                    src: "/images/ribbons/@k-161x54.png",
+                    selectable: @selectable
+                });
+            </text>
+        }
+
+        @if ((Model.Input.SelectedRibbonId ?? "none") == "none")
+        {
+            <text>viewModel.selectedRibbon({ id:"none", name:"None", displayHtml:"None", selectable:true });</text>
+        }
+        else
+        {
+            <text>viewModel.selectedRibbon({
+                id : "@Model.Input.SelectedRibbonId",
+                name : "@Rentler.Configuration.Ribbons.Current.AvailableRibbons[Model.Input.SelectedRibbonId]",
+                displayHtml: "$19.95",
+                selectable : true                
+            });</text>
+        }
+        
+        @if(Model.Input.PurchasedPriority)
+		{
+		<text>viewModel.priorityListing({checked : false, name : '30 Days', selectable : false});</text>
+		}
+		else
+		{
+		<text>viewModel.priorityListing({checked : false, name : '0 Days', selectable : true});</text>
+		}
+		
+		rentler.uploader.create(
+            "@Rentler.Web.Config.Hostname",
+            @Model.Input.BuildingId
+        );
+        
+        rentler.featuredCalendar.create(
+            @Model.Input.BuildingId,
+            @Html.Raw(Html.ToJson(Model.Input.CalendarDates)),
+            function(dates) 
+            { 
+                viewModel.featured.removeAll();
+                for(var i = 0; i < dates.length; ++i) {
+                    viewModel.featured.push(dates[i]);
+                } 
+            }
+        );
+               
+        ko.applyBindings(viewModel);
+    </script>
+}
+
+<div>    
+    <div id="accordion" class="ui-accordion">
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/ksl/listing/list/@Model.Input.BuildingId">List Property - Details</a></div>
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/ksl/listing/terms/@Model.Input.BuildingId">List Property - Terms</a></div>
+        <div class="ui-accordion-header selected">
+            <span class="stepEdit">Promote Listing</span></div>
+        <div class="ui-accordion-content charges" style="clear:right"> 
+            @Html.Partial(@"~\views\shared\promoteform.cshtml", Model)
+        </div>
+    @if (Model.StepsAvailable > 4)
+    {
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/ksl/order/checkout/@Model.Input.TemporaryOrderId.Value">Checkout</a>
+        </div>
+    }    
+    </div>    
+</div>

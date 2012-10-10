@@ -1,0 +1,176 @@
+﻿@model Rentler.Web.Models.PropertyTermsModel
+
+@using (Html.BeginForm("terms", "listing", FormMethod.Post, new { @id = "step2Form" }))
+{
+    @Html.HiddenFor(m => m.Input.BuildingId)
+    <div class="contentSection">
+        <div class="content">
+            <div class="validationSummarySection">
+                @Html.ValidationSummary(false, "Please correct the errors and try again:")                
+            </div>
+        </div>
+    </div>    
+    <div style="clear:left;"></div>
+    
+    <div class="contentSection">        
+        <div class="content">            
+            <div class="termSection">
+                <label class="termLabel">Requirements</label>
+                <div class="termControls">
+                    <ul>
+                        <li class="creditcheck"><label class="checkbox">@Html.CheckBoxFor(m => m.Input.IsCreditCheckRequired)Credit Check</label></li>
+                        <li class="bgcheck"><label class="checkbox">@Html.CheckBoxFor(m => m.Input.IsBackgroundCheckRequired, new { @class = "backgroundCheck" })Background Check</label></li>
+                    </ul>                                                                                              
+                </div>
+                <div class="clr"></div>
+            </div>
+            
+            <div class="termSection">
+                <label class="termLabel">Price (per month)</label>
+                <div class="termControls">
+                    @Html.TextBoxFor(m => m.Input.Price, new { placeholder = "ex: 500.00", @class = "price", @Value = Model.Input.Price.ToString("0.00") })
+                </div>                           
+            </div>
+
+            <div class="termSection">
+                <label class="termLabel">Deposit</label>
+                <div class="termControls">
+                    @Html.TextBoxFor(m => m.Input.Deposit, new { placeholder = "ex: 500.00", @Value = (Model.Input.Deposit.HasValue) ? Model.Input.Deposit.Value.ToString("0.00") : "0.00" })						   
+                </div>                                                
+            </div>
+                    
+            <div class="termSection">
+                <label class="termLabel">Refundable</label>
+                <div class="termControls">                            
+						@Html.TextBoxFor(m => m.Input.RefundableDeposit, new { placeholder = "ex: 500.00", @Value = (Model.Input.RefundableDeposit.HasValue) ? Model.Input.RefundableDeposit.Value.ToString("0.00") : "0.00" })                                                        			
+                </div>                                                    
+                <div class="clr"></div>
+            </div>                    
+        </div>
+    </div>    
+    <div style="clear:left;"></div>
+    
+    <div class="contentSection">
+        <div class="tipIcon"></div>
+        <div class="content">
+            <div class="termSection plus">
+                <label class="termLabel">Availability Date</label>
+                <div class="termControls">
+                    @Html.EditorFor(m => m.Input.DateAvailableUtc)
+                </div>                            
+            </div>
+        </div>
+    </div>
+    <div class="tipSection">
+        <div class="tip">
+            <p>You can list your property up to two months ahead of availability.</p>
+        </div>        
+    </div>
+    <div style="clear:left;"></div>
+    
+    <div class="contentSection">
+        <div class="tipIcon"></div>
+        <div class="content">
+            <div class="termSection">
+                <label class="termLabel">Lease Length</label>
+                <div class="termControls">
+                    @Html.DropDownListFor(m => m.Input.LeaseLengthCode, Rentler.Web.Axioms.SelectLists.LeaseOptions.All)
+                </div>                        
+            </div>
+            <div class="termSection">
+                <label class="termLabel">Smoking</label>
+                <div class="termControls">
+                    <ul>
+                        <li class="yesno"><label class="radio">@Html.RadioButtonFor(m => m.Input.IsSmokingAllowed, "True")Yes</label></li>
+                        <li class="yesno"><label class="radio">@Html.RadioButtonFor(m => m.Input.IsSmokingAllowed, "False", new { @class = "smokingOutside" })No</label></li>
+                    </ul>                                                                               
+                </div>
+                <div class="clr"></div>    
+            </div>
+            <div class="termSection">
+                <label class="termLabel double">Pets</label>
+                <div class="termControls">
+                    <ul>
+                        <li class="petsallowed">
+                            <label class="radio"><input type="radio" name="Input.ArePetsAllowed" value="true" data-bind="checked: petsAllowed" />Allowed</label>                                
+                            <label class="radio"><input type="radio" name="Input.ArePetsAllowed" value="false" data-bind="checked: petsAllowed" />Not Allowed</label>
+                        </li>
+                        <li class="petfee" data-bind="visible: arePetsAllowed()">
+                            <label>Pets Fee (Per Month)</label>                       
+                            @Html.TextBoxFor(m => m.Input.PetFee, new { placeholder = "ex: 250.00", @Value = Model.Input.PetFee.Value.ToString("0.00") })
+                        </li>
+                    </ul>                                                                                                                          
+                    <div class="clr"></div>
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="submitSection">                
+                <input id="step2submit" name="submit" type="submit" value="Continue to Next Step" />
+				<div class="loader hide" style="float:right;margin-right:50px;">
+					<img src="/images/loader.gif" />
+				</div>
+                <div style="clear:right;"></div>
+            </div> 
+        </div>               
+    </div>
+    <div class="tipSection">
+        <div class="tip">
+            <p>This feature comes in handy when a tenant is looking for specific terms. Adding a lease length to your listing is completely optional.</p>
+        </div>        
+    </div>
+    <div style="clear:left;"></div>
+    
+    @*<div class="contentSection">
+        <div class="tipIcon"></div>
+        <div class="content">
+            <div class="termSection">
+                <div class="labelSection"><label>Utilities</label></div>
+                <div class="inputSection">
+                    <div class="l2rSection">
+                        <span><label>Landlord Pays</label></span>
+                        <ul class="utilityList">
+                        @{ var landlordUtilities = Model.Input.LandlordUtilities; }        
+                        @for(int i = 0; i < landlordUtilities.Count; ++i)
+						{
+                            <li>                        
+                                <input type="hidden" name="LandlordUtilities[@i].Name" value="@landlordUtilities[i].Name" />
+                                <input type="hidden" name="LandlordUtilities[@i].Value" value="@landlordUtilities[i].Value" />
+                                <input class="utility" type="checkbox" name="LandlordUtilities[@i].Selected" value="true" @(landlordUtilities[i].Selected ? "checked=\"checked\"" : "") />
+			                    <input type="hidden" name="LandlordUtilities[@i].Selected" value="false" />
+                                <label for="LandlordUtilities[@i]">@landlordUtilities[i].Name</label>
+                            </li>
+						}
+                        </ul>
+                    </div>
+                    <div class="l2rSection">
+                        <span><label>Tenant Pays</label></span>
+                        <ul class="utilityList">
+                        @{
+						var tenantUtilities = Model.Input.TenantUtilities;
+                        }        
+                        @for(int i = 0; i < tenantUtilities.Count; ++i)
+						{
+                            <li>
+                                <input type="hidden" name="TenantUtilities[@i].Name" value="@tenantUtilities[i].Name" />
+                                <input type="hidden" name="TenantUtilities[@i].Value" value="@tenantUtilities[i].Value" />
+                                <input class="utility" type="checkbox" name="TenantUtilities[@i].Selected" value="true" @(tenantUtilities[i].Selected ? "checked=\"checked\"" : "") />
+			                    <input type="hidden" name="TenantUtilities[@i].Selected" value="false" />
+                                <label for="TenantUtilities[@i]">@tenantUtilities[i].Name</label>
+                            </li>
+						}
+                        </ul>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+                <div class="clr"></div>
+            </div>                           
+        </div>               
+    </div>
+    <div class="tipSection">
+        <div class="tip">
+            <p></p>
+        </div>        
+    </div>
+    <div style="clear:left;"></div>*@
+    @Html.HiddenFor(m => m.Input.TemporaryOrderId)
+}

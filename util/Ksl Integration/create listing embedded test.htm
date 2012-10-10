@@ -1,0 +1,57 @@
+<style>
+iframe[seamless]{
+    background-color: transparent;
+    border: 0px none transparent;
+    padding: 0px;
+    overflow: hidden;
+}
+iframe{
+	width:720px;
+	height: 900px;
+}
+</style>
+<iframe src="http://localhost:15020/api/1/property/index?BuildingId=120" seamless
+	frameborder=0 border=0></iframe>
+
+<script type="text/javascript">
+//if postMessage is supported
+if (window.addEventListener) {
+	function goToListing(event) {
+		if (event.origin !== 'http://localhost:15020')
+			return;
+
+		//the event.data should be the listingId, a number.
+		//If it is, go to the listing page
+		if (!isNaN(event.data))
+			window.location.href = 'http://localhost:15020/listing/' + event.data;
+	}
+
+	window.addEventListener('message', goToListing, false);
+}
+//otherwise use old method
+else {
+	var messageCount = 0;
+	var lastId = '';
+
+	function checkForMessages() {
+		if (location.hash != lastId && location.hash !== '#!') {
+			lastId = location.hash;
+			messageCount++;
+
+			//match anything after # but before the _timestamp
+			var pattern = /(?!#)\d{0,}(?=_)/;
+			var message = lastId.match(pattern);
+
+			if (!isNaN(message)) {
+				//preserve the back button
+				window.location.href = '#!';
+				//redirect!
+				window.location.href = 'http://localhost:15020/listing/' + message;
+			}
+		}
+	}
+
+	//check the hash on an interval
+	setInterval(checkForMessages, 100);
+}
+</script>

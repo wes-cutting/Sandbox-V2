@@ -1,0 +1,259 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.PropertyManageModel
+@section title {Dashboard - Manage Property}
+@section description { }
+@section css 
+{    
+    <link href="/css/pages/dashboard.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    <link href="/css/pages/landlord.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    <link href="/css/scrim.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+    
+}
+@section js 
+{
+    <script src="/scripts/knockout-2.1.0.js"></script>
+    <script src="/js/rentler.scrim.js?v=@Html.BuildNumber()"></script>
+    <script src="/js/rentler.property.manage.js"></script>
+    <script type="text/javascript">        
+        var viewModel = new rentler.property.manage.CreateViewModel(@Model.Building.BuildingId);
+
+        // call this so we don't make ajax call on initial setter
+        viewModel.setIsVisible("@Model.Building.IsActive.ToString().ToLower()");
+        
+        viewModel.loadRibbon("@Model.Building.RibbonId");        
+
+        ko.applyBindings(viewModel);
+    </script>
+}
+<div class="container">
+    
+    @Html.Partial("TabsNavigation", "myproperties")
+    
+    <div class="leftNav">    
+        <ul>
+	        <li class="selected"><a href="/dashboard/property/manage/@Model.Building.BuildingId">Manage</a></li>
+            <li><a href="/dashboard/listing/promote/@Model.Building.BuildingId">Promote</a></li>
+        </ul>    
+    </div>
+    
+    <div class="leftNavContent">
+        <div class="houseHeading">
+            @* Image Information (Left Side) *@
+            <div class="unitImageBlock">
+            @if (Model.Building.IsRemovedByAdmin)
+            {
+                <div class="unitImageOverlay">
+                    <div class="overlayText">Your property has been removed by Rentler</div>
+                </div>
+            }
+                <div class="unitImageContainer">
+                    <a href="#" class="imageLink">
+                        <img src="@Html.GetPhotoLink(Model.Building.BuildingId, Model.Building.PrimaryPhotoId, 200, 150, Model.Building.PrimaryPhotoExtension)" class="unitImage" alt="Unit Image" />
+                    </a>
+                </div>
+
+                @* Activate/Deactivate Block *@
+                <div class="activate" style="display: none;">
+                @if (Model.Building.IsActive)
+                {
+                    using (Html.BeginForm("deactivate", "property", new { area = "dashboard" }, FormMethod.Post))
+                    {
+                        <input type="hidden" name="id" value="@Model.Building.BuildingId" />
+                        <button type="submit">Deactivate Listing</button>
+                        <img src="/images/checked.png" alt="" />
+                    }
+					@*<a href="" id="deactivateListing" class="check" title="If you choose to deactivate your property, it will be removed from the listings. If immediately reactivated, your property will display in the same spot it was when you deactivated. After 14 days, you can reactivate your listing and it will actually appear at the top of the listings." data-hasribbon="@(string.IsNullOrWhiteSpace(Model.Building.RibbonId) ? false : true)">
+						Deactivate Listing</a>
+					<a href="" id="activateListing" title="Activating will add your property to Rentlers listings. If still active within 30 days, the listing will be deactivated automatically."
+						class="check hide">Activate Listing</a>	*@				                    
+                }
+                else
+                {
+                    using (Html.BeginForm("activate", "property", new { area = "dashboard" }, FormMethod.Post))
+                    {
+                        <input type="hidden" name="id" value="@Model.Building.BuildingId" />
+                        <button type="submit">Activate Listing</button>
+                        <img src="/images/unchecked.png" alt="" />
+                    }
+					@*<a href="" id="deactivateListing" title="If you choose to deactivate your property, it will be removed from the listings. If immediately reactivated, your property will display in the same spot it was when you deactivated. After 14 days, you can reactivate your listing and it will actually appear at the top of the listings."
+						class="check hide">Deactivate Listing</a>
+					<a href="" id="activateListing" class="check" title="Activating will add your property to Rentlers listings. If still active within 30 days, the listing will be deactivated automatically.">
+						Activate Listing</a>*@	                    
+                }
+                </div>
+                @* END Activate/Deactivate Block *@
+
+            </div>
+            @* End Image Information (Left Side) *@
+
+            @* General Listing Information (Right Side) *@
+            <div class="accountRight">
+
+                <div class="listingHeading">
+                    <div class="listingHeadingLeft">
+                        <div class="portfoliolistingAddress">@Model.Building.Address1</div>
+                        <div class="listingCity">@Model.Building.City, @Model.Building.State @Model.Building.Zip</div>
+                    </div>
+                    <div class="listingHeadingRight">                    
+                        <div class="listingPrice">$@string.Format("{0:0.##}", Model.Building.Price)</div>
+                        <div class="listingPriceLabel">Per Month</div>					
+                    </div>
+                </div>
+
+                @* Stats *@
+                <ul class="bedBathStats">
+                    <li class="first">
+                        <div class="count">@(Model.Building.Bedrooms)</div>
+                        <div class="label">Bed</div>
+                    </li>
+                    <li>
+                        <div class="count">@string.Format("{0:0.##}", Model.Building.Bathrooms)</div>
+                        <div class="label">Bath</div>
+                    </li>
+                    <li>
+                        <div class="count">@Model.Building.YearBuilt</div>
+                        <div class="label">Year</div>
+                    </li>
+                    <li>
+                        <div class="count">@Model.Building.SquareFeet</div>
+                        <div class="label">SqFt</div>
+                    </li>
+                    <li class="final">
+                        <div class="count">@string.Format("{0:0.##}", Model.Building.Acres)</div>
+                        <div class="label">Acres</div>
+                    </li>                    
+                </ul>            
+            
+                @* Search Stats             
+                <ul class="searchStats">
+                    <li>@Model.ViewCount Viewed Your Listing</li>
+                    <li class="last">@Model.SearchViewCount Overall Searches</li>
+                </ul>*@			
+
+                @* Actions *@
+                <div class="listingActions">
+                    <div class="deleteAction"><a href="#delete" data-bind="click: deleteBuilding">Permanently Delete</a></div>
+                    <div>
+                        <span>Listing is:</span>
+                        <label class="radio"><input type="radio" name="isvisible" value="true" data-bind="checked: isVisible" />Visible</label>
+                        <label class="radio"><input type="radio" name="isvisible" value="false" data-bind="checked: isVisible" />Hidden</label>
+                    </div>
+                    <div class="clr-r"></div>
+                </div>
+                <ul class="listingActions" style="display: none">
+				    <li>
+                    @using (Html.BeginForm("delete", "property", new { area = "dashboard" }, FormMethod.Post))
+                    {
+                        <input type="hidden" name="id" value="@Model.Building.BuildingId" />
+                        <button type="submit">Delete</button>
+                    }
+                    </li>                 
+                    <li><a href="/listing/@Model.Building.BuildingId">View Listing</a></li>
+                    <li class="last"><a href="/dashboard/property/edit/@Model.Building.BuildingId">Edit Listing</a></li>                    						
+                </ul>
+            </div>
+            @* General Listing Information (Right Side) *@
+
+            <div class="clr"></div>            
+        </div>   
+
+        <div class="tabs">
+            <ul>
+                <li class="active"><a class="button" href="#tenants">Tenants</a></li>
+            </ul>                        
+        </div>
+
+        <div class="tabContainer">
+            <div id="tenants" class="tabContent">
+		        <div class="gradHeading multiline">
+			        Manage all your tenants right here.<br />
+			        Set up Auto Pay, build contracts and gauge cash flow.
+			        <div class="subHeading">
+				        Lease features coming soon.
+			        </div>
+		        </div>
+                <ul class="itemList currentApplications">
+                    <li class="heading">Applications <span class="accent">(0)</span></li>
+                    <li class="none">You currently have no applications submitted.</li>
+                    @*@if (Model.Detail.Applications.Count < 1)
+				    {
+                    <li class="none">You currently have no applications submitted.</li>
+				    }
+				    else
+				    {
+					    foreach (var app in Model.Detail.Applications)
+					    {
+                        <li>
+                            <div class="rightLink"><a class="removeLead" data-user="@app.Id" href="/portfolio/application/delete/@app.Id">Remove</a></div>
+                            <a class="viewApplication" href="/portfolio/application/view/@app.Id">@app.OriginatingUser.FirstName @app.OriginatingUser.LastName</a>
+                        </li>
+					    }
+				    }*@
+                </ul>
+
+			    <ul class="itemList previousLeases">
+				    <li class="heading">Previous Leases</li>
+                    <li class="none">This unit has no past leases.</li>
+				    @*@if (Model.Detail.OtherLeases.Count < 1)
+				    {
+                    <li class="none">This unit has no past leases.</li>
+				    }
+				    else
+				    {
+					    foreach (var lease in Model.Detail.OtherLeases)
+					    {
+                        <li>
+                            <div class="rightLink">@lease.CreateDate.ToShortDateString()</div>
+                            <div class="dateInfo">@lease.CreateDate.ToShortDateString()</div>
+                            @lease.FirstName @lease.LastName
+                        </li>
+					    }
+				    }*@
+			    </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="clr"></div>
+</div>
+
+<div id="deletePropertyTemplate" class="hide">
+    <div class="modalPromptContainer">
+        <div class="darkHeading">Delete Property</div>
+        <div class="message multiline">
+            <p>Are you sure you want to delete your property? This cannot be undone.</p>
+            <p>You may want to hide your listing by clicking <label class="radio"><input type="radio" disabled="disabled" checked="checked" />Hidden</label> so you can use your listing the next time you need to rent your place.</p>
+            <p>If you still want to permanently delete your listing type delete into the textbox to confirm your decision.</p>
+        </div>
+        <div id="deleteError" class="error hide">
+            <p>An error occurred and we were unable to Delete this listing. Please contact Rentler Support if this problem persists</p>
+        </div>
+        <div class="submitStatus" style="margin-top: 20px; text-align: center;">
+            <form id="deletePropertyForm" method="post" action="/dashboard/property/delete">
+                <input type="text" name="confirm" />
+                <input type="hidden" name="id" value="@Model.Building.BuildingId" />
+                <input type="submit" class="button blue" value="Delete This Property" />
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="deactivateWithRibbonTemplate" class="hide">
+    <div class="modalPromptContainer">
+	    <div class="darkHeading">You have an active ribbon</div>
+	    <div class="message multiline">
+		    <p>It looks like you have an active ribbon. If you deactivate your listing, your ribbon will automatically expire. If you choose to reactivate your listing and would like a ribbon once again, you will need to purchase a new ribbon to promote your listing.</p>
+            <p>If you still want to deactivate your listing type deactivate into the textbox to confirm your decision</p>		
+	    </div>
+        <div id="deactivateError" class="error hide">
+            <p>An error occurred and we were unable to Deactivate this listing. Please contact Rentler Support if this problem persists</p>
+        </div>
+	    <div class="submitStatus" style="margin-top: 20px; text-align: center;">            
+		    <form id="deactivateWithRibbonForm" method="post" action="/dashboard/property/confirmdeactivate">
+		        <input type="text" name="confirm" />
+		        <input type="hidden" name="id" value="@Model.Building.BuildingId" />
+		        <input type="submit" class="button blue" value="Deactivate This Property" />
+		    </form>
+	    </div>
+    </div>
+</div>

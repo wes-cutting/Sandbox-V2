@@ -1,0 +1,136 @@
+﻿@using MvcPaging
+
+@model Rentler.Search
+           
+@section title {Find a rental home with Rentler}
+
+@section css {
+<link rel="Stylesheet" href="/css/pages/home.css?v=@Html.BuildNumber()" />
+<link rel="Stylesheet" href="/css/pages/search.css?v=@Html.BuildNumber()" />
+<link rel="Stylesheet" href="/css/scrim.css?v=@Html.BuildNumber()" />
+<link rel="Stylesheet" href="/css/pages/listing.css?v=@Html.BuildNumber()" />
+<link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section preheader {
+    <div class="scrim background hide"></div>
+    <div class="listing-scrim hide">
+        <div class="listing-scrim-container"></div>
+    </div>
+}
+
+
+@using (Html.BeginForm("index", "search", FormMethod.Get))
+{
+<div id="search">
+    <div class="container">
+        <div class="search-form">
+            @Html.TextBoxFor(m => m.Location, new { @class = "location", placeholder = "Where would you like to rent?" })
+            @Html.TextBoxFor(m => m.MinPrice, new { @class = "max-price", placeholder = "Min Price" })
+            @Html.TextBoxFor(m => m.MaxPrice, new { @class = "max-price", placeholder = "Max Price" })
+            @Html.DropDownListFor(m => m.PropertyTypeCode, Rentler.Web.Axioms.SelectLists.PropertyTypes.All)
+            <div>
+                <button type="submit" class="button green">Search</button>
+            </div>
+        </div>        
+    </div>
+</div>
+    
+<div id="search-result-options">
+    <div class="container">
+        <div class="push-right">
+            <a href="#" data-open="advanced-search">Advanced Search</a>
+        </div>
+        <div>
+            @Model.Results.TotalCount Result@(Model.Results.TotalCount == 1 ? "" : "s")
+        </div>
+    </div>
+</div>
+
+    <div id="advanced-search">
+    <div class="container">
+        <div class="drop-selections">
+            <div class="bedrooms">
+                <label>Bedrooms</label>
+                @Html.DropDownListFor(m => m.Bedrooms, Rentler.Web.Axioms.SelectLists.Bedrooms.AllBedrooms)
+            </div>
+            <div class="bathrooms">
+                <label>Bathrooms</label>
+                @Html.DropDownListFor(m => m.Bathrooms, Rentler.Web.Axioms.SelectLists.Bathrooms.AllBathrooms)
+            </div>
+            <div class="square-feet">
+                <label>Square Feet</label>
+                @Html.DropDownListFor(m => m.MinSquareFootage, Rentler.Web.Axioms.SelectLists.SquareFeet.AllSquareFeetLowestToHighest)
+                &nbsp;to&nbsp;
+                @Html.DropDownListFor(m => m.MinSquareFootage, Rentler.Web.Axioms.SelectLists.SquareFeet.AllSquareFeetHighestToLowest)
+            </div>
+            <div class="year-built">
+                <label>Year Built</label>
+                @Html.DropDownListFor(m => m.YearBuiltMin, Rentler.Web.Axioms.SelectLists.BuildYear.AllBuildYearLowestToHighest)
+                &nbsp;-&nbsp;
+                @Html.DropDownListFor(m => m.YearBuiltMax, Rentler.Web.Axioms.SelectLists.BuildYear.AllBuildYearHighestToLowest)
+            </div>
+            <div class="seller-type">
+                <label>Seller Type</label>
+                @Html.DropDownListFor(m => m.SellerType, Rentler.Web.Axioms.SelectLists.ContactInfoTypes.All)
+            </div>
+        </div>
+        <div class="amenity-selections">
+            <div class="basic-amenities">
+                <label>Amenities</label>
+                <ul>
+                @{ var propConfig = Rentler.Configuration.Amenities.Current.Property; }
+                @foreach (var key in propConfig.Keys)
+                {
+                    <li>
+                        <input type="checkbox" name="Amenities" 
+                            value="@key" @(Model.Amenities != null && Model.Amenities.Contains(@key) ? "checked=checked" : "")/>
+                        &nbsp;@propConfig[key]
+                    </li>
+                }
+                </ul>
+                <div class="left-clear"></div>
+            </div>
+            <div class="community-amenities">
+                <label>Community Amenities</label>
+                <ul>
+                @{ var commConfig = Rentler.Configuration.Amenities.Current.Community; }
+                @foreach (var key in commConfig.Keys)
+                {
+                    <li>
+                        <input type="checkbox" name="Amenities" 
+                            value="@key" @(Model.Amenities != null && Model.Amenities.Contains(@key) ? "checked=checked" : "")/>
+                        &nbsp;@commConfig[key]
+                    </li>
+                }
+                </ul>
+                <div class="left-clear"></div>
+            </div>
+            <div class="keyword-container">
+                <div class="actions">
+                    <button data-close="advanced-search">Cancel</button>&nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="button blue">Update Search</button>
+                </div>
+                <div class="keywords">
+                    <label>Keywords</label>
+                    @Html.TextBoxFor(m => m.Keywords)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+<div class="container search-res">
+    @Html.Partial("SearchResults", Model)
+</div>
+
+@section js {
+    <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="/scripts/jcarousellite.js"></script>
+    <script type="text/javascript" src="/scripts/placeholder.min.js"></script>
+	<script type="text/javascript" src="/scripts/jquery.infinitescroll.js"></script>
+    <script type="text/javascript" src="/scripts/amplify.min.js"></script>
+    <script type="text/javascript" src="/js/api/rentler.api.listing.js?v=@Html.BuildNumber()"></script>
+    <script type="text/javascript" src="/js/rentler.listing.js?v=@Html.BuildNumber()"></script>
+    <script type="text/javascript" src="/js/rentler.search.js?v=@Html.BuildNumber()"></script>
+}

@@ -1,0 +1,30 @@
+﻿@using MvcPaging
+@model Rentler.PropertySearch
+
+<ul class="my-properties">
+@foreach (var item in Model.Results)
+{ 
+    <li class="prop-result">
+        <div class="image-block">
+            @if (item.IsRemovedByAdmin)
+            {
+            <div class="image-overlay">
+                <div class="overlay-text">Your property has been removed by Rentler</div>
+            </div>
+            }
+            <a href="/dashboard/property/manage/@item.BuildingId">
+                <img src="@Html.GetPhotoLink(item.BuildingId, item.PrimaryPhotoId, 200, 150, item.PrimaryPhotoExtension)" alt="Image" />
+            </a>
+        </div>
+        <div class="property-info">
+            <div class="status @(false ? " active" : "")">&nbsp;</div>
+            <div class="address@(item.IsActive ? " active" : "")">@Html.Truncater(item.Address1, 18)</div>
+            <div class="city">@item.City, @item.State</div>
+        </div>
+    </li>
+}
+</ul>
+<div class="loading"></div>
+<div class="navigation">
+	@Html.Pager(Model.Results.PageSize, Model.Results.PageNumber, Model.Results.TotalCount).Options(p => p.RouteValues(Html.GetRouteData()))
+</div>

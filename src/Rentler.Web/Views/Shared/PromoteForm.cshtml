@@ -1,0 +1,238 @@
+﻿@model Rentler.Web.Models.PropertyPromoteModel
+
+@using (Html.BeginForm("promote", "listing", FormMethod.Post, new { @id="step3Form", target = "_top" }))
+{
+    @Html.HiddenFor(m => m.Input.BuildingId)
+    <div class="contentSection">
+        <div class="content">
+            <div class="validationSummarySection">
+                @Html.ValidationSummary(false, "Please correct the errors and try again:")                
+            </div>
+        </div>
+    </div>    
+    <div style="clear:left;"></div>
+            
+    <div class="contentSection">
+        <div class="tipIcon top"></div>
+        <div class="content">
+            <div class="promoSectionHeading top">
+                <span class="textHeading">Photos</span><span class="priceHeading"> - Free</span>
+            </div>
+            <div class="promoSection">
+                <p>Feel free to upload multiple photos at a time. You can also rearrange them by clicking and dragging them around.</p>
+            </div>
+            <div class="promoSection">                
+                <div id="uploader">                    
+                    <noscript>
+	                    <p>Please enable JavaScript to upload images.</p>
+                    </noscript>
+                </div>
+                <ul id="uploadFailures"></ul>
+            </div>
+        </div>               
+    </div>
+    <div class="tipSection top">
+        <div class="tip">
+            <p>On average listings with photos get viewed 28% more often than listings without photos. Want to rent your place fast? Add some photos, it's free!</p>
+        </div>        
+    </div>
+    <div style="clear:left;"></div>
+            
+    <div class="contentSection">
+        <div class="tipIcon"></div>
+        <div class="content">
+            <div class="promoSectionHeading">
+                Title (<span id="titleCharCount" data-bind="text: remainingChar(50,title())"></span>)<span class="priceHeading"> - Free</span>
+            </div>
+            <div class="promoSection">
+                <input type="text" class="promoTitle" id="Input_Title" name="Input.Title" data-bind="decodeValue: title, valueUpdate:'afterkeydown', limitText: limitTitle, charLimit:50" />                        
+            </div> 
+
+            <div class="promoSectionHeading">
+                Description (<span id="descriptionCharCount" data-bind="text: remainingChar(4000,description())"></span>)
+                <span class="priceHeading"> - Free</span>
+            </div>
+            <div class="promoSection">    
+                <textarea class="promoDescription" id="Input_Description" name="Input.Description" rows="1" cols="1" data-bind="decodeValue: description, valueUpdate:'afterkeydown', limitText: limitDescription, charLimit:4000"></textarea>                                    
+            </div>
+        </div>               
+    </div>
+    <div class="tipSection">
+        <div class="tip">
+            <p>The Title of your listing is very important. It’s your opportunity to really distinguish your property from the rest. So make it count!</p><br />
+            <p>You can use up to 4,000 words in the Description, but sometimes less is more.</p><br />
+        </div>        
+    </div>
+    <div style="clear:left;"></div>
+            
+    <!-- Ribbons -->
+    <div class="contentSection">
+        <div class="tipIcon"></div>
+        <div class="content">
+            <div class="promoSectionHeading">
+                <span class="textHeading">Ribbons</span><span class="priceHeading"> - $19.95 Each</span>
+            </div>
+            <div class="promoSection">
+                <div class="ribbonInfoSection">
+                    <p>Ribbons are just $19.95 and are a great way to highlight your property’s best feature. Once a ribbon is purchased, it's yours for one month. Note: Purchasing a new ribbon will remove the old one.</p>                    
+                    <img src="/images/property/ribbonInSearchExample.png" alt="" width="189" height="148" />
+                    <div style="clear: both;"></div>                   
+                </div>
+                @if (!string.IsNullOrEmpty(Model.Input.PurchasedRibbonId))
+				{
+                    <div style="margin: 15px 0px 15px 10px;">You own the <span style="font-weight: bold;">@Rentler.Configuration.Ribbons.Current.AvailableRibbons[Model.Input.PurchasedRibbonId]</span> ribbon</div>
+				}
+                <div class="ribbonListSection">
+                    <ul id="ribbonOptionsList" data-bind="foreach: ribbons">                                                                
+                        <li>
+                            <div class="ribbonContainer">
+                                <img class="ribbonOverlay" src="" alt="" data-bind="attr: { src: src, alt: name }, visible: src != ''" />
+                                <div class="ribbonBox">
+                                    <!-- ko if: selectable -->
+                                    <label class="radio">
+                                        <input 
+                                            type="radio" 
+                                            name="Input.SelectedRibbonId" 
+                                            value=""                                                                                                    
+                                            data-bind="value: id, checked: $parent.selectedRibbon().id, attr: { 'data-name': name }" />
+                                        <span data-bind="html: displayHtml"></span>                                        
+                                    </label>
+                                    <!-- /ko -->
+                                    <!-- ko ifnot: selectable -->
+                                    <label class="owned">Owned</label>   
+                                    <!-- /ko -->                                                                                                                                                                                         
+                                    <div style="clear:right;"></div>
+                                </div>                            
+                            </div>
+                        </li>                                                                                         
+                    </ul>            
+                </div>
+            </div>            
+        </div>               
+    </div>
+    <div class="tipSection">
+        <div class="tip">
+            <p>Grab the attention of your next tenant with a colorful ribbon showcasing your property's standout feature. They’re only $19.95!</p>
+        </div>        
+    </div>
+    <div style="clear:left;"></div>
+	
+	<!-- Promoted Listing -->
+	<div class="contentSection">
+		<div class="content">
+			<div class="promoSectionHeading">
+				<span class="textHeading">Prioritize Your Listing</span><span class="priceHeading"> - $39.95 for 30 days</span>
+			</div>
+			<div class="promoSection">
+				<div class="featuredInfoSection">	                    
+				@{
+					string link = Html.GetPhotoLink(Model.Input.BuildingId, Model.Input.PrimaryPhotoId, 200, 150, Model.Input.PrimaryPhotoExtension);
+                 }
+                    <div id="featuredPreview">
+                        <div class="shadow" style="height:150px">
+                            <img id="imgFeaturedPreview" src="@link" width="200" height="150" alt="" /></div>
+                    </div>
+					<!-- ko if: priorityListing().selectable -->
+                    <p><span style="font-weight:bold;">Why a priority listing?</span> This option keeps your listing at the top of search results for 30 days.</p>
+					<p><span style="font-weight:bold;">How does priority listing work?</span> Your listing will appear at the top of search results behind featured and in front of all the free listings. We don’t visually show the difference between a standard listing and a priority listing except for placement at the top of search results.
+					<br /><br />
+					@Html.LabelFor(m => m.Input.ListingHasPriority)
+					@Html.CheckBoxFor(m => m.Input.ListingHasPriority, new { data_bind = "checked: priorityListing().checked, click: selectPromote" })</p>
+					<div style="clear:left;"></div>
+					<!-- /ko -->
+					<!-- ko ifnot: priorityListing().selectable -->
+					<p>Your listing is prioritized!</p>
+					<!-- /ko -->
+				</div>
+			</div>
+		</div>
+	</div>
+            
+    <!-- Featured -->
+    <div class="contentSection">        
+        <div class="content">
+            <div class="promoSectionHeading">
+                <span class="textHeading">Feature Your Listing</span><span class="priceHeading"> - Just $9.95 per day</span>
+            </div>
+            <div class="promoSection">
+                <div class="featuredInfoSection">
+                    @{
+				string lnk = Html.GetPhotoLink(Model.Input.BuildingId, Model.Input.PrimaryPhotoId, 200, 150, Model.Input.PrimaryPhotoExtension);                                                                                                                                                    
+                    }
+                    <div id="featuredPreview">
+                        <div class="shadow" style="height:150px">
+                            <img id="imgFeaturedPreview" src="@lnk" width="200" height="150" alt="" /></div>
+                        <div class="redFeatured">Featured</div>
+                    </div>
+					<p><span style="font-weight:bold;">Why feature a listing?</span> You get the most possible exposure to your house to rent it quicker. Simply put, the shorter you have your house on the market the more money you make.</p>
+					<p><span style="font-weight:bold;">So how does a featured listing work?</span> When you feature your listing, it will appear at the very top of a search in your area. Only a few listings can be featured at a time in a given zip code, ensuring your featured listing gets the attention it deserves. If nobody is featuring in a neighboring area, your listing will appear there, too!<br /><br /><br /><span style="font-weight: bold;">Maximum: 30 Days</span><br /></p>
+                    <div style="clear:left;"></div>
+                </div>
+                <div class="featuredCalendarSection">
+                    <div id="calendarInfoHeader">Select the days to feature your listing</div>
+                    <div id="calendarMessage" class="hide">&nbsp;</div>      
+                    <!--<div id="calendarLoader" class=>&nbsp;</div>-->
+                    <div id="featuredCalendar"></div>
+                </div>        
+            </div>                    
+        </div>               
+    </div>    
+    <div style="clear:left;"></div>
+            
+    <div class="contentSection">        
+        <div class="content">
+            <div class="submitSection">                
+                <input id="step3Submit" name="submit" type="submit" value="" data-bind="value: submitText()" />
+				<div class="loader hide" style="float:right;margin-right:50px;">
+					<img src="/images/loader.gif" />
+				</div>
+                <div style="clear:right;"></div>
+            </div>
+        </div>
+    </div>
+    <div style="clear:left;"></div>
+            
+    <div id="selectedDates" class="hide"></div> 
+    @Html.HiddenFor(m => m.Input.TemporaryOrderId)                        
+}
+
+    <div class="chargesSummary">
+        <div class="chargesHeader">Summary of Charges</div>
+        <div class="chargesBody">
+            <div class="bodyHeader">Ribbons:</div>
+            <div class="bodySection">
+                <ul id="ribbonChargesList">
+                    <li>
+                        <span class="ribbonChargeName label" data-bind="text: selectedRibbon().name"></span>
+                        <span class="ribbonChargePrice price" data-bind="text: ribbonPriceFormatted"></span>                                
+                        <div style="clear:both"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="bodyHeader">Featured Listing:</div>
+            <div class="bodySection">
+                <ul id="featuredChargesList">
+                    <li>
+                        <span class="featuredChargeDays label" data-bind="text: featuredName"></span>                    
+                        <span class="featuredChargePrice price" data-bind="text: featuredPriceFormatted"></span>                                
+                        <div style="clear:both"></div>
+                    </li>
+                </ul>
+            </div>
+			<div class="bodyHeader">Priority Listing:</div>
+			<div class="bodySection">
+				<ul id="priorityListingCharges">
+					<li>
+						<span class="priorityListingChargeName label" data-bind="text: priorityListing().name"></span>
+						<span class="priorityListingChargePrice price" data-bind="text: priorityListingPriceFormatted"></span>
+						<div style="clear:both"></div>
+					</li>
+				</ul>
+			</div>
+        </div>
+        <div class="chargesTotal">
+            <span class="label">Sub Total:</span>
+            <span class="totalCharges price" data-bind="text: cartTotalFormatted"></span>
+            <div style="clear:both"></div>
+        </div>
+    </div>

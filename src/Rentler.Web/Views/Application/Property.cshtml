@@ -1,0 +1,33 @@
+﻿@model Rentler.Web.Models.ApplicationPropertyModel
+
+@if (Model.Results.Count < 1)
+{
+    <div class="app-description">
+        <div class="accent-description">No applications yet!</div>
+        As people submit applications they will be shown here for review. <br />
+
+        <div class="sub-description">
+            Promoting your listing will get more eyes on your add and increase the chances of <br />
+            receiving applications. We have multiple price points to help suit your budget.
+        </div>
+        
+        <a class="button blue big" href="/listing/promote/@Model.BuildingId">Promote My Listing</a>
+    </div>
+}
+else
+{
+    <div class="app-list-title">Applications Recieved</div>
+    foreach (var item in Model.Results)
+    {
+        <div class="app-overview">
+            <ul class="solid-hor-list listing-action-stats">
+                @*<li>Sent 9/14/2012</li>*@
+                <li><a href="/application/viewlead/@item.UserInterestId">Review Application</a></li>
+                <li><a href="/application/deletelead/@item.UserInterestId" class="delete-application">Delete</a></li>
+            </ul>
+            <div class="app-name">
+                <a href="/application/viewlead/@item.UserInterestId">@item.User.FirstName @item.User.LastName</a>
+            </div>
+        </div>
+    }
+}

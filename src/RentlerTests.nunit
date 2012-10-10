@@ -1,0 +1,8 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" />
+  <Config name="Debug" binpathtype="Auto">
+    <assembly path="Rentler.Tests\bin\Debug\Rentler.Tests.dll" />
+    <assembly path="Rentler.Web.Tests\bin\Debug\Rentler.Web.Tests.dll" />
+  </Config>
+  <Config name="Release" binpathtype="Auto" />
+</NUnitProject>

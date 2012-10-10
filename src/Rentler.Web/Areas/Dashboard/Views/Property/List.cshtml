@@ -1,0 +1,76 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.PropertyListModel
+@section title { Rentler - List Property }
+@section css {
+<link rel="Stylesheet" href="/css/pages/property2.css?v=@Html.BuildNumber()" />
+<link rel="Stylesheet" href="/css/pages/list.css?v=@Html.BuildNumber()" />
+<link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section js {
+<script type="text/javascript" src="/scripts/jquery.validate.js"></script>
+<script type="text/javascript" src="/scripts/jquery.validate.unobtrusive.js"></script>
+<script type="text/javascript" src="/scripts/knockout-2.1.0.js"></script>
+<script type="text/javascript" src="/scripts/mvcfoolproof.unobtrusive.min.js"></script>
+<script type="text/javascript" src="/js/rentler.knockoutBindings.js"></script>
+<script type="text/javascript" src="/js/rentler.property.list.js"></script>
+@* 
+    All I am doing here is creating a javascript view model and adding all
+    the contact infos to it. This allows knockout to bind to everything.
+*@
+<script type="text/javascript">
+    var viewModel = new rentler.property.list.CreateViewModel();    
+
+    @foreach (var item in Model.UserContacts)
+    {
+        <text>
+            viewModel.contactInfos.push({
+                contactInfoId: @item.ContactInfoId,
+                contactInfoTypeCode: @item.ContactInfoTypeCode,
+                name: "@item.Name",
+                displayName: "@item.Name",
+                companyName: "@item.CompanyName",
+                email: "@item.Email",
+                phoneNumber: "@item.PhoneNumber",
+                showPhoneNumber: @item.ShowPhoneNumber.ToString().ToLower(),
+                showEmailAddress: @item.ShowEmailAddress.ToString().ToLower()
+            });
+        </text>        
+    }    
+        
+    @if(Model.Input.ContactInfo != null) 
+    {
+        <text>
+            viewModel.selectedContact(
+                viewModel.findContactById(@Model.Input.ContactInfo.ContactInfoId));
+        </text>
+    }
+    ko.applyBindings(viewModel);
+</script>
+}
+
+<div class="container">
+
+    <div id="accordion" class="ui-accordion">
+        <div class="ui-accordion-header selected">
+            <span class="stepEdit">List Property - Details</span></div>
+        <div id="accordionPane1" class="ui-accordion-content" style="clear:right"> 
+            @Html.Partial(@"~\views\shared\listform.cshtml", Model)
+        </div>
+    @if (Model.StepsAvailable > 2)
+    {
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/terms/@Model.Input.BuildingId">List Property - Terms</a></div>
+    }
+    @if (Model.StepsAvailable > 3)
+    {
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/promote/@Model.Input.BuildingId">Promote Listing</a>                
+        </div>
+    }
+    @if (Model.StepsAvailable > 4)
+    {
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/order/checkout/@Model.TemporaryOrderId.Value">Checkout</a>
+        </div>
+    }
+    </div>
+</div>

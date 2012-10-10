@@ -1,0 +1,67 @@
+﻿@using Rentler.Web.Axioms.Extensions;
+@using MvcPaging;
+@model Rentler.Web.Areas.Admin.Models.ReportedSearchModel
+
+<div class="container">
+
+    <div class="row">
+        <div class="span3">
+        @Html.Partial("AdminSideNavPartial", "Reported")
+        </div>
+        <div class="span9">
+            <div class="page-header">
+                <h1>Reported Listings</h1>
+            </div>
+            
+            @if (Model.Listings.TotalCount < 1)
+            {
+            <div class="alert alert-success">
+              <h4>YAY!</h4>
+              All the reported listings have been handled. I think it is time for you to take a break.
+            </div>
+            }
+            else
+            {
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                Make sure if you are de-activating a listing you send them an email as to why.
+            </div>
+            }
+            
+            @foreach (var item in Model.Listings)
+            {
+            <div class="listing">
+                <h5>ListingId: @item.BuildingId - @item.LandlordEmail</h5>
+                
+                <blockquote>
+                    <p>@item.ReportedText</p>
+                </blockquote>
+
+                <div class="btn-group">
+                    <a class="btn" target="_blank" href="/listing/@item.BuildingId">
+                        <i class="icon-eye-open"></i> 
+                        View Listing
+                    </a>
+                    <a class="btn" href="/admin/reported/removeflag/@item.BuildingId">
+                        <i class="icon-flag"></i> 
+                        Remove Flag
+                    </a>
+                    <a class="btn" href="/admin/reported/deactivate/@item.BuildingId">
+                        <i class="icon-off"></i> 
+                        Deactivate
+                    </a>
+                    <a class="btn" href="/admin/reported/remove/@item.BuildingId">
+                        <i class="icon-remove"></i>
+                        Remove
+                    </a>
+                </div>
+            </div>
+            }
+            
+            @if (Model.Listings.TotalCount > 0)
+            {
+            @Html.Pager(Model.Listings.PageSize, Model.Listings.PageNumber, Model.Listings.TotalCount).Options(p => p.RouteValues(Html.GetRouteData()).DisplayTemplate("AdminPagingDisplayTemplate").MaxNrOfPages(5))
+            }
+        </div>
+    </div>
+</div>

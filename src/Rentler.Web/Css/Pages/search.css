@@ -1,0 +1,211 @@
+﻿.container-loader{
+	display:block;
+	margin: 0px auto;	
+}
+.search-form {
+    margin-top: 14px;
+    border-bottom: none;
+    background: none;
+    width: auto;
+}
+.search-form input.location {
+    margin-left: 0px;
+    width: 348px;
+}
+.search-form select {
+    margin-left: 10px;
+    width: 176px;
+    height: 40px;
+    padding: 8px;
+}
+.ie6 .search-form select,
+.ie7 .search-form select {
+    margin-top: 6px;
+}
+.search-form input.max-price {
+    width: 120px;
+}
+/* 
+    @group Search 
+*/
+#search.moved {
+    top: 0px;
+}
+#advanced-search.moved {
+}
+#advanced-search.moved.open {
+    top: 88px;
+}
+#search-result-options.moved {
+    top: 88px;
+    -webkit-box-shadow: 3px 3px 4px #BBB;
+    -moz-box-shadow: 3px 3px 4px #bbb;
+    box-shadow: 3px 3px 4px #BBB;
+}
+
+#search, 
+#search-result-options,
+#advanced-search {
+    position: fixed;
+    right: 0;
+    width: 100%;
+}
+#search {
+    height: 87px;
+    background: url('/images/search-background.png') repeat-x;
+    top: 49px;
+    z-index: 9;
+    border-bottom: solid 1px #d8d8d8;
+}
+#search .find {
+    margin-left: 10px;
+    display: block;
+    float: left;
+    height: 38px;
+    line-height: 38px;
+    background-position: -5px -72px;
+}
+#search .search-section {
+    width: 540px;
+    margin: 24px auto;
+}
+#search-result-options {
+    height: 40px;
+    top: 136px;
+    background: #fff url('/images/dash-hor.png') repeat-x bottom left;
+    z-index: 7;
+    line-height: 39px;
+}
+#advanced-search {
+    background: #fff url('/images/dash-hor.png') repeat-x bottom left;
+    top: -292px;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 3px 3px 4px #bbb;
+       -moz-box-shadow: 3px 3px 4px #bbb;
+            box-shadow: 3px 3px 4px #bbb;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#bbbbbb')";
+        filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#bbbbbb');
+    z-index: 8;
+    -webkit-transition-property: top, bottom;
+    -webkit-transition-duration: 1.0s;
+           -moz-transition-property: top, bottom;
+           -moz-transition-duration: 1.0s;
+                transition-property: top, bottom;
+                transition-duration: 1.0s;
+}
+/* @end Search */
+
+
+/* 
+    @group AdvancedSearch
+*/
+#advanced-search.open {
+    top: 136px;
+}
+    .drop-selections {
+        width: 230px;
+        margin-top: 20px;
+        margin-left: 20px;
+        float: left;
+    }
+    .amenity-selections {
+        width: 651px;
+        margin-top: 20px;
+        border-left: solid 1px #ccc;
+        padding-left: 29px;
+        float: left;
+    }
+    #advanced-search label {
+        line-height: 18px;
+        font-weight: bold;
+        display: block;
+        color: #454d50;
+    }
+        .bedrooms {
+            width: 108px;
+            float: left;
+            margin-bottom: 16px;
+        }
+            .bedrooms select {
+                width: 89px;
+            }
+        .bathrooms {
+            width: 114px;
+            float: left;
+            margin-bottom: 16px;
+        }
+            .bathrooms select {
+                width: 89px;
+            }
+        .square-feet {
+        }
+            .square-feet select {
+                width: 84px;
+            }
+        .year-built {
+            margin-top: 16px;
+        }
+            .year-built select {
+                width: 70px;
+            }
+        .seller-type {
+            margin-top: 16px;
+        }
+            .seller-type select {
+                width: 170px;
+            }
+     .basic-amenities {
+     }
+        .basic-amenities ul,
+        .community-amenities ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-top: 6px;
+        }
+        .basic-amenities ul li,
+        .community-amenities li {
+            float: left;
+            width: 160px;
+            padding: 2px 0px;
+        }
+        .left-clear {
+            clear: left;
+        }
+     .community-amenities {
+         margin-top: 4px;
+     }
+     .keyword-container {
+        background: url('/images/dash-hor.png') repeat-x top left;
+        margin-top: 10px;
+        padding-top: 10px;
+     }
+     .keyword-container .actions {
+        float: right;
+        margin-top: 20px;
+     }
+     .keyword-container input {
+        width: 280px;
+     }
+        
+/* @end AdvancedSearch */
+
+#header {
+    position: fixed;
+}
+#main {
+    position: relative;
+    padding-top: 197px;
+}
+.loading {
+    clear: left;
+    margin: 0px auto;
+	width : 30px;
+	padding-top : 10px;
+}
+.navigation {
+	text-align: center;
+}
+.navigation a {
+	padding: 5px;
+}

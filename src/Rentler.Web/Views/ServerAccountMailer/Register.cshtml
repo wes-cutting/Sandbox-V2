@@ -1,0 +1,10 @@
+﻿@model Rentler.Web.Email.EmailAccountRegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_EmailLayout.cshtml";
+}
+<div class="marginBottom" style="margin-bottom: 10px;">@Model.Name,</div>
+<div class="marginBottom" style="margin-bottom: 10px;">Thank you for registering for Rentler!</div>
+<div class="marginBottom" style="margin-bottom: 10px;">
+	<a href="@Rentler.Web.Config.Hostname/account/login">Click here to get started</a>
+</div>

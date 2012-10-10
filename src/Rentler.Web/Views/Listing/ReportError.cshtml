@@ -1,0 +1,6 @@
+﻿@section title { Report Listing - Error }
+<div class="container">
+    <h2>Report Listing - Error</h2>
+    <p>@ViewBag.Error</p>
+    @Html.ActionLink("Try again", "Index", new { id = ViewBag.Id })
+</div>

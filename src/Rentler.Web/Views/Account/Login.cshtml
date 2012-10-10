@@ -1,0 +1,68 @@
+﻿@model Rentler.Web.Models.AccountLoginModel
+@section title { Login }
+@section description {}
+@section css {
+    <link href="/css/pages/login.css?v=@Html.BuildNumber()" rel="Stylesheet" />
+}
+@section js {
+    <script type="text/javascript" src="/scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div id="login" class="container">
+    <div class="centerHeading">
+		<h1>Renting just got easier</h1>
+		<div>Login to take advantage of all of Rentler's amazing features. Don’t have an Account? No worries, registration is free!</div>
+	</div>
+    <div class="loginBox">
+		<div class="lightHeading">Login to your account:</div>
+        @using(Html.BeginForm("login", "account", FormMethod.Post, new { @class="form-horizontal" }))
+        {            
+            @Html.ValidationSummary("Please correct the errors and try again:")
+            <fieldset>            
+                <div class="control-group">                    
+                    <label for="Input_UserName" class="control-label">Email</label>
+                    <div class="controls">
+                        @Html.TextBoxFor(m => m.Input.UserName)
+                    </div>                    
+                </div>
+                <div class="control-group">
+                    <label for="Input_Password" class="control-label">Password</label>                    
+                    <div class="controls">
+                        @Html.PasswordFor(m => m.Input.Password)
+                    </div>
+                </div>
+                <div class="control-group">   
+                    <div>
+                        <label class="checkbox">                                                
+                            @Html.CheckBoxFor(m => m.Input.RememberMe)Remember me
+                        </label> 
+                    </div>                                                        
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="button blue">Login</button>
+                    @Html.ActionLink("Forgot your password?", "forgotpassword", "account")   
+					@Html.Hidden("ReturnUrl", (string)ViewBag.ReturnUrl)     
+                </div>
+            </fieldset>
+        }
+    </div>
+    <div class="loginMarketingBox">
+		<div class="renterSection">
+			<div class="sectionHead">Tenant Tools.</div>
+			<div>
+                Leasing a home is supposed to be less hassle and headache than owning, right? Well with Rentler, you'll love leasing. Rentler's made it easier to search, compare and lease homes than ever before. You can tool around town from the comfort of your couch. We've brought intuitive functionality to tenants like one-application-for-all and descriptions with the info you're really looking for.
+		    </div>
+		</div>
+		<div class="landlordSection">
+			<div class="sectionHead">Landlord Love.</div>
+			<div>
+                Rentler is a powerful online property management tool designed by landlords for landlords. With Rentler you'll save time, effort and headache as you effectively and efficiently accomplish frequent property management tasks through automated, streamlined functionality. From Auto pay set up to intelligent background checks, we're putting the ease back into lease.
+			</div>
+		</div>
+		<div class="accountCreation">
+			<a class="button green" href="/account/register">Create an Account with Rentler</a>
+		</div>
+	</div>
+    <div style="clear:left;"></div>
+</div>

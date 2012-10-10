@@ -1,0 +1,66 @@
+﻿@model Rentler.Web.Models.HomeIndexModel
+@section title {Love Leasing}
+@section description {Renting a home is supposed to be less hassle than owning, right? Well with Rentler, you'll love leasing.}
+@section css {
+<link rel="Stylesheet" href="/css/pages/home.css?v=@Html.BuildNumber()" />
+<link rel="Stylesheet" href="/css/scrim.css?v=@Html.BuildNumber()" />
+}
+@section js {
+<script type="text/javascript" src="/scripts/placeholder.min.js"></script>
+<script type="text/javascript" src="/js/rentler.scrim.js?v=@Html.BuildNumber()"></script>
+<script type="text/javascript" src="/js/rentler.home.js?v=@Html.BuildNumber()"></script>
+}
+
+<div class="home">
+    <div class="hero">
+        <div class="container">
+            
+            <div class="hero-intro">
+                <h1>Love Leasing</h1>
+                <div class="search-form">
+                    <form action="/search" method="get">
+                        <input type="text" name="Location" class="location" placeholder="Where would you like to rent?" />
+                        <input type="text" name="MaxPrice" class="max-price" placeholder="Max Price" />
+                        <div>
+                            <button type="submit" class="button green">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="indicator">&nbsp;</div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="features">
+            <div class="featureSet talking">
+			    <h2>Landlord Spotlight:</h2>
+                <h2 class="name">Jared Allen</h2>
+                <a href="https://www.vimeo.com/30560328" data-video="30560328" alt="Landlord Spotlight"><img src="/images/home-landlord-spotlight.png" alt="Landlord Spotlight" /></a>
+		    </div>
+
+            <div class="featureSet">
+			    <h1>Tenant Tools.</h1>
+			    <ul>
+				    <li><div class="check">&nbsp;</div>Advanced search system geared to find your ideal home quickly</li>
+				    <li><div class="check">&nbsp;</div>Property descriptions written the way you look for homes</li>
+				    <li><div class="check">&nbsp;</div>One-application-for-all functionality, they'll ask for the same info anyway</li>
+                    <li><div class="check">&nbsp;</div>Quickly compare the homes you are interested in</li>
+                    <li>&nbsp;</li>
+			    </ul>
+		    </div>
+
+            <div class="featureSet llove">
+			    <h1>Landlord Love.</h1>
+			    <ul>
+				    <li class="single"><div class="check">&nbsp;</div>Build around efficiencies to save time</li>
+				    <li class="single"><div class="check">&nbsp;</div>Lists to both Rentler and KSL</li>
+				    <li><div class="check">&nbsp;</div>Portfolio management functionality made to make life easy</li>
+                    <li class="single"><div class="check">&nbsp;</div>Accept applications directly from tenants</li>
+                    <li>&nbsp;</li>
+			    </ul>
+		    </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,275 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.PropertyPromoteModel
+@section title { Rentler - Create Listing }
+@section css { 
+    <link href="/css/fileuploader.css" rel="Stylesheet" />
+    <link href="/css/pages/property.css" rel="Stylesheet" />    
+    <link href='https://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+}
+@section js { 
+    <script type="text/javascript">
+        var hostname = "@Rentler.Web.Config.Hostname";
+        var photoStore = "@Rentler.Configuration.App.BlobStorageHostname" + "@Rentler.Configuration.App.PhotoFolder";
+    </script>            
+    <script src="/scripts/knockout-2.1.0.js"></script>
+    <script src="/scripts/amplify.min.js"></script>
+    <script src="/scripts/fileuploader.js"></script>
+    <script src="/scripts/jquery.datepick.js"></script>
+    <script src="/scripts/jquery-ui-1.8.20.min.js"></script>
+    <script src="/js/rentler.knockoutBindings.js"></script>        
+    <script src="/js/rentler.featuredCalendar.js"></script>
+    <script src="/js/rentler.uploader.js"></script>
+    <script src="/js/rentler.property.promote.js"></script>
+    <script type="text/javascript">
+        var viewModel = new rentler.property.promote.CreateViewModel();        
+        
+        viewModel.title("@Html.Raw(Model.Input.Title)");
+        viewModel.description("@Html.Raw(Model.Input.Description)");
+        
+        viewModel.ribbons.push({ id:"none", name:"None", src:"" });
+
+        @foreach (var k in Rentler.Configuration.Ribbons.Current.AvailableRibbons.Keys)
+        {
+            <text>
+                viewModel.ribbons.push({
+                    id: "@k",
+                    name: "@Rentler.Configuration.Ribbons.Current.AvailableRibbons[k]",
+                    src: "/images/ribbons/@k-161x54.png"
+                });
+            </text>
+        }
+
+        @if ((Model.Input.SelectedRibbonId ?? "none") == "none")
+        {
+            <text>viewModel.selectedRibbon({ id:"none", name:"None" });</text>
+        }
+        else
+        {
+            <text>viewModel.selectedRibbon({
+                id : "@Model.Input.SelectedRibbonId",
+                name : "@Rentler.Configuration.Ribbons.Current.AvailableRibbons[Model.Input.SelectedRibbonId]"                
+            });</text>
+        }
+
+        rentler.uploader.create(
+            "@Rentler.Web.Config.Hostname",
+            @Model.Input.BuildingId
+        );
+        
+        rentler.featuredCalendar.create(
+            @Model.Input.BuildingId,
+            @Html.Raw(Html.ToJson(Model.Input.CalendarDates)),
+            function(dates) 
+            { 
+                viewModel.featured.removeAll();
+                for(var i = 0; i < dates.length; ++i) {
+                    viewModel.featured.push(dates[i]);
+                } 
+            }
+        );
+               
+        ko.applyBindings(viewModel);
+    </script>
+}
+
+<div class="container">    
+    <div id="accordion" class="ui-accordion">
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/edit/@Model.Input.BuildingId">Step 1 : Listing Information</a></div>
+        <div class="ui-accordion-header">
+            <a class="stepEdit" href="/dashboard/property/terms/@Model.Input.BuildingId">Step 2 : Terms</a></div>
+        <div class="ui-accordion-header selected">
+            <span class="stepEdit">Step 3 : Promote</span></div>
+        <div class="ui-accordion-content charges" style="clear:right"> 
+        @using (Html.BeginForm("promote", "property", new { area = "dashboard" }, FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.Input.BuildingId)
+            <div class="contentSection">
+                <div class="content">
+                    <div class="validationSummarySection">
+                        @Html.ValidationSummary(false, "Please correct the errors and try again:")                
+                    </div>
+                </div>
+            </div>    
+            <div style="clear:left;"></div>
+            
+            <div class="contentSection">
+                <div class="tipIcon top"></div>
+                <div class="content">
+                    <div class="promoSectionHeading top">
+                        <span class="textHeading">Photos</span><span class="priceHeading"> - Free</span>
+                    </div>
+                    <div class="promoSection">
+                        <p>Feel free to upload multiple photos at a time. You can also rearrange them by clicking and dragging them around.</p>
+                    </div>
+                    <div class="promoSection">                
+                        <div id="uploader">                    
+                            <noscript>
+	                            <p>Please enable JavaScript to upload images.</p>
+                            </noscript>
+                        </div>
+                        <ul id="uploadFailures"></ul>
+                    </div>
+                </div>               
+            </div>
+            <div class="tipSection top">
+                <div class="tip">
+                    <p>On average listings with photos get viewed 28% more often than listings without photos. Want to rent your place fast? Add some photos, it's free!</p>
+                </div>        
+            </div>
+            <div style="clear:left;"></div>
+            
+            <div class="contentSection">
+                <div class="tipIcon"></div>
+                <div class="content">
+                    <div class="promoSectionHeading">
+                        Title (<span id="titleCharCount" data-bind="text: remainingChar(50,title())"></span>)<span class="priceHeading"> - Free</span>
+                    </div>
+                    <div class="promoSection">
+                        <input type="text" class="promoTitle" id="Input_Title" name="Input.Title" data-bind="value: title, valueUpdate:'afterkeydown', limitText: limitTitle, charLimit:50" />                        
+                    </div> 
+
+                    <div class="promoSectionHeading">
+                        Description (<span id="descriptionCharCount" data-bind="text: remainingChar(4000,description())"></span>)
+                        <span class="priceHeading"> - Free</span>
+                    </div>
+                    <div class="promoSection">    
+                        <textarea class="promoDescription" id="Input_Description" name="Input.Description" rows="1" cols="1" data-bind="value: description, valueUpdate:'afterkeydown', limitText: limitDescription, charLimit:4000"></textarea>                                    
+                    </div>
+                </div>               
+            </div>
+            <div class="tipSection">
+                <div class="tip">
+                    <p>The Title of your listing is very important. It’s your opportunity to really distinguish your property from the rest. So make it count!</p><br />
+                    <p>You can use up to 4,000 words in the Description, but sometimes less is more.</p><br />
+                </div>        
+            </div>
+            <div style="clear:left;"></div>
+            
+            <!-- Ribbons -->
+            <div class="contentSection">
+                <div class="tipIcon"></div>
+                <div class="content">
+                    <div class="promoSectionHeading">
+                        <span class="textHeading">Ribbons</span><span class="priceHeading"> - 99&#162; Each</span>
+                    </div>
+                    <div class="promoSection">
+                        <div class="ribbonInfoSection">
+                            <p>Ribbons are just 99¢ and are a great way to highlight your property’s best feature. Once a ribbon is purchased, it's yours as long as your listing is active. If you deactivate then reactivate your listing, you'll need to purchase a new ribbon. The good news is, it's still just 99¢ to reactivate. Note: Purchasing a new ribbon will remove the old one.</p>                    
+                            <img src="/images/property/ribbonInSearchExample.png" alt="" width="189" height="148" />
+                            <div style="clear: both;"></div>                   
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Input.PurchasedRibbonId))
+                        {
+                            <div style="margin: 15px 0px 15px 10px;">You own the <span style="font-weight: bold;">@Rentler.Configuration.Ribbons.Current.AvailableRibbons[Model.Input.PurchasedRibbonId]</span> ribbon</div>
+                        }
+                        <div class="ribbonListSection">
+                            <ul id="ribbonOptionsList" data-bind="foreach: ribbons">                                                                
+                                <li>
+                                    <div class="ribbonContainer">
+                                        <img class="ribbonOverlay" src="" alt="" data-bind="attr: { src: src, alt: name }, visible: src != ''" />
+                                        <div class="ribbonBox">                                                                               
+                                            <input 
+                                                type="radio" 
+                                                name="Input.SelectedRibbonId" 
+                                                value=""                                                                                                    
+                                                data-bind="value: id, checked: $parent.selectedRibbon().id, attr: { 'data-name': name }" />  
+                                            
+                                            <!-- ko if: id == "none" -->
+                                            <label>None</label>
+                                            <!-- /ko --> 
+                                            <!-- ko ifnot: id == "none" -->
+                                            <label>99&#162;</label>
+                                            <!-- /ko --> 
+                                                                               
+                                            <div style="clear:right;"></div>
+                                        </div>                            
+                                    </div>
+                                </li>                                                                                         
+                            </ul>            
+                        </div>
+                    </div>            
+                </div>               
+            </div>
+            <div class="tipSection">
+                <div class="tip">
+                    <p>Grab the attention of your next tenant with a colorful ribbon showcasing your property's standout feature. They’re only 99¢!</p>
+                </div>        
+            </div>
+            <div style="clear:left;"></div>
+            
+            <!-- Featured -->
+            <div class="contentSection">        
+                <div class="content">
+                    <div class="promoSectionHeading">
+                        <span class="textHeading">Feature Your Listing</span><span class="priceHeading"> - Just $9.95 per day</span>
+                    </div>
+                    <div class="promoSection">
+                        <div class="featuredInfoSection">
+                            @{
+                                string lnk = Html.GetPhotoLink(Model.Input.BuildingId, Model.Input.PrimaryPhotoId, 200, 150, Model.Input.PrimaryPhotoExtension);                                                                                                                                                    
+                            }
+                            <div id="featuredPreview">
+                                <div class="shadow" style="height:150px">
+                                    <img id="imgFeaturedPreview" src="@lnk" width="200" height="150" alt="" /></div>
+                                <div class="redFeatured">Featured</div>
+                            </div>
+                            <p>Rentler has a great way to get serious exposure for your property! You can feature your listing for $9.95 per day and your property will be placed in one of our 38 high-profile, featured sections. Each section is based on a specific price range and has three rotating feature positions. Each position can also hold up to three featured properties, so your property is guaranteed to rotate into a featured position at least 33% of the time. You can feature a property for a maximum of 30 days per listing. All sales are final.<br /><br /><br /><span style="font-weight: bold;">Maximum: 30 Days</span><br /></p>
+                            <div style="clear:left;"></div>
+                        </div>
+                        <div class="featuredCalendarSection">
+                            <div id="calendarInfoHeader">Select the days to feature your listing</div>
+                            <div id="calendarMessage" class="hide">&nbsp;</div>      
+                            <!--<div id="calendarLoader" class=>&nbsp;</div>-->
+                            <div id="featuredCalendar"></div>
+                        </div>        
+                    </div>                    
+                </div>               
+            </div>    
+            <div style="clear:left;"></div>
+            
+            <div class="contentSection">        
+                <div class="content">
+                    <div class="submitSection">                
+                        <input id="step3Submit" name="submit" type="submit" value="" data-bind="value: submitText()" />
+                        <div style="clear:right;"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:left;"></div>
+            
+            <div id="selectedDates" class="hide"></div>                         
+        }
+
+            <div class="chargesSummary">
+                <div class="chargesHeader">Summary of Charges</div>
+                <div class="chargesBody">
+                    <div class="bodyHeader">Ribbons:</div>
+                    <div class="bodySection">
+                        <ul id="ribbonChargesList">
+                            <li>
+                                <span class="ribbonChargeName label" data-bind="text: selectedRibbon().name"></span>
+                                <span class="ribbonChargePrice price" data-bind="text: ribbonPriceFormatted"></span>                                
+                                <div style="clear:both"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bodyHeader">Featured Listing:</div>
+                    <div class="bodySection">
+                        <ul id="featuredChargesList">
+                            <li>
+                                <span class="featuredChargeDays label" data-bind="text: featuredName"></span>                    
+                                <span class="featuredChargePrice price" data-bind="text: featuredPriceFormatted"></span>                                
+                                <div style="clear:both"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chargesTotal">
+                    <span class="label">Sub Total:</span>
+                    <span class="totalCharges price" data-bind="text: cartTotalFormatted"></span>
+                    <div style="clear:both"></div>
+                </div>
+            </div>     
+        </div>    
+    </div>
+</div>

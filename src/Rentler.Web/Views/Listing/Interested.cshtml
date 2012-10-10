@@ -1,0 +1,97 @@
+﻿@model Rentler.Building
+@{
+	Layout = null;	
+}
+
+@* Email Landlord *@
+@if (User.Identity.IsAuthenticated)
+{
+@* Contact Landlord *@
+<div class="landlordContainer">
+	<div class="landlordContact">
+		<div class="landlordContactInfo">
+			<div class="landlordNumber">@(Model.ContactInfo.ShowPhoneNumber ? "Phone: " + Model.ContactInfo.PhoneNumber : "Phone not listed")</div>
+			@Model.ContactInfo.Name
+		</div>
+		<div class="landlordTemplate">
+			<div class="landlordTemplateSection">
+				Dear @Model.ContactInfo.Name (Landlord),
+			</div>
+			<div class="landlordTemplateSection">
+				I am interested in your property:
+			</div>
+			<div class="landlordTemplateListing">
+				<div class="resultImage">
+				@if (Model.Photos.Any())
+                { 
+					<img src="@Html.GetPhotoLink(Model.BuildingId, Model.PrimaryPhotoId, 200,150, Model.PrimaryPhotoExtension)" alt="House Image" />
+                }
+                else
+                {
+					<img src="https://www.rentler.com/images/noimage-200x150.jpg" alt="House Image" />
+                }
+				</div>
+				<div class="resultInfo">
+					<div class="address">@Model.Address1 @Model.Address2</div>
+					<div class="cityState">@Model.City, @Model.State @Model.Zip</div>
+					<div class="priceInfo"><span class="price">$
+                        @string.Format(
+                            "{0:0.##}", (Model.Price)
+                        )</span> per Month</div>
+					<div class="bedBath">@Model.Bedrooms.ToString() Bed / @string.Format("{0:0.##}", Model.Bathrooms) Bath / @Model.SquareFeet SqFt</div>
+				</div>
+			</div>
+		</div>
+		<div class="emailSubmitLoader hide">
+			<img src="/images/ajax-loader.gif" alt="loading">
+			&nbsp;&nbsp;&nbsp;Sending your message
+		</div>
+		<div class="emailResultMessage hide">&nbsp;</div>
+	</div>
+	<form method="post" action="/api/listing/interested" id="sendEmailForm">
+		<div class="landlordEmail">
+			<div class="notes">Include a note: <span class="accent characterCount">(1000 characters left)</span></div>
+			<div>
+				@Html.HiddenFor(m => m.BuildingId)
+				@Html.TextArea("Content")
+			</div>
+		</div>
+		<div class="actions">
+			<a href="/listing/@Model.BuildingId" class="cancelEmailLink close">Cancel</a>
+			<input type="submit" class="button blue" value="Send Email" />
+		</div>
+	</form>
+</div>
+}
+else
+{
+	<div class="landlordContainer">
+	<div class="landlordContact">
+		<div class="landlordContactInfo">
+			<div class="landlordNumber">@(Model.ContactInfo.ShowPhoneNumber ? Model.ContactInfo.PhoneNumber : "Phone not listed")</div>
+			@Model.ContactInfo.Name
+		</div>
+		<div class="landlordTemplate">
+			<div class="landlordTemplateSection">
+				You can <a href="/account/login?returnUrl=/listing/@Model.BuildingId%23iminterested">login</a> and send this landlord a message from right here!
+			</div>
+			<div class="landlordTemplateSection">
+				@if (Model.ContactInfo.ShowPhoneNumber)
+				{
+				<span>You can also contact them at: @Model.ContactInfo.PhoneNumber</span>
+			    }
+				else
+			    {
+				<span>Their phone number is not listed</span>
+				}
+			</div>
+		</div>
+	</div>
+	<div class="landlordEmail">
+		<div class="actions">
+			<a href="/listing/@Model.BuildingId" class="cancelEmailLink close">Cancel</a>
+		</div>
+	</div>
+</div>
+}
+@* End Email Landlord *@

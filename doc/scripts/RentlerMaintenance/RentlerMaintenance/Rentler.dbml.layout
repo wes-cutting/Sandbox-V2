@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 11.25" name="Rentler">
+  <DataContextMoniker Name="/RentlerDataContext" />
+  <nestedChildShapes>
+    <classShape Id="ec7c3fa6-24bd-4837-a38c-31f61b65c8d3" absoluteBounds="3.5, 1.5, 2, 9.4629541015625">
+      <DataClassMoniker Name="/RentlerDataContext/Building" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a49e899-6672-4266-9b57-94abac26b7ac" absoluteBounds="3.515, 1.96, 1.9700000000000002, 8.9029541015625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

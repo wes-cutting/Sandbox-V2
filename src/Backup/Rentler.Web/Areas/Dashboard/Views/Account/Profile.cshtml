@@ -1,0 +1,71 @@
+﻿@model Rentler.Web.Areas.Dashboard.Models.AccountProfileModel
+@section title {Update Profile}
+@section description {Update your profile information.}
+@section css {
+<link rel="Stylesheet" href="/css/pages/dashboard.css?v=@Html.BuildNumber()" />
+<link rel="Stylesheet" href="/css/pages/register.css?v=@Html.BuildNumber()" />
+}
+@section js {
+<script type="text/javascript" src="/scripts/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="container">
+    @Html.Partial("TabsNavigation", "account")
+
+    <div class="sub-tab">
+        <a href="/dashboard/account/profile" class="active">Profile</a>
+        <a href="/dashboard/account/application">Application</a>
+        <a href="/dashboard/account/changepassword">Change Password</a> 
+    </div>
+    
+    <div id="register" class="container">
+        <div class="registrationContainer">
+		    <div class="registerBox">
+			    <div class="darkHeading">Update your profile settings.</div>
+                @using(Html.BeginForm("profile", "account", FormMethod.Post, new { @class="form-horizontal" }))
+                {
+                    @Html.ValidationSummary("Please correct the errors and try again:")
+
+                    if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                    <div class="change-message">@Model.Message</div>
+                    }
+                    
+                    <fieldset>
+                        <div class="control-group">
+                            <label for="Input_UserName" class="control-label">First Name</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Input.FirstName)
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="Input_Password" class="control-label">Last Name</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Input.LastName)
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="Input_ConfirmPassword" class="control-label">Email</label>
+                            <div class="controls">
+                                @Html.TextBoxFor(m => m.Input.Email)
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="button blue">Update Profile</button>
+                        </div>
+                    </fieldset>                                
+                }
+            </div>
+        </div>
+        <div class="registerMarketing">
+		    <div>
+			    <div class="sectionHead">Tenant Tools.</div>
+			    <div>
+                Leasing a home is supposed to be less hassle and headache than owning, right? Well with Rentler, you'll love leasing. Rentler's made it easier to search, compare and lease homes than ever before. You can tool around town from the comfort of your couch. We've brought intuitive functionality to tenants like one-application-for-all and descriptions with the info you're really looking for.
+			    </div>
+		    </div>	
+        </div>
+        <div style="clear:left;"></div>
+    </div>
+</div>
